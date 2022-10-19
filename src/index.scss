@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+    * {
+        box-sizing: border-box;
+    }
+      body,
+      input,
+      button {
+        font-size: 62.5%;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        line-height: 24px;
+        color: #000000;
+    }
+   
+}
+
+.bg-auth{
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+}
+.bg-header{
+    
+    background: linear-gradient(90deg, #faf0cd, #fab397);
+
+}
+.scroll-hide::-webkit-scrollbar {
+    display: none; /* cho Chrome, Safari, and Opera */
+    width: 0 !important;
+}
+.text-primary{
+    color: #ffbc4b;
+}
