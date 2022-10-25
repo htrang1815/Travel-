@@ -1,57 +1,62 @@
-import React from 'react';
-import HikingIcon from '@mui/icons-material/Hiking';
-import { Link} from 'react-router-dom';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import ButtonSubmit from '../../../components/button/ButtonSubmit';
+import React from "react";
+import HikingIcon from "@mui/icons-material/Hiking";
+import { Link } from "react-router-dom";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import ButtonSubmit from "../../../components/button/ButtonSubmit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 const ListLink = [
-    {
-      id: 1,
-      to: "#",
-      title: "Home",
-    },
-    {
-      id: 2,
-      to: "#",
-      title: "Projects",
-    },
-    {
-      id: 3,
-      to: "#",
-      title: "Blogs",
-    },
-    {
-      id: 4,
-      to: "#",
-      title: "About",
-    },
-    {
-      id: 5,
-      to: "#",
-      title: "Contact",
-    },
+  {
+    id: 1,
+    to: "#",
+    title: "Home",
+  },
+  {
+    id: 2,
+    to: "#",
+    title: "Projects",
+  },
+  {
+    id: 3,
+    to: "#",
+    title: "Blogs",
+  },
+  {
+    id: 4,
+    to: "#",
+    title: "About",
+  },
+  {
+    id: 5,
+    to: "#",
+    title: "Contact",
+  },
 ];
 
-
 const Header = () => {
-  
-    return (
-        <div className='h-[64px] fixed py-4 px-20 w-full flex items-center justify-between z-50 bg-header'>
-            <div className='flex items-end'>
-                    <HikingIcon style={{fontSize:"28px", color: "#FFBC4B"}}></HikingIcon>
-                    <h1 className='font-[600] text-[28px]'>Travel.</h1>
-            </div>
-            <div className='flex list-none items-center'>
-                {ListLink.map((link) => (
-                <li className="ml-[16px]" key={link.id}>
-                    <Link to={link.to}>{link.title}</Link>
-                </li>
-                ))}
-                <BookmarkIcon className='ml-[16px]'></BookmarkIcon>
-                <ButtonSubmit className='ml-[16px] py-1 px-5 hover:opacity-50' text="Login" ></ButtonSubmit>
-            </div>
-        </div>
-    );
+  return (
+    <div className="fixed top-0 right-0 left-0 z-[1000] w-full flex items-center justify-between px-[9%] py-[15px]  bg-header">
+      <div className="text-[25px] font-bold text-[#fff] cursor-pointer">
+        <FontAwesomeIcon icon={faPaperPlane} className="text-primary pr-[5px] font-[900]"/>
+        Travel
+      </div>
+      <div className="flex list-none items-center m-0 p-0  ">
+        {ListLink.map((link) => (
+          <li className="text-[17px] text-[#aaa] mx-[10px] cursor-pointer capitalize hover-menu" key={link.id}>
+            <Link to={link.to}>{link.title}</Link>
+          </li>
+        ))}
+      </div>
+      <div>
+        {/* <BookmarkIcon className="ml-[16px]"></BookmarkIcon> */}
+        <ButtonSubmit
+          className=""
+          text="Login"
+        ></ButtonSubmit>
+      </div>
+    </div>
+  );
 };
 
 export default Header;

@@ -7,34 +7,34 @@ import PersonIcon from '@mui/icons-material/Person';
 
 const ProjectItem = () => {
     return (
-        <div className='bg-[#fff] mr-5 rounded-lg p-3 w-[33%] h-[75%] '>
+        <div className='bg-[#fff] mr-5 rounded-lg p-3 w-[100%]'>
             <div className='w-full mb-4 relative'>
                 <img src={projectImg} alt="" className='object-cover w-full h-[250px] rounded-xl left-0 top-0' />
-                <span className='bg-[#fefefe] px-4 py-2 rounded-lg text-primary absolute left-[31%] top-[100%] translate-y-[-50%] z-50' >$497 / person</span>
+                <span className='bg-[#fefefe] px-4 py-2 rounded-lg text-primary absolute left-[50%] top-[100%] translate-x-[-50%] translate-y-[-50%] z-50' >$497 / person</span>
             </div>
             <div className='mt-4 w-full px-4 pt-4'>
                 <div className='mb-3 text-center'>
                     <span className='font-bold'>The Vegas Desert</span>
-                    <p className='inline-block w-full text-justify leading-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil natus quae ad alias suscipit voluptatibus enim! Ut, eligendi consectetur.</p>
+                    <p className='inline-block w-full text-justify leading-5 text-wrap'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil natus quae ad alias suscipit voluptatibus enim! Ut, eligendi consectetur.</p>
                 </div>
                 <div  className='grid grid-cols-2 gap-4 mb-3'>
                     <div>
-                        <div>
-                            <FmdGoodIcon className='mr-3'></FmdGoodIcon>
+                        <div className='mb-[10px]'>
+                            <FmdGoodIcon className='mr-3' style={{fontSize : "22px"}}></FmdGoodIcon>
                             <span>Lasvegas, US</span>
                         </div>
                         <div>
-                            <TourIcon className='mr-3'></TourIcon>
+                            <TourIcon className='mr-3' style={{fontSize : "22px"}}></TourIcon>
                             <span>5 stops</span>
                         </div>
                     </div>
                     <div>
-                        <div>
-                            <DateRangeIcon className='mr-3'></DateRangeIcon>
+                        <div className='mb-[10px]'>
+                            <DateRangeIcon className='mr-3' style={{fontSize : "22px"}}></DateRangeIcon>
                             <span>October, 2022</span>
                         </div>
                         <div>
-                            <PersonIcon className='mr-3'></PersonIcon>
+                            <PersonIcon className='mr-3'  style={{fontSize : "22px"}}></PersonIcon>
                             <span>20</span>
                         </div>
                     </div>
