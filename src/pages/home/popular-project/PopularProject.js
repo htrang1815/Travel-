@@ -3,17 +3,16 @@ import ProjectItem from "../../../components/projects/ProjectItem";
 
 const PopularProject = () => {
   return (
-    <div className="w-full h-full bg-[#fff2d7] z-50">
-      <div className="text-center pt-16 line-after">
-        <h2 className="text-[36px] font-[750] relative inline-block">UPCOMING PROJECTS</h2>
-        <span className="block mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+    <div className="py-[30px] px-[9%] ">
+      <div className="text-center mb-[20px]">
+        <span className="text-primary text-[20px] box-border">Our Projects</span>
+        <h1 className="text-[#fff] text-[40px] font-[700] box-border">Make your Projects</h1>
       </div>
-      <div className='w-full py-[50px] px-[9%]'>
-        <div className="grid grid-cols-3 w-[90%] gap-4 mx-auto overflow-hidden">
+      <div className='grid grid-cols-4 gap-[15px]'>
           <ProjectItem></ProjectItem>
           <ProjectItem></ProjectItem>
           <ProjectItem></ProjectItem>
-        </div>
+          <ProjectItem></ProjectItem>
       </div>
     </div>
   );

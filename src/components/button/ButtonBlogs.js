@@ -1,13 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ButtonBlogs = () => {
+const ButtonBlogs = ({className,text}) => {
+    const navigate = useNavigate();
     return (
-        <div className='hover-blogs'>
-            <button className='px-3 py-[3px] border-2 border-[#ffbc4b] text-center rounded-full font-[600] text-primary '>
-                Read More
-            </button>
-
-        </div>
+        <button className={`mt-0 text-[17px] text-primary px-[30px] py-[10px] rounded-[50px] border-[2px] border-solid  border-[#ffbc4b] bg-none m-0 capitalize hover-btnsubmit ${className}`} onClick={() => navigate("#")}>{text}</button>
     );
 };
 
