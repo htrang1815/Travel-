@@ -13,6 +13,10 @@ const PopularProject = () => {
           <ProjectItem></ProjectItem>
           <ProjectItem></ProjectItem>
           <ProjectItem></ProjectItem>
+          <ProjectItem></ProjectItem>
+          <ProjectItem></ProjectItem>
+          <ProjectItem></ProjectItem>
+          <ProjectItem></ProjectItem>
       </div>
     </div>
   );
