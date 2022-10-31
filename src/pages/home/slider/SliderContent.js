@@ -5,9 +5,7 @@ const SliderContent = () => {
   return (
     <div className="my-0 mx-auto mt-[90px] w-[90%] min-h-[80vh] bg-bg-slider1 rounded-[10px] bg-cover relative flex items-center justify-end">
       <div className="absolute block w-[500px] p-0 m-0 mr-[50px] capitalize">
-        <span className="block text-[40px] font-[400]">
-          Never Stop{" "}
-        </span>
+        <span className="block text-[40px] font-[400]">Never Stop </span>
         <h3 className="font-bold text-[60px] text-[#FFBC4B] uppercase ">
           EXPLORING{" "}
         </h3>
