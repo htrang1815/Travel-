@@ -5,3 +5,19 @@
   background-size: cover;
   background-position: center;
 }
+//Search
+
+.hover-filter:active{
+  background-color: #ffbc4b;
+  color: #000000;
+}
+//imgdetail
+.grid-detail{
+  display: grid;
+  grid-template-rows: repeat(6, minmax(0, 50px));
+
+}
+.hover-button:hover{
+  background-color: #ffbc4b;
+  color: #000000;
+}

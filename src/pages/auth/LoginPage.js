@@ -5,7 +5,7 @@ import LoginContent from '../../components/layout/auth/LoginContent';
 
 const LoginPage = () => {
     return (
-        <div className='flex items-start justify-center px-10 py-24 bg-auth  h-screen'>
+        <div className='flex items-start justify-center px-[9%] py-[60px] bg-[#222] h-screen relative'>
             <AuthLeft></AuthLeft>
             <AuthRight>
                 <LoginContent></LoginContent>

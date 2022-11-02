@@ -1,10 +1,10 @@
-import React from "react";
-import HikingIcon from "@mui/icons-material/Hiking";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ButtonSubmit from "../../../components/button/ButtonSubmit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import UserAvata from "../../../components/user/UserAvata";
+import UserDropdown from "../../../components/user/UserDropdown";
 
 const ListLink = [
   {
@@ -15,45 +15,69 @@ const ListLink = [
   {
     id: 2,
     to: "#",
-    title: "Projects",
+    title: "Places",
   },
   {
     id: 3,
     to: "#",
-    title: "Blogs",
+    title: "Guides",
   },
   {
     id: 4,
     to: "#",
-    title: "About",
+    title: "Blogs",
   },
   {
     id: 5,
+    to: "#",
+    title: "About",
+  },
+  {
+    id: 6,
     to: "#",
     title: "Contact",
   },
 ];
 
 const Header = () => {
+  const [login, setLogin] = useState(true);
+  const [show, setShow] = useState(false);
   return (
-    <div className="fixed top-0 right-0 left-0 z-[1000] w-full flex items-center justify-between px-[9%] py-[15px]  bg-header">
-      <div className="text-[25px] font-bold text-[#fff] cursor-pointer">
-        <FontAwesomeIcon icon={faPaperPlane} className="text-primary pr-[5px] font-[900]"/>
+    <div className="fixed top-0 right-0 left-0 z-[1000] w-full flex items-center justify-between px-[9%] py-[15px]  bg-header ">
+      <div className="text-[25px] font-bold text-[#fff] cursor-pointer ">
+        <FontAwesomeIcon
+          icon={faPaperPlane}
+          className="text-primary pr-[5px] font-[900]"
+        />
         Travel
       </div>
       <div className="flex list-none items-center m-0 p-0  ">
         {ListLink.map((link) => (
-          <li className="text-[17px] text-[#aaa] mx-[10px] cursor-pointer capitalize hover-menu" key={link.id}>
+          <li
+            className="text-[17px] text-[#aaa] mx-[10px] cursor-pointer capitalize hover-menu"
+            key={link.id}
+          >
             <Link to={link.to}>{link.title}</Link>
           </li>
         ))}
       </div>
-      <div>
-        {/* <BookmarkIcon className="ml-[16px]"></BookmarkIcon> */}
-        <ButtonSubmit
-          className=""
-          text="Login"
-        ></ButtonSubmit>
+      <div className="cursor-pointer relative">
+        {login ? (
+          <>
+            <div className="flex items-center">
+              <FontAwesomeIcon
+                icon={faBookmark}
+                className="text-primary text-[17px]"
+              ></FontAwesomeIcon>
+              <UserAvata className="ml-[10px]" show={show} setShow={setShow}></UserAvata>
+              {show && <UserDropdown></UserDropdown>}
+            </div>
+          </>
+        ) : (
+          <>
+            <ButtonSubmit className="" text="Login"></ButtonSubmit>
+          </>
+        )}
       </div>
     </div>
   );

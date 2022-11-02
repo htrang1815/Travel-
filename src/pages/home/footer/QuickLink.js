@@ -12,19 +12,16 @@ const QuickLink = () => {
                     </a>
             <a className='text-[14px] text-[#aaa] py-[10px] px-0 block hover-quicklink' href="#about" > 
                 <FontAwesomeIcon icon={faArrowRight} className='pr-[5px] text-primary font-[900] '></FontAwesomeIcon> 
-                    <span> about</span>  </a>
+                    <span> projects</span>  </a>
             <a className='text-[14px] text-[#aaa] py-[10px] px-0 block hover-quicklink' href="#destination" > 
                 <FontAwesomeIcon icon={faArrowRight} className='pr-[5px] text-primary font-[900] '></FontAwesomeIcon> 
-                    <span> destination </span>  </a>
+                    <span> blogs </span>  </a>
             <a className='text-[14px] text-[#aaa] py-[10px] px-0 block hover-quicklink' href="#services" > 
                 <FontAwesomeIcon icon={faArrowRight} className='pr-[5px] text-primary font-[900] '></FontAwesomeIcon> 
-                    <span> services </span>  </a>
+                    <span> about </span>  </a>
             <a className='text-[14px] text-[#aaa] py-[10px] px-0 block hover-quicklink' href="#gallery" > 
                 <FontAwesomeIcon icon={faArrowRight} className='pr-[5px] text-primary font-[900] '></FontAwesomeIcon> 
-                    <span> gallery </span>  </a>
-            <a className='text-[14px] text-[#aaa] py-[10px] px-0 block hover-quicklink' href="#blogs" > 
-                <FontAwesomeIcon icon={faArrowRight} className='pr-[5px] text-primary font-[900] '></FontAwesomeIcon> 
-                    <span> blogs </span>  </a>
+                    <span> contact </span>  </a>
         </div>
     );
 };

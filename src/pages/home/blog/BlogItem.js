@@ -5,7 +5,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const BlogItem = ({pic}) => {
     return (
-        <div className='bg-[#222] rounded-[10px] overflow-hidden hover-blogitem  cursor-pointer'>
+        <div className='bg-[#222] rounded-[10px] overflow-hidden hover-item cursor-pointer'>
             <div className=''>
                 <img src={pic} alt="" className='h-[250px] w-full h'/>
             </div>

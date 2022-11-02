@@ -5,17 +5,17 @@
 @layer base {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
   * {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     outline: none;
     border: none;
     text-decoration: none;
     text-transform: capitalize;
-    -webkit-transition: all .2s linear;
-    transition: all .2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
     line-height: normal;
   }
   body,
@@ -33,23 +33,33 @@
     scroll-behavior: smooth;
     scroll-padding-top: 9rem;
   }
-  
+
   html::-webkit-scrollbar {
     width: 1rem;
   }
-  
+
   html::-webkit-scrollbar-track {
     background: #111;
   }
-  
+
   html::-webkit-scrollbar-thumb {
     background: #ffbc4b;
     border-radius: 5rem;
   }
+  h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  span,
+  p {
+    color: #aaa;
+    font-size: 14px;
+  }
 }
 
 .bg-auth {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #222, #222, #111, #111);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 
@@ -87,6 +97,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.hover-input:hover {
+  color: #111;
+}
 .line-after {
   h2:after {
     content: "";
@@ -107,83 +120,97 @@
     color: #000000;
   }
 }
+.hover-buttonauth:hover{
+  background-color: #ffbc4b;
+  div,p{
+    color: #000000;
+  }
+}
 .hover-btnsubmit:hover {
   background-color: #ffbc4b;
   color: #000000;
 }
-.hover-menu:hover{
-    color: #ffbc4b;
+.hover-menu:hover {
+  color: #ffbc4b;
 }
-.hover-controlblogs:hover{
-    background-color: #ffbc4b;
+.hover-controlblogs:hover {
+  background-color: #ffbc4b;
 }
-.hover-advanceitem:hover{
+.hover-advanceitem:hover {
   border: 0.2rem solid #ffbc4b;
 }
-.gallery-item{
-    break-inside: avoid;
+.gallery-item {
+  break-inside: avoid;
 }
-//Review 
-.flex-review{
+//Review
+.flex-review {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 25px;
 }
-.flex-review-content{
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 42rem;
-          flex: 1 1 42rem;
-}
-.flex-review-container{
+.flex-review-content {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 42rem;
-      flex: 1 1 42rem;
+  flex: 1 1 42rem;
+}
+.flex-review-container {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 .flex-review-item {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 20rem;
-          flex: 1 1 20rem;
+  -ms-flex: 1 1 20rem;
+  flex: 1 1 20rem;
 }
-.flex-review-user{
+.flex-review-user {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 1rem;
 }
-.hover-reviewitem:hover{
+.hover-reviewitem:hover {
   border: 0.2rem solid #ffbc4b;
 }
 //blog
-.grid-blog{
+.grid-blog {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(32rem, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  -ms-grid-columns: (minmax(32rem, 1fr)) [auto-fit];
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   gap: 1.5rem;
 }
-.hover-blogitem:hover img{
-    -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.hover-item:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 //Banner
-.bg-banner{
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(17, 17, 17, 0.7)), to(rgba(17, 17, 17, 0.7))), url(/assets/images/banner/banner-bg.jpg) no-repeat;
-  background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(/assets/images/banner/banner-bg.jpg) no-repeat;
+.bg-banner {
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(17, 17, 17, 0.7)),
+      to(rgba(17, 17, 17, 0.7))
+    ),
+    url(/assets/images/banner/banner-bg.jpg) no-repeat;
+  background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)),
+    url(/assets/images/banner/banner-bg.jpg) no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -193,21 +220,27 @@
   background-color: #ffbc4b;
   color: #111;
 }
-.grid-footer{
+.grid-footer {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(25rem, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  -ms-grid-columns: (minmax(25rem, 1fr)) [auto-fit];
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 1.5rem;
 }
-.hover-quicklink:hover span{
-    padding-left: .5rem;
-    color: #ffbc4b;
+.hover-quicklink:hover span {
+  padding-left: 0.5rem;
+  color: #ffbc4b;
 }
 //Newletter
-.hover-btnsubscribe:hover{
+.hover-btnsubscribe:hover {
   background-color: #ffbc4b;
   color: #000000;
 }
-
-
+.hover-dropdown:hover{
+  border: 1px solid #000000;
+  background-color: #000000;
+  color: #ffbc4b;
+  span{
+    color: #ffbc4b;
+  }
+}
