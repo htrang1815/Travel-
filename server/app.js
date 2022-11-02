@@ -5,6 +5,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const userRoutes = require("./routes/userRoutes");
+const globalErrorHandler = require("./controllers/errorController");
+const AppError = require("./utils/appError");
 
 // => morgan giúp cta có thể xem đc kết quả của request ngay trên console.log
 
@@ -32,6 +34,9 @@ app.use("/api/v1/users", userRoutes);
 
 // D. Bắt lỗi các routes ko dc xử lý
 app.all("*", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`));
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
+
+// E. Error Handling Middleware
+app.use(globalErrorHandler);
 module.exports = app;

@@ -1,9 +1,11 @@
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 
 // 1. Hàm đăng ký tài khoản
 
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -44,14 +46,14 @@ const createSendToken = (user, statusCode, res) => {
 
 // 1. Hàm Đăng ký
 
-exports.signup = async (req, res) => {
+exports.signup = catchAsync(async (req, res) => {
   const newUser = await User.create(req.body);
   createSendToken(newUser, 201, res);
-};
+});
 
 // 2. Hàm Đăng nhập
 
-exports.login = async (req, res, next) => {
+exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   // B1: Check if email và password tồn tại
   if (!email || !password) {
@@ -66,7 +68,7 @@ exports.login = async (req, res, next) => {
   }
   // B4: Send token to client
   createSendToken(user, 200, res);
-};
+});
 
 // 3. Ktra xem ng dùng login chưa phía frontend
 exports.onAuthStateChanged = async (req, res) => {

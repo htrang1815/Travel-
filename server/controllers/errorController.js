@@ -42,9 +42,8 @@ const sendErrorProd = (err, res) => {
     });
   }
 };
+
 module.exports = (err, req, res, next) => {
-  //   console.log(err.stack);
-  // cho ta biết nơi nào trả về lỗi
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
 
@@ -66,6 +65,6 @@ module.exports = (err, req, res, next) => {
     if (error.name === "ValidationError") {
       error = handleValidationErrorDB(error);
     }
-    sendErrorProd(error, res);
+    sendErrorProd(err, res);
   }
 };
