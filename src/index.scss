@@ -59,28 +59,33 @@
 }
 
 .bg-auth {
-  background: linear-gradient(-45deg, #222, #222, #111, #111);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  background: #222
 }
 .bg-header {
   background: #222;
 }
 .scroll-hide::-webkit-scrollbar {
-  display: none; /* cho Chrome, Safari, and Opera */
-  width: 0 !important;
+  width: 30px;
+  background: #222;
+  border-radius: 5rem;
+  height: 5px;
+}
+.scroll-hide::-webkit-scrollbar-thumb {
+  width: 100px;
+  background: url(https://cdn-icons-png.flaticon.com/512/2831/2831972.png) ;
+  border-radius: 5rem;
+  background-position: center bottom, center -40px;
+  background-repeat: no-repeat, no-repeat;
+  background-size: contain, contain;  
+}
+.scroll-hide::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 100px; 
+}
+
+.scroll-hide::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 100px;
 }
 .text-primary {
   color: #ffbc4b;
@@ -97,7 +102,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.hover-input:hover {
+.hover-input:focus {
   color: #111;
 }
 .line-after {
@@ -120,9 +125,10 @@
     color: #000000;
   }
 }
-.hover-buttonauth:hover{
+.hover-buttonauth:hover {
   background-color: #ffbc4b;
-  div,p{
+  div,
+  p {
     color: #000000;
   }
 }
@@ -236,11 +242,11 @@
   background-color: #ffbc4b;
   color: #000000;
 }
-.hover-dropdown:hover{
+.hover-dropdown:hover {
   border: 1px solid #000000;
   background-color: #000000;
   color: #ffbc4b;
-  span{
+  span {
     color: #ffbc4b;
   }
 }
