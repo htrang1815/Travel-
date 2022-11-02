@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonSubmit from "../../../components/button/ButtonSubmit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -40,7 +40,8 @@ const ListLink = [
 ];
 
 const Header = () => {
-  const [login, setLogin] = useState(true);
+  const navigate = useNavigate();
+  const [login, setLogin] = useState(false);
   const [show, setShow] = useState(false);
   return (
     <div className="fixed top-0 right-0 left-0 z-[1000] w-full flex items-center justify-between px-[9%] py-[15px]  bg-header ">
@@ -69,13 +70,24 @@ const Header = () => {
                 icon={faBookmark}
                 className="text-primary text-[17px]"
               ></FontAwesomeIcon>
-              <UserAvata className="ml-[10px]" show={show} setShow={setShow}></UserAvata>
+              <UserAvata
+                className="ml-[10px]"
+                show={show}
+                setShow={setShow}
+              ></UserAvata>
               {show && <UserDropdown></UserDropdown>}
             </div>
           </>
         ) : (
           <>
-            <ButtonSubmit className="" text="Login"></ButtonSubmit>
+            <ButtonSubmit
+              className=""
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </ButtonSubmit>
           </>
         )}
       </div>
