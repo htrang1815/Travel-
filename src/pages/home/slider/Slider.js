@@ -23,16 +23,16 @@ const Slider = () => {
         loop={true}
       >
         <SwiperSlide>
-          <SliderContent></SliderContent>
+          <SliderContent className='bg-bg-slider1'></SliderContent>
         </SwiperSlide>
         <SwiperSlide>
-          <SliderContent></SliderContent>
+          <SliderContent className='bg-bg-slider2'></SliderContent>
         </SwiperSlide>
         <SwiperSlide>
-          <SliderContent></SliderContent>
+          <SliderContent className='bg-bg-slider3'></SliderContent>
         </SwiperSlide>
         <SwiperSlide>
-          <SliderContent></SliderContent>
+          <SliderContent className='bg-bg-slider4'></SliderContent>
         </SwiperSlide>
       </Swiper>
     </div>

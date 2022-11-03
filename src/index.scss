@@ -96,7 +96,7 @@
   max-width: full;
   height: 14px * 2 * 2; /* Fallback for non-webkit */
   font-size: 14px;
-  line-height: normal;
+  line-height: 1.5;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -147,6 +147,10 @@
 }
 .gallery-item {
   break-inside: avoid;
+}
+//About
+.transition-about{
+  transition: all linear;
 }
 //Review
 .flex-review {
