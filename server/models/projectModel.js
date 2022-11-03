@@ -45,11 +45,25 @@ const projectSchema = new mongoose.Schema({
     trim: true,
     required: [true, "A project must have a description"],
   },
+  maxGroupSize: {
+    type: Number,
+    required: [true, "A project must have a group size"],
+  },
   experience: {
     type: String,
     trim: true,
   },
-  include: { type: String, trim: true },
+  include: {
+    accomodation: {
+      type: String,
+    },
+    meals: {
+      type: String,
+    },
+    transport: {
+      type: String,
+    },
+  },
   startDates: [Date],
   startLocation: {
     // GeoJSON
@@ -59,7 +73,6 @@ const projectSchema = new mongoose.Schema({
       enum: ["Point"],
     },
     coordinates: [Number],
-    address: String,
     description: String,
   },
   locations: [
@@ -70,7 +83,6 @@ const projectSchema = new mongoose.Schema({
         enum: ["Point"],
       },
       coordinates: [Number],
-      address: String,
       description: String,
       day: Number,
     },
