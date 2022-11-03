@@ -83,6 +83,11 @@ const projectSchema = new mongoose.Schema({
   ],
 });
 
+projectSchema.pre("save", function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
 projectSchema.pre(/^find/, function (next) {
   this.populate({
     path: "guides",

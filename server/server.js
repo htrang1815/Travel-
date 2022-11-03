@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const app = require("./app");
 const http = require("http");
+const { resgisterSocketServer } = require("./socketServer");
 
 const server = http.createServer(app);
 
@@ -13,6 +14,9 @@ process.on("uncaughtException", (err) => {
   console.log(err.name, err.message);
   process.exit(1);
 });
+
+// E. Kết nối socket.io
+resgisterSocketServer(server);
 
 // B. KẾT NỐI VỚI MONGODB
 mongoose.connect(process.env.MONGO).then(() => {
