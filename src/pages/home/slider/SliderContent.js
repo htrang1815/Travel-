@@ -1,9 +1,9 @@
 import React from "react";
 import ButtonDetailProjects from "../../../components/button/ButtonProjects";
 
-const SliderContent = () => {
+const SliderContent = ({className}) => {
   return (
-    <div className="my-0 mx-auto mt-[90px] w-[90%] min-h-[80vh] bg-bg-slider1 rounded-[10px] bg-cover relative flex items-center justify-end">
+    <div className={`my-0 mx-auto mt-[90px] w-[90%] min-h-[80vh] bg-bg-slider1 rounded-[10px] bg-cover relative flex items-center justify-end ${className}`}>
       <div className="absolute block w-[500px] p-0 m-0 mr-[50px] capitalize">
         <span className="block text-[40px] font-[400] text-[#111]">Never Stop </span>
         <h3 className="font-bold text-[60px] text-[#FFBC4B] uppercase ">
