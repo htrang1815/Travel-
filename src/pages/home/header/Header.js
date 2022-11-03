@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import ButtonSubmit from "../../../components/button/ButtonSubmit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -43,6 +45,10 @@ const Header = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState(false);
   const [show, setShow] = useState(false);
+  const { isLogin, user } = useSelector((state) => state.auth);
+
+  console.log({ isLogin, user });
+
   return (
     <div className="fixed top-0 right-0 left-0 z-[1000] w-full flex items-center justify-between px-[9%] py-[15px]  bg-header ">
       <div className="text-[25px] font-bold text-[#fff] cursor-pointer ">
