@@ -14,6 +14,13 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import domain from "../../../utils/common";
 
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
+import { auth } from "../../../firebase.config";
+
 const SignupContent = () => {
   const navigate = useNavigate();
 
@@ -65,15 +72,60 @@ const SignupContent = () => {
       }
     }
   };
+
+  const signInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const response = await signInWithPopup(auth, provider);
+      const user = response?.user;
+      console.log(user);
+
+      const newUser = await axios.post(
+        `${domain}/api/v1/users/signInWithGoogle`,
+        {
+          email: user.email,
+          typeAccount: "google",
+          avatarUrl: user.photoURL,
+          name: user.displayName,
+        }
+      );
+
+      if (newUser) {
+        navigate("/home");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const signInWithFacebook = async () => {
+    try {
+      const provider = new FacebookAuthProvider();
+      const response = await signInWithPopup(auth, provider);
+      const user = response.user;
+      console.log(user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="w-full pr-[25%] ">
       <h1 className="font-bold text-[28px] mb-5 text-primary ">Welcome</h1>
       <p className="mb-5">Please sign up your account to continue!</p>
       <div className="">
-        <ButtonSocial text="Continue with Google" className="w-full block ">
+        <ButtonSocial
+          text="Continue with Google"
+          className="w-full block "
+          handleSignIn={signInWithGoogle}
+        >
           <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
         </ButtonSocial>
-        <ButtonSocial text="Continue with Facebook" className="w-full block">
+        <ButtonSocial
+          text="Continue with Facebook"
+          className="w-full block"
+          handleSignIn={signInWithFacebook}
+        >
           <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
         </ButtonSocial>
       </div>

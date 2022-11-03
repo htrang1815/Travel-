@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     validator: [validator.isEmail, "Please provide a valid email"],
   },
   dateOfBirth: { type: Date, default: Date.now },
-  avatarUrl: String,
+
   password: {
     type: String,
     required: [isUnRequired, "Please provide a password"],
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
 
   passwordConfirm: {
     type: String,
-    required: [true, "Please confirm your password"],
+    required: [isUnRequired, "Please confirm your password"],
     // !! LƯU Ý: Khi dùng custom validate thì nó chỉ hoạt
     // động khi dùng SAVE or CREATE
     validate: {
@@ -51,6 +51,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ["user", "admin"],
     default: "user",
+  },
+
+  avatarUrl: {
+    type: String,
+    default:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn9ZaICvJMOGSbKmoSCbt08xi2-o-sMqmFuEsqE2M&s",
   },
 });
 

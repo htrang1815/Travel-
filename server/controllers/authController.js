@@ -163,3 +163,14 @@ exports.logout = (req, res) => {
 
   res.status(200).json({ status: "success" });
 };
+
+exports.signInWithGoogle = catchAsync(async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+  console.log(user);
+  if (!user) {
+    const newUser = await User.create(req.body);
+    createSendToken(newUser, 201, res);
+  } else {
+    createSendToken(user, 200, res);
+  }
+});
