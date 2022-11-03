@@ -3,6 +3,7 @@ import Input from "../../components/input/Input";
 
 import { useForm } from "react-hook-form";
 import ButtonContact from "../../components/button/ButtonContact";
+import Textarea from "../../components/input/Textarea";
 
 const ContactForm = () => {
   const { control } = useForm();
@@ -34,9 +35,12 @@ const ContactForm = () => {
             id="email"
             control={control}
           ></Input>
-          <textarea rows="4" cols="50" className="w-full h-[100px]">
-            
-          </textarea>
+          <Textarea
+            className="px-8 py-4"
+            label="Message"
+            id="message"
+            rows="4"
+          ></Textarea>
           <div className="text-center">
             <ButtonContact className="mt-[20px]  ">Send</ButtonContact>
           </div>
