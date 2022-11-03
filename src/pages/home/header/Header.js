@@ -1,12 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import ButtonSubmit from "../../../components/button/ButtonSubmit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import UserAvata from "../../../components/user/UserAvata";
 import UserDropdown from "../../../components/user/UserDropdown";
+import { useDispatch } from "react-redux";
+import { getIsLogin } from "../../../store/auth/slice";
+import useAuthStateChanged from "../../../hooks/useAuthStateChange";
 
 const ListLink = [
   {
@@ -43,11 +45,12 @@ const ListLink = [
 
 const Header = () => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState(false);
-  const [show, setShow] = useState(false);
-  const { isLogin, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-  console.log({ isLogin, user });
+  const [show, setShow] = useState(false);
+
+  const { isLogin, user } = useAuthStateChanged();
+  console.log("isLogin", isLogin);
 
   return (
     <div className="fixed top-0 right-0 left-0 z-[1000] w-full flex items-center justify-between px-[9%] py-[15px]  bg-header ">
@@ -69,7 +72,7 @@ const Header = () => {
         ))}
       </div>
       <div className="cursor-pointer relative">
-        {login ? (
+        {isLogin ? (
           <>
             <div className="flex items-center">
               <FontAwesomeIcon
