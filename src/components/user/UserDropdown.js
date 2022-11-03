@@ -25,17 +25,12 @@ const UserDropdown = () => {
     }
   };
   return (
-<<<<<<< HEAD
-    <div className="absolute right-[-120%] top-[120%] w-[200px]  bg-primary  rounded-[20px]">
-      <DropdownItem text="My profile" icon={faUser} className='rounded-t-[20px]'></DropdownItem>
-=======
     <div className="absolute right-[-120%] top-[120%] w-[250px]  bg-primary  rounded-[20px]">
       <DropdownItem
         text="My profile"
         icon={faUser}
         className="rounded-t-[20px]"
       ></DropdownItem>
->>>>>>> e07169d9c71571555547a19561698a69b7f559f5
       <DropdownItem text="Setting" icon={faGear}></DropdownItem>
       <DropdownItem text="My booking" icon={faReceipt}></DropdownItem>
       <DropdownItem text="My save" icon={faHeart}></DropdownItem>
