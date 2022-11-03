@@ -254,3 +254,8 @@
     color: #ffbc4b;
   }
 }
+//Contact
+.scroll-textarea::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+}
