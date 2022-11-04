@@ -4,6 +4,7 @@ const Project = require("../models/projectModel");
 
 exports.getAllProjects = catchAsync(async (req, res) => {
   const projects = await Project.find();
+
   res.status(200).json({
     status: "success",
     results: projects.length,

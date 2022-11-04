@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import ButtonBack from "../../components/button/ButtonBack";
 import ButtonBook from "../../components/button/ButtonBook";
 import Footer from "../home/footer/Footer";
@@ -7,6 +8,10 @@ import ContentDetail from "./projectdetail/ContentDetail";
 import ImgDetail from "./projectdetail/contentdetail/ImgDetail";
 
 const ProjectDetails = () => {
+  const { projectId } = useParams();
+
+  console.log(projectId);
+
   return (
     <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
       <Header></Header>

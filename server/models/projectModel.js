@@ -8,13 +8,10 @@ const projectSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     maxlength: [
-      40,
-      "A project name must have less or equal than 40 characters",
+      80,
+      "A project name must have less or equal than 80 characters",
     ],
-    minlength: [
-      10,
-      "A project name must have more or equal than 10 characters",
-    ],
+    minlength: [5, "A project name must have more or equal than 5 characters"],
   },
   slug: String,
   duration: {
