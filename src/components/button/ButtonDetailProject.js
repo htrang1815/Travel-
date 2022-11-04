@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ButtonDetailProjects = ({ className, text, projectId }) => {
   const navigate = useNavigate();
-  console.log(projectId);
   return (
     <button
       className={`text-[17px] text-primary ${className}`}

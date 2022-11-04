@@ -1,4 +1,3 @@
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import AccordionContent from "./AccordionContent";
 import AccordionHeader from "./AccordionHeader";

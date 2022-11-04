@@ -1,51 +1,52 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import AccordionHeader from "./accordion/AccordionHeader";
-import AccordionContent from "./accordion/AccordionContent";
+
 import CollapsibleDetail from "./accordion/CollapsibleDetail";
+import { useSelector } from "react-redux";
 
 const DescribeDetail = () => {
+  const { project } = useSelector((state) => state.project);
+
   return (
     <div className="describe">
       <CollapsibleDetail
         header="About the place"
-        content="Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Blanditiis non minima, ratione mollitia nostrum perspiciatis sed
-                inventore voluptate ex adipisci nemo, quidem labore eaque quam
-                provident pariatur illum laborum maxime."
+        content={project?.summary}
       ></CollapsibleDetail>
       <CollapsibleDetail
         header="What you will experience"
-        content="Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Blanditiis non minima, ratione mollitia nostrum perspiciatis sed
-                inventore voluptate ex adipisci nemo, quidem labore eaque quam
-                provident pariatur illum laborum maxime."
+        content={project?.experience}
       ></CollapsibleDetail>
       <CollapsibleDetail
         header="schedule"
         content={
-          <p>
-            <p>
-              Day 1 : Lorem, ipsum dolor sit amet consectetur adipisicing elit.{" "}
-            </p>
-            <p>
-              Day 2 : Blanditiis non minima, ratione mollitia nostrum
-              perspiciatis sed inventore voluptate ex adipisci nemo.{" "}
-            </p>
-            <p>Day 3 : Quidem labore eaque quam.</p>
-            <p>Day 4 : Provident pariatur illum laborum maxime.</p>
-            <p>Day 5 : Provident pariatur illum laborum maxime.</p>
-          </p>
+          <div>
+            {project?.locations?.map((location) => (
+              <div key={location._id}>
+                <span>Day {location.day}: </span>
+                <span>Explore {location.description}</span>
+              </div>
+            ))}
+          </div>
         }
       ></CollapsibleDetail>
       <CollapsibleDetail
         header="Whats incloud"
-        content="Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Blanditiis non minima, ratione mollitia nostrum perspiciatis sed
-                inventore voluptate ex adipisci nemo, quidem labore eaque quam
-                provident pariatur illum laborum maxime.
-                "
+        content={
+          <>
+            <div className="mt-[8px]">
+              <div>Accomodation: </div>
+              <div className="ml-[4%]">{project?.include?.accomodation}</div>
+            </div>
+            <div className="mt-[8px]">
+              <div>Meals: </div>
+              <div className="ml-[4%]">{project?.include?.meals}</div>
+            </div>
+            <div className="mt-[8px]">
+              <div>Transport: </div>
+              <div className="ml-[4%]">{project?.include?.transport}</div>
+            </div>
+          </>
+        }
       ></CollapsibleDetail>
     </div>
   );
