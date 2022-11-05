@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import Router from "./Router";
+import ModalBox from "./components/modal/ModalBox";
 
 axios.defaults.withCredentials = true;
 // Nếu bạn muốn sử dụng Cookie với Axios,
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <>
       <Router></Router>
+      <ModalBox></ModalBox>
     </>
   );
 };

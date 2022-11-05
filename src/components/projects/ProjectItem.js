@@ -10,7 +10,10 @@ const ProjectItem = ({ projectData }) => {
     <div className="bg-[#222] rounded-[10px] overflow-hidden hover-item">
       <div className="w-full h-[200px]">
         <img
-          src={require(`../../assets/tour/${projectData?.images[0]}`)}
+          src={
+            projectData?.images &&
+            require(`../../assets/tour/${projectData?.images[0]}`)
+          }
           alt=""
           className="object-cover w-full h-full cursor-pointer"
         />
@@ -32,7 +35,9 @@ const ProjectItem = ({ projectData }) => {
               ({projectData?.ratingsQuantity})
             </span>
           </div>
-          <span className="text-[14px]">{projectData.maxGroupSize}+Guides</span>
+          <span className="text-[14px]">
+            {projectData?.maxGroupSize}+Guides
+          </span>
         </div>
         <h3 className="text-[16px] font-[600] mb-4">{projectData?.name}</h3>
         <span className="text-14px block mb-4">
@@ -49,11 +54,13 @@ const ProjectItem = ({ projectData }) => {
           ></FontAwesomeIcon>
           November 28th 2022
         </span>
-        <span className="block font-[500] mb-4">$ {projectData.price}.00 </span>
+        <span className="block font-[500] mb-4">
+          $ {projectData?.price}.00{" "}
+        </span>
         <div className="text-center">
           <ButtonDetailProjects
             text="Read More"
-            projectId={projectData._id}
+            projectId={projectData?._id}
           ></ButtonDetailProjects>
         </div>
       </div>
