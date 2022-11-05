@@ -4,9 +4,11 @@ const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-const userRoutes = require("./routes/userRoutes");
 const globalErrorHandler = require("./controllers/errorController");
 const AppError = require("./utils/appError");
+
+const userRoutes = require("./routes/userRoutes");
+const projectRoutes = require("./routes/projectRoutes");
 
 // => morgan giúp cta có thể xem đc kết quả của request ngay trên console.log
 
@@ -31,6 +33,7 @@ app.use(cookieParser());
 
 // C. ROUTES
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/projects", projectRoutes);
 
 // D. Bắt lỗi các routes ko dc xử lý
 app.all("*", (req, res, next) => {

@@ -59,7 +59,7 @@
 }
 
 .bg-auth {
-  background: #222
+  background: #222;
 }
 .bg-header {
   background: #222;
@@ -72,15 +72,15 @@
 }
 .scroll-hide::-webkit-scrollbar-thumb {
   width: 100px;
-  background: url(https://cdn-icons-png.flaticon.com/512/2831/2831972.png) ;
+  background: url(https://cdn-icons-png.flaticon.com/512/2831/2831972.png);
   border-radius: 5rem;
   background-position: center bottom, center -40px;
   background-repeat: no-repeat, no-repeat;
-  background-size: contain, contain;  
+  background-size: contain, contain;
 }
 .scroll-hide::-webkit-scrollbar-track-piece:end {
   background: transparent;
-  margin-bottom: 100px; 
+  margin-bottom: 100px;
 }
 
 .scroll-hide::-webkit-scrollbar-track-piece:start {
@@ -149,7 +149,7 @@
   break-inside: avoid;
 }
 //About
-.transition-about{
+.transition-about {
   transition: all linear;
 }
 //Review

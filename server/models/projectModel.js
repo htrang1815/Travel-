@@ -8,13 +8,10 @@ const projectSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     maxlength: [
-      40,
-      "A project name must have less or equal than 40 characters",
+      80,
+      "A project name must have less or equal than 80 characters",
     ],
-    minlength: [
-      10,
-      "A project name must have more or equal than 10 characters",
-    ],
+    minlength: [5, "A project name must have more or equal than 5 characters"],
   },
   slug: String,
   duration: {
@@ -45,11 +42,25 @@ const projectSchema = new mongoose.Schema({
     trim: true,
     required: [true, "A project must have a description"],
   },
+  maxGroupSize: {
+    type: Number,
+    required: [true, "A project must have a group size"],
+  },
   experience: {
     type: String,
     trim: true,
   },
-  include: { type: String, trim: true },
+  include: {
+    accomodation: {
+      type: String,
+    },
+    meals: {
+      type: String,
+    },
+    transport: {
+      type: String,
+    },
+  },
   startDates: [Date],
   startLocation: {
     // GeoJSON
@@ -59,7 +70,6 @@ const projectSchema = new mongoose.Schema({
       enum: ["Point"],
     },
     coordinates: [Number],
-    address: String,
     description: String,
   },
   locations: [
@@ -70,7 +80,6 @@ const projectSchema = new mongoose.Schema({
         enum: ["Point"],
       },
       coordinates: [Number],
-      address: String,
       description: String,
       day: Number,
     },
@@ -81,6 +90,11 @@ const projectSchema = new mongoose.Schema({
       ref: "User",
     },
   ],
+});
+
+projectSchema.pre("save", function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
 });
 
 projectSchema.pre(/^find/, function (next) {

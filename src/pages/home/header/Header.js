@@ -9,6 +9,7 @@ import UserDropdown from "../../../components/user/UserDropdown";
 import { useDispatch } from "react-redux";
 import { getIsLogin } from "../../../store/auth/slice";
 import useAuthStateChanged from "../../../hooks/useAuthStateChange";
+import { connectWithSocketServer } from "../../../realtimeCommunication/socketConnection";
 
 const ListLink = [
   {
@@ -51,6 +52,13 @@ const Header = () => {
 
   const { isLogin, user } = useAuthStateChanged();
   console.log("isLogin", isLogin);
+
+  useEffect(() => {
+    if (!isLogin) {
+    } else {
+      connectWithSocketServer(user, dispatch);
+    }
+  }, [isLogin, user, dispatch]);
 
   return (
     <div className="fixed top-0 right-0 left-0 z-[1000] w-full flex items-center justify-between px-[9%] py-[15px]  bg-header ">

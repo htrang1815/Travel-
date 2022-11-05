@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import ButtonBack from "../../components/button/ButtonBack";
 import ButtonBook from "../../components/button/ButtonBook";
+import { getProject } from "../../store/project/slice";
 import Footer from "../home/footer/Footer";
 import Header from "../home/header/Header";
 import ContentDetail from "./projectdetail/ContentDetail";
 import ImgDetail from "./projectdetail/contentdetail/ImgDetail";
 
 const ProjectDetails = () => {
+  const { projectId } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProject(projectId));
+  }, [dispatch, projectId]);
+
   return (
     <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
       <Header></Header>

@@ -7,14 +7,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const TitleDetail = () => {
+  const { project } = useSelector((state) => state.project);
+
   return (
     <div className="mb-[30px]">
       <div className="title">
-        <h2 className="text-[#fff] text-[26px] font-[700]">
-          Small-group yosemite day tour from san francisco
-        </h2>
+        <h2 className="text-[#fff] text-[26px] font-[700]">{project?.name}</h2>
       </div>
       <div className="icon mb-[20px]">
         <div className="flex mb-[20px]">
@@ -26,9 +27,11 @@ const TitleDetail = () => {
             <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
           </div>
           <span className="text-[14px] font-[600] text-[#aaa] mr-[5px]">
-            4.8
+            {project?.ratingAverage}
           </span>
-          <span className="text-[14px] text-[#aaa]">(362)</span>
+          <span className="text-[14px] text-[#aaa]">
+            ({project?.ratingsQuantity})
+          </span>
         </div>
         <div className="flex items-center ">
           <div className="mr-[10px]">
@@ -36,21 +39,27 @@ const TitleDetail = () => {
               icon={faHourglassStart}
               className="text-primary text-[14px] mr-[5px]"
             ></FontAwesomeIcon>
-            <span className="text-[14px] text-[#aaa]">5 days</span>
+            <span className="text-[14px] text-[#aaa]">
+              {project.duration} days
+            </span>
           </div>
           <div className="mr-[10px]">
             <FontAwesomeIcon
               icon={faLocationDot}
               className="text-primary text-[14px] mr-[5px]"
             ></FontAwesomeIcon>
-            <span className="text-[14px] text-[#aaa]">San Francisco, US</span>
+            <span className="text-[14px] text-[#aaa]">
+              {project?.startLocation?.description}
+            </span>
           </div>
           <div className="mr-[10px]">
             <FontAwesomeIcon
               icon={faUser}
               className="text-primary text-[14px] mr-[5px]"
             ></FontAwesomeIcon>
-            <span className="text-[14px] text-[#aaa]">Participants: 35</span>
+            <span className="text-[14px] text-[#aaa]">
+              Participants: {project.maxGroupSize}
+            </span>
           </div>
           <div className="mr-[10px]">
             <FontAwesomeIcon

@@ -6,7 +6,7 @@ export default function* handleGetIsLogin() {
   try {
     const response = yield call(requestGetLogin);
     const { isLogin, user } = response.data;
-    console.log({ isLogin, user });
+    // console.log({ isLogin, user });
     yield put(setIsLogin(isLogin));
     yield put(setUser(user));
   } catch (err) {

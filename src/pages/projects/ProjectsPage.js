@@ -7,9 +7,16 @@ import Search from "./search/Search";
 import ProjectList from "./projectlist/ProjectList";
 import TourGuide from "./tourguide/TourGuide";
 import Footer from "../home/footer/Footer";
+import { useDispatch } from "react-redux";
+import { getProjectList } from "../../store/projectList/slice";
 
 const ProjectsPage = () => {
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProjectList());
+  }, [dispatch]);
 
   const handleShow = () => {
     setShow(!show);
