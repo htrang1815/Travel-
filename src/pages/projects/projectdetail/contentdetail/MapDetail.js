@@ -37,7 +37,7 @@ const MapDetail = () => {
         // c. Thêm popup
         new mapboxgl.Popup()
           .setLngLat([lng, lat])
-          .setHTML(`<p>Day ${loc.day}: ${loc.description}</p>`)
+          .setHTML(`<p>Day ${loc?.day}: ${loc?.description}</p>`)
           .addTo(map.current);
 
         // d. Mở rộng map để bao gồm tọa đổ của ng dung

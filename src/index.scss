@@ -259,8 +259,8 @@
   display: none;
   width: 0 !important;
 }
-//Alert 
-.hover-btnalert:hover{
+//Alert
+.hover-btnalert:hover {
   background-color: #111;
   color: #ffbc4b;
 }
@@ -274,10 +274,19 @@
     width: 12px;
     height: 12px;
   }
-
 }
 //Blog
-.hover-readmore:hover{
+.hover-readmore:hover {
   background-color: #ffbc4b;
   color: #111;
+}
+
+// Mapbox Marker
+
+.marker {
+  background-image: url("./assets/images/mapbox/marker-icon.png");
+  background-size: cover;
+  width: 32px;
+  height: 40px;
+  cursor: pointer;
 }
