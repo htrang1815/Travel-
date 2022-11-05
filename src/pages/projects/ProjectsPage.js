@@ -11,24 +11,20 @@ import { useDispatch } from "react-redux";
 import { getProjectList } from "../../store/projectList/slice";
 
 const ProjectsPage = () => {
-  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProjectList());
   }, [dispatch]);
 
-  const handleShow = () => {
-    setShow(!show);
-  };
   return (
     <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
-          <Header></Header>
-          <Poster title='Explore the world for your self'></Poster>
-          <Search></Search>
-          <ProjectList></ProjectList>
-          <TourGuide className='py-[30px] px-[9%] '></TourGuide>
-          <Footer className="bg-[#222]"></Footer>
+      <Header></Header>
+      <Poster title="Explore the world for your self"></Poster>
+      <Search></Search>
+      <ProjectList></ProjectList>
+      <TourGuide className="py-[30px] px-[9%] "></TourGuide>
+      <Footer className="bg-[#222]"></Footer>
     </div>
   );
 };

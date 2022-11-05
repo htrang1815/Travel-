@@ -10,12 +10,18 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import ReactDOM from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowShare } from "../../store/showModal/showSlice";
 
-const ModalShare = ({ show = true }) => {
+const ModalShare = ({ urlHref = "" }) => {
+  const { showShare } = useSelector((state) => state.show);
+
+  const dispatch = useDispatch();
+
   return ReactDOM.createPortal(
     <div
       className={`fixed top-0 bottom-0 right-0 left-0 z-[1010] flex justify-center items-center visible opacity-100 transition ease-in duration-200 ${
-        show ? "" : "opacity-0 invisible"
+        showShare ? "" : "opacity-0 invisible"
       }`}
     >
       <div className="absolute w-full h-full bg-[rgba(0,0,0,0.5)] z-[1010]"></div>
@@ -24,10 +30,16 @@ const ModalShare = ({ show = true }) => {
           <h3 className="text-primary text-[18px] font-[600] mb-[25px]">
             Share this place
           </h3>
-          <FontAwesomeIcon
-            icon={faXmark}
-            className="absolute top-[30px] right-[40px] text-primary text-[24px] font-[600] cursor-pointer"
-          ></FontAwesomeIcon>
+          <div
+            onClick={() => {
+              dispatch(setShowShare(false));
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faXmark}
+              className="absolute top-[30px] right-[40px] text-primary text-[24px] font-[600] cursor-pointer"
+            ></FontAwesomeIcon>
+          </div>
           <div>
             <div className="social w-full flex items-center justify-between px-2 mb-[25px]">
               <a
