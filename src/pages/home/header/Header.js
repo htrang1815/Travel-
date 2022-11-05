@@ -24,17 +24,17 @@ const ListLink = [
   },
   {
     id: 3,
-    to: "#",
+    to: "/guide",
     title: "Guides",
   },
   {
     id: 4,
-    to: "blog",
+    to: "/blog",
     title: "Blogs",
   },
   {
     id: 5,
-    to: "#",
+    to: "/about",
     title: "About",
   },
   {

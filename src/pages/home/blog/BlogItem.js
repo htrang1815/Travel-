@@ -7,7 +7,7 @@ const BlogItem = ({pic,className}) => {
     return (
         <div className={`bg-[#222] rounded-[10px] overflow-hidden hover-item cursor-pointer ${className}`}>
             <div className=''>
-                <img src={pic} alt="" className='h-[250px] w-full '/>
+                <img src={pic} alt="" className='h-[250px] w-full object-cover bg-center'/>
             </div>
             <div className='p-[20px]'>
                 <a href="#" className='text-[20px] text-[#fff]' >Life is a journey, not a destination</a>
