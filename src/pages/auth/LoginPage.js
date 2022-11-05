@@ -1,4 +1,5 @@
 import React from 'react';
+import Alert from '../../components/common/Alert';
 import AuthLeft from '../../components/layout/auth/AuthLeft';
 import AuthRight from '../../components/layout/auth/AuthRight';
 import LoginContent from '../../components/layout/auth/LoginContent';
@@ -10,6 +11,7 @@ const LoginPage = () => {
             <AuthRight>
                 <LoginContent></LoginContent>
             </AuthRight>
+            {/* <Alert id="1"></Alert> */}
         </div>
     );
 };

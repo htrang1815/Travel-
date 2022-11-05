@@ -13,12 +13,12 @@ import useAuthStateChanged from "../../../hooks/useAuthStateChange";
 const ListLink = [
   {
     id: 1,
-    to: "#",
+    to: "/home",
     title: "Home",
   },
   {
     id: 2,
-    to: "#",
+    to: "/project",
     title: "Places",
   },
   {
@@ -28,7 +28,7 @@ const ListLink = [
   },
   {
     id: 4,
-    to: "#",
+    to: "blog",
     title: "Blogs",
   },
   {
@@ -38,7 +38,7 @@ const ListLink = [
   },
   {
     id: 6,
-    to: "#",
+    to: "/contact",
     title: "Contact",
   },
 ];

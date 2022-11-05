@@ -16,16 +16,8 @@ const ProjectsPage = () => {
   };
   return (
     <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
-      
-      {/* 
-      <button className="text-[#ccc]" onClick={handleShow}>
-        aaaaaaa
-      </button>
-       {show && (
-        <>
-        </> )*/}
           <Header></Header>
-          <Poster></Poster>
+          <Poster title='Explore the world for your self'></Poster>
           <Search></Search>
           <ProjectList></ProjectList>
           <TourGuide className='py-[30px] px-[9%] '></TourGuide>

@@ -259,3 +259,25 @@
   display: none;
   width: 0 !important;
 }
+//Alert 
+.hover-btnalert:hover{
+  background-color: #111;
+  color: #ffbc4b;
+}
+
+//HomeAbout
+.aboutus {
+  .swiper-pagination-bullet {
+    background-color: #ffbc4b;
+  }
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+  }
+
+}
+//Blog
+.hover-readmore:hover{
+  background-color: #ffbc4b;
+  color: #111;
+}
