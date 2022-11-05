@@ -246,5 +246,143 @@
         "day": 3
       }
     ]
+  },
+  {
+    "name": "Ultimate Vietnam",
+    "duration": 3,
+    "price": 984,
+    "ratingsAverage": 4.6,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-6-1.jpg",
+      "tour-6-2.jpg",
+      "tour-6-3.jpg",
+      "tour-6-4.jpg"
+    ],
+    "maxGroupSize": 20,
+    "summary": "Start in Hanoi and end in Ho Chi Minh City! With the Explorer tour Ultimate Vietnam, you have a 14 days tour package taking you through Hanoi, Vietnam and 6 other destinations in Vietnam. Ultimate Vietnam includes accommodationin a hoteland hostel as well as flights, an expert guide, meals, transport and more.",
+    "experience": "Explore SE Asia’s hidden gem! Mingle with the locals in Hanoi, wake up on a private island in Halong Bay, cook some delicious meals during our island cooking class, snorkel in crystal clear waters, walk down waterfalls and party in HCMC.",
+    "include": {
+      "accomodation": "5-stars hotels, Hanoi: The Oriental Jade Hotel or similar, Halong Bay: Era  Cruise or similar, Hoi An : Palm Garden or similar",
+      "meals": "This tour offers Jain, Vegetarian, Vegan and Halal food options on request. Simply let Realistic Asia know the food option that you prefer.",
+      "transport": "Air-conditioned bus or private cars for the excursions"
+    },
+    "startLocation": {
+      "description": "Hanoi",
+      "type": "Point",
+      "coordinates": [21.0294498, 105.8544441]
+    },
+    "locations": [
+      {
+        "description": "Hanoi",
+        "type": "Point",
+        "coordinates": [21.0294498, 105.8544441],
+        "day": 1
+      },
+      {
+        "description": "Halong Bay",
+        "type": "Point",
+        "coordinates": [20.9084384, 107.0682782],
+        "day": 2
+      },
+      {
+        "description": "Hoi An",
+        "type": "Point",
+        "coordinates": [15.8798137, 108.3273939],
+        "day": 3
+      }
+    ]
+  },
+  {
+    "name": "South & North Vietnam - 3 Days",
+    "duration": 3,
+    "price": 984,
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-7-1.jpg",
+      "tour-7-2.jpg",
+      "tour-7-3.jpg",
+      "tour-7-4.jpg"
+    ],
+    "maxGroupSize": 16,
+    "summary": "Start in Hanoi and end in Ho Chi Minh City! With the Explorer tour Ultimate Vietnam, you have a 14 days tour package taking you through Hanoi, Vietnam and 6 other destinations in Vietnam. Ultimate Vietnam includes accommodationin a hoteland hostel as well as flights, an expert guide, meals, transport and more.",
+    "experience": "Explore SE Asia’s hidden gem! Mingle with the locals in Hanoi, wake up on a private island in Halong Bay, cook some delicious meals during our island cooking class, snorkel in crystal clear waters, walk down waterfalls and party in HCMC.",
+    "include": {
+      "accomodation": "5-stars hotels, Hanoi: The Oriental Jade Hotel or similar, Halong Bay: Era  Cruise or similar, Hoi An : Palm Garden or similar",
+      "meals": "This tour offers Jain, Vegetarian, Vegan and Halal food options on request. Simply let Realistic Asia know the food option that you prefer.",
+      "transport": "Air-conditioned bus or private cars for the excursions"
+    },
+    "startLocation": {
+      "description": "Hanoi",
+      "type": "Point",
+      "coordinates": [21.0294498, 105.8544441]
+    },
+    "locations": [
+      {
+        "description": "Hanoi",
+        "type": "Point",
+        "coordinates": [21.0294498, 105.8544441],
+        "day": 1
+      },
+      {
+        "description": "Halong Bay",
+        "type": "Point",
+        "coordinates": [20.9084384, 107.0682782],
+        "day": 2
+      },
+      {
+        "description": "Hoi An",
+        "type": "Point",
+        "coordinates": [15.8798137, 108.3273939],
+        "day": 3
+      }
+    ]
+  },
+  {
+    "name": "Realistic Vietnam In 3 Days - Hanoi / Halong Bay / Ho Chi Minh ",
+    "duration": 3,
+    "price": 984,
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 3,
+    "images": [
+      "tour-8-1.jpg",
+      "tour-8-2.jpg",
+      "tour-8-3.jpg",
+      "tour-8-4.jpg"
+    ],
+    "maxGroupSize": 16,
+    "summary": "Start in Hanoi and end in Ho Chi Minh City! With the Explorer tour Ultimate Vietnam, you have a 14 days tour package taking you through Hanoi, Vietnam and 6 other destinations in Vietnam. Ultimate Vietnam includes accommodationin a hoteland hostel as well as flights, an expert guide, meals, transport and more.",
+    "experience": "Explore SE Asia’s hidden gem! Mingle with the locals in Hanoi, wake up on a private island in Halong Bay, cook some delicious meals during our island cooking class, snorkel in crystal clear waters, walk down waterfalls and party in HCMC.",
+    "include": {
+      "accomodation": "5-stars hotels, Hanoi: The Oriental Jade Hotel or similar, Halong Bay: Era  Cruise or similar, Hoi An : Palm Garden or similar",
+      "meals": "This tour offers Jain, Vegetarian, Vegan and Halal food options on request. Simply let Realistic Asia know the food option that you prefer.",
+      "transport": "Air-conditioned bus or private cars for the excursions"
+    },
+    "startLocation": {
+      "description": "Hanoi",
+      "type": "Point",
+      "coordinates": [21.0294498, 105.8544441]
+    },
+    "locations": [
+      {
+        "description": "Hanoi",
+        "type": "Point",
+        "coordinates": [21.0294498, 105.8544441],
+        "day": 1
+      },
+      {
+        "description": "Halong Bay",
+        "type": "Point",
+        "coordinates": [20.9084384, 107.0682782],
+        "day": 2
+      },
+      {
+        "description": "Hoi An",
+        "type": "Point",
+        "coordinates": [15.8798137, 108.3273939],
+        "day": 3
+      }
+    ]
   }
 ]

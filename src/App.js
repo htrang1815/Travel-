@@ -15,7 +15,7 @@ const App = () => {
     <>
       <Router></Router>
       {/* <ModalBox></ModalBox> */}
-      <ModalShare></ModalShare>
+      {/* <ModalShare></ModalShare> */}
     </>
   );
 };
