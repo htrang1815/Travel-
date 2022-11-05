@@ -1,10 +1,10 @@
 import {
   faFacebookF,
-  faInstagram,
+  faTelegram,
   faLinkedin,
   faTwitter,
   faTumblr,
-  faPinterest,
+  faReddit,
 } from "@fortawesome/free-brands-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,8 +12,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowShare } from "../../store/showModal/showSlice";
+import {
+  FacebookShareButton,
+  TumblrShareButton,
+  RedditShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  TelegramShareButton,
+} from "react-share";
 
-const ModalShare = ({ urlHref = "" }) => {
+const ModalShare = ({ currentURL = "" }) => {
+  currentURL = "https://www.youtube.com/?hl=vi";
   const { showShare } = useSelector((state) => state.show);
 
   const dispatch = useDispatch();
@@ -42,66 +51,60 @@ const ModalShare = ({ urlHref = "" }) => {
           </div>
           <div>
             <div className="social w-full flex items-center justify-between px-2 mb-[25px]">
-              <a
-                href="#"
-                className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary"
-              >
-                <FontAwesomeIcon
-                  icon={faTumblr}
-                  className=" 
+              <TumblrShareButton url={currentURL}>
+                <div className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary">
+                  <FontAwesomeIcon
+                    icon={faTumblr}
+                    className=" 
                      font-[400] "
-                />
-              </a>
-              <a
-                href="#"
-                className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary"
-              >
-                <FontAwesomeIcon
-                  icon={faFacebookF}
-                  className=" 
+                  />
+                </div>
+              </TumblrShareButton>
+              <FacebookShareButton url={currentURL}>
+                <div className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary">
+                  <FontAwesomeIcon
+                    icon={faFacebookF}
+                    className=" 
                      font-[400] "
-                />
-              </a>
-              <a
-                href="#"
-                className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary"
-              >
-                <FontAwesomeIcon
-                  icon={faPinterest}
-                  className=" 
+                  />
+                </div>
+              </FacebookShareButton>
+              <RedditShareButton url={currentURL}>
+                <div className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary">
+                  <FontAwesomeIcon
+                    icon={faReddit}
+                    className=" 
                      font-[400] "
-                />
-              </a>
-              <a
-                href="#"
-                className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary"
-              >
-                <FontAwesomeIcon
-                  icon={faTwitter}
-                  className=" 
+                  />
+                </div>
+              </RedditShareButton>
+              <TwitterShareButton url={currentURL}>
+                <div className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary">
+                  <FontAwesomeIcon
+                    icon={faTwitter}
+                    className=" 
                      font-[400] "
-                />
-              </a>
-              <a
-                href="#"
-                className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary"
-              >
-                <FontAwesomeIcon
-                  icon={faInstagram}
-                  className=" 
+                  />
+                </div>
+              </TwitterShareButton>
+              <TelegramShareButton url={currentURL}>
+                <div className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary">
+                  <FontAwesomeIcon
+                    icon={faTelegram}
+                    className=" 
                      font-[400] "
-                />
-              </a>
-              <a
-                href="#"
-                className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary"
-              >
-                <FontAwesomeIcon
-                  icon={faLinkedin}
-                  className=" 
+                  />
+                </div>
+              </TelegramShareButton>
+              <LinkedinShareButton url={currentURL}>
+                <div className="h-[50px] flex items-center justify-center w-[50px] leading-[40px] rounded-[50%] text-[17px] text-center border-[2px] border-solid border-[#ffbc4b] mr-[5px] inline-block hover-social text-primary">
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    className=" 
                      font-[400] "
-                />
-              </a>
+                  />
+                </div>
+              </LinkedinShareButton>
             </div>
           </div>
           <div>
@@ -110,9 +113,7 @@ const ModalShare = ({ urlHref = "" }) => {
             </span>
             <div className="border border-solid border-[#ffbc4b] rounded-[15px] w-full h-[50px] flex items-center justify-between">
               <div className="overflow-hidden p-2">
-                <span className="text-[#fff] normal-case">
-                  http://localhost:3000/project/6364a2d2a532cd18b6ce1c95
-                </span>
+                <span className="text-[#fff] normal-case">{currentURL}</span>
               </div>
               <button className="text-primary p-4">Copy</button>
             </div>

@@ -9,6 +9,7 @@ import Header from "../home/header/Header";
 import ContentDetail from "./projectdetail/ContentDetail";
 import ImgDetail from "./projectdetail/contentdetail/ImgDetail";
 import ModalShare from "../../components/modal/ModalShare";
+import ModalBox from "../../components/modal/ModalBox";
 
 const ProjectDetails = () => {
   const currentURL = window.location.href;
@@ -42,7 +43,8 @@ const ProjectDetails = () => {
         </div>
         <Footer className="bg-[#222]"></Footer>
       </div>
-      <ModalShare></ModalShare>
+      <ModalShare currentURL={currentURL}></ModalShare>
+      <ModalBox></ModalBox>
     </>
   );
 };

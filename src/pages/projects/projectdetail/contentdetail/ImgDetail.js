@@ -1,8 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setPhoto,
+  setShowMorePhoto,
+} from "../../../../store/showModal/showSlice";
 
 const ImgDetail = () => {
   const { project } = useSelector((state) => state.project);
+
+  const dispatch = useDispatch();
 
   return (
     <div className="w-full grid  grid-detail grid-flow-col gap-y-[10px] gap-x-[20px] mb-[30px]">
@@ -30,7 +36,13 @@ const ImgDetail = () => {
         }
         alt=""
       />
-      <button className="row-start-6 row-end-7 bg-primary rounded-lg">
+      <button
+        className="row-start-6 row-end-7 bg-primary rounded-lg"
+        onClick={() => {
+          dispatch(setShowMorePhoto(true));
+          dispatch(setPhoto(project?.images));
+        }}
+      >
         More {`${project?.images?.length - 3}`} photos
       </button>
     </div>

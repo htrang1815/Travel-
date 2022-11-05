@@ -13,11 +13,6 @@ const App = () => {
   return (
     <>
       <Router></Router>
-      {/* <ModalBox></ModalBox> */}
-<<<<<<< HEAD
-=======
-      {/* <ModalShare></ModalShare> */}
->>>>>>> 31b9064113dc00dd5508ab52390859904896171a
     </>
   );
 };
