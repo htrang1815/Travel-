@@ -13,8 +13,8 @@ const ReviewItem = ({children}) => {
           {children}
         </p>
         <div className="w-[20%] h-[80px] flex justify-end gap-3">
-            <img src={imgreview} className=' object-cover' alt="" />
-            <img src={imgreview} className=' object-cover' alt="" />
+            <img src={imgreview} className=' object-cover w-[80%]' alt="" />
+            {/* <img src={imgreview} className=' object-cover' alt="" /> */}
         </div>
       </div>
       <UserInfo></UserInfo>

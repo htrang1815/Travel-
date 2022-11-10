@@ -2,7 +2,6 @@ import React from "react";
 import TourGuide from "../tourguide/TourGuide";
 import DescribeDetail from "./contentdetail/DescribeDetail";
 import MapDetail from "./contentdetail/MapDetail";
-import Reviews from "./contentdetail/Reviews";
 import ShareDetail from "./contentdetail/ShareDetail";
 import TitleDetail from "./contentdetail/TitleDetail";
 const ContentDetail = () => {
@@ -18,8 +17,8 @@ const ContentDetail = () => {
           <MapDetail></MapDetail>
         </div>
       </div>
-      <TourGuide className="w-full py-[80px]"></TourGuide>
-      <Reviews></Reviews>
+      
+      
     </div>
   );
 };

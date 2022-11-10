@@ -16,7 +16,7 @@ const PopularProject = () => {
           Make your Projects
         </h1>
       </div>
-      <div className="grid grid-cols-4 gap-[15px]">
+      <div className="grid grid-cols-3 gap-[15px]">
         {projectList.map((project) => (
           <ProjectItem key={project._id} projectData={project}></ProjectItem>
         ))}

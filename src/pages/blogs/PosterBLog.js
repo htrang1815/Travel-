@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonWriteBlog from "../../components/button/ButtonWriteBlog";
 
 const PosterBLog = () => {
   return (
@@ -15,7 +16,7 @@ const PosterBLog = () => {
           <span className="text-[#fff]  mr-3">By Michael</span>
           <span className="text-[#fff] ">July 29, 2022</span>
         </span>
-        <button className="block text-primary hover-readmore mt-[20px] text-[12px] font-[700] uppercase h-[45px] px-[35px] rounded-[4px] bg-[#111] border-[2px] border-solid border-[#ffbc4b] ">Write now</button>
+        <ButtonWriteBlog></ButtonWriteBlog>
       </div>
     </div>
   );

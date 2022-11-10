@@ -4,19 +4,18 @@ import InputRiews from "./review/InputRiews";
 import OverallReview from "./review/OverallReview";
 import ReviewList from "./review/ReviewList";
 
-const Reviews = () => {
+const Reviews = ({ className }) => {
   return (
-    <div className="mb-[30px]">
-      <InputRiews></InputRiews>
-      <OverallReview></OverallReview>
-      <ReviewList></ReviewList>
-      <div className="text-center">
-        <ButtonLoadMore
-          text="Load more"
-          className="text-primary"
-        ></ButtonLoadMore>
+      <div className={`mb-[30px] py-[30px] px-[9%] ${className}`}>
+        <OverallReview></OverallReview>
+        <ReviewList></ReviewList>
+        <div className="text-center">
+          <ButtonLoadMore
+            text="Load more"
+            className="text-primary"
+          ></ButtonLoadMore>
+        </div>
       </div>
-    </div>
   );
 };
 

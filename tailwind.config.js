@@ -9,7 +9,10 @@ module.exports = {
         "bg-slider3": "url('/src/assets/images/slider/slider3.jpeg')",
         "bg-slider4": "url('/src/assets/images/slider/slider4.jpeg')",
         "bg-contact": "url('/src/assets/images/contact/bgcontact.jpg')",
-        "bg-blog" : "url('/src/assets/images/blogs/bg-poster.jpeg')"
+        "bg-blog" : "url('/src/assets/images/blogs/bg-poster.jpeg')",
+        "bg-poster-about" : "url('/src/assets/images/about/aboutposter.jpeg')",
+        "bg-poster-guide" : "url('/src/assets/images/guides/guideposter.jpeg')",
+        "bg-guide-detail" : "url('/src/assets/images/guides/guidedetail.jpeg')",
       },
     },
     colors: {

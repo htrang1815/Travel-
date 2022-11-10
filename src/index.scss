@@ -90,6 +90,9 @@
 .text-primary {
   color: #ffbc4b;
 }
+.border-primary {
+  border-color: #ffbc4b;
+}
 .text-wrap {
   display: block;
   display: -webkit-box;
@@ -148,9 +151,25 @@
 .gallery-item {
   break-inside: avoid;
 }
+//Project
+.text-wrap-title {
+  display: block;
+  display: -webkit-box;
+  max-width: full;
+  max-height: 16px * 1.5 * 2; /* Fallback for non-webkit */
+  font-size: 16px;
+  line-height: normal;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 //About
 .transition-about {
   transition: all linear;
+}
+.text-shadow {
+  text-shadow: 3px 5px 5px #111;
 }
 //Review
 .flex-review {
@@ -289,4 +308,293 @@
   width: 32px;
   height: 40px;
   cursor: pointer;
+}
+
+//Admin
+.icon {
+  color: #ffbc4b;
+}
+//Ad-Sidebar
+.center {
+  .title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #ffbc4b;
+      span {
+        color: #111;
+      }
+      .icon {
+        color: #111;
+      }
+    }
+    .icon {
+      font-size: 18px;
+      padding-right: 5px;
+    }
+    span {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+  }
+}
+//Ad-Datatable
+.datatable {
+  height: 600px;
+  padding: 20px;
+  .datagrid ::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  .datagrid ::-webkit-scrollbar-track {
+    background: #111;
+  }
+
+  .datagrid ::-webkit-scrollbar-thumb {
+    background: #ffbc4b;
+    border-radius: 5rem;
+  }
+  .MuiDataGrid-virtualScroller {
+    color: aliceblue;
+  }
+  .MuiCheckbox-root {
+    color: aliceblue;
+  }
+  .MuiButtonBase-root {
+    svg {
+      background: #111;
+      color: #ffbc4b;
+      font-size: 14px;
+    }
+  }
+  .datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    color: gray;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .link {
+      text-decoration: none;
+      color: #ffbc4b;
+      font-size: 16px;
+      font-weight: 400;
+      border: 1px solid #ffbc4b;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .link:hover {
+      background-color: #ffbc4b;
+      color: #111;
+    }
+  }
+  .MuiTablePagination-selectLabel,
+  .MuiTablePagination-displayedRows,
+  .MuiSelect-select,
+  svg {
+    color: aliceblue;
+    font-size: 10px;
+    text-align: end;
+  }
+
+  .cellWithImg {
+    display: flex;
+    align-items: center;
+
+    .cellImg {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+  }
+
+  .cellWithStatus {
+    padding: 5px;
+    border-radius: 5px;
+
+    &.active {
+      background-color: rgba(0, 128, 0, 0.05);
+      color: green;
+    }
+    &.pending {
+      background-color: rgba(255, 217, 0, 0.05);
+      color: goldenrod;
+    }
+    &.passive {
+      background-color: rgba(255, 0, 0, 0.05);
+      color: crimson;
+    }
+  }
+
+  .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .viewButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: rgb(140, 158, 244);
+      border: 1px dotted rgba(140, 158, 244, 0.596);
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: rgb(186, 70, 93);
+      border: 1px dotted rgba(186, 70, 93, 0.6);
+      cursor: pointer;
+    }
+  }
+}
+// Modal-new
+.new {
+  display: flex;
+  width: 70%;
+  .top,
+  .bottom {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+  }
+  h1 {
+    color: #111;
+    font-size: 20px;
+  }
+  .left {
+    flex: 1;
+    text-align: center;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  .right {
+    flex: 2;
+    padding: 0px 20px;
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+
+      .formInput {
+        width: 40%;
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .icon {
+            cursor: pointer;
+          }
+        }
+        input {
+          width: 100%;
+          padding: 5px;
+          border: none;
+          border-bottom: 1px solid gray;
+        }
+      }
+    }
+    button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      background-color: #111;
+      color: #ffbc4b;
+      
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover{
+      background-color: #ffbc4b;
+      color: #111;
+    }
+  }
+}
+//Guide
+//GuidePage
+.recommend {
+  position: relative;
+  .swiper {
+    position: static;
+  }
+  .swiper-pagination {
+    display: none;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #111;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    border-radius: 100%;
+    background-color: #ffbc4b;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    color: #111;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  .swiper-button-prev {
+    left: 5%;
+  }
+  .swiper-button-next {
+    right: 5%;
+  }
+}
+//Guide-review
+//Project Detail
+// Modal review
+.modal-review{
+  .MuiBox-root {
+    span{
+      color: #ffbc4b;
+      
+    }
+    .MuiRating-decimal{
+      .MuiSvgIcon-root{
+        font-size: 22px;
+      }
+    }
+  }
+}
+.scrollcss ::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollcss ::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.scrollcss ::-webkit-scrollbar-thumb {
+  background: #ffbc4b;
+  border-radius: 5rem;
 }

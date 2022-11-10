@@ -8,7 +8,10 @@ const ButtonDetailProjects = ({ className, text, projectId }) => {
   return (
     <button
       className={`text-[17px] text-primary ${className}`}
-      onClick={() => navigate(`/project/${projectId}`)}
+      onClick={() => {
+        window.scrollTo(10, 0);
+        navigate(`/project/${projectId}`);
+      }}
     >
       {text}
       <FontAwesomeIcon icon={faAngleRight} className="pl-[5px] font-[900]" />

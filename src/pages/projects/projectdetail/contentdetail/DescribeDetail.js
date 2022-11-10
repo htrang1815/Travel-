@@ -48,6 +48,7 @@ const DescribeDetail = () => {
           </>
         }
       ></CollapsibleDetail>
+      
     </div>
   );
 };

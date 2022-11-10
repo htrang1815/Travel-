@@ -4,6 +4,8 @@ const showSlice = createSlice({
   initialState: {
     showShare: false,
     showMorePhoto: false,
+    showAddNew: false,
+    showModalReview: false,
     photo: [],
   },
   reducers: {
@@ -15,6 +17,14 @@ const showSlice = createSlice({
       ...state,
       showMorePhoto: action.payload,
     }),
+    setShowAddNew: (state, action) => ({
+      ...state,
+      showAddNew: action.payload,
+    }),
+    setShowModalReview: (state, action) => ({
+      ...state,
+      showModalReview: action.payload,
+    }),
     setPhoto: (state, action) => ({
       ...state,
       photo: action.payload,
@@ -22,6 +32,12 @@ const showSlice = createSlice({
   },
 });
 
-export const { setShowShare, setShowMorePhoto, setPhoto } = showSlice.actions;
+export const {
+  setShowShare,
+  setShowMorePhoto,
+  setShowAddNew,
+  setPhoto,
+  setShowModalReview,
+} = showSlice.actions;
 
 export default showSlice.reducer;

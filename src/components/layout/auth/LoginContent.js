@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
 
+// B1:
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+
 import domain from "../../../utils/common";
 
 import {
@@ -22,6 +24,8 @@ import { auth } from "../../../firebase.config";
 
 const LoginContent = () => {
   const navigate = useNavigate();
+
+  // B2
   const schema = yup.object({
     email: yup
       .string()
@@ -33,6 +37,7 @@ const LoginContent = () => {
       .min(8, "Your password must have at least 8 characters."),
   });
 
+  // B3
   const {
     handleSubmit,
     formState: { errors, isValid, isSubmitting },

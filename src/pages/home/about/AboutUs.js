@@ -64,34 +64,10 @@ const AboutUs = () => {
                 ></video>
                 <div className="text-center px-0 py-[20px] block ">
                   <span
-                    // className={
-                    //   // id === 0
-                    //   //   ? `inline-block w-5 h-5 rounded-full m-[7px]  cursor-pointer hover-controlblogs bg-primary`
-                    //   //   : `inline-block w-5 h-5 rounded-full m-[7px]  cursor-pointer hover-controlblogs bg-[#fff]`
-                    // }
-                    // onClick={(e) => {
-                    //   setId(0);
-                    // }}
                   ></span>
                   <span
-                    // className={
-                    //   // id === 1
-                    //   //   ? `inline-block w-5 h-5 rounded-full m-[7px]  cursor-pointer hover-controlblogs bg-primary`
-                    //   //   : `inline-block w-5 h-5 rounded-full m-[7px]  cursor-pointer hover-controlblogs bg-[#fff]`
-                    // }
-                    // onClick={(e) => {
-                    //   setId(1);
-                    // }}
                   ></span>
                   <span
-                    // className={
-                    //   id === 2
-                    //     ? `inline-block w-5 h-5 rounded-full m-[7px]  cursor-pointer hover-controlblogs bg-primary`
-                    //     : `inline-block w-5 h-5 rounded-full m-[7px]  cursor-pointer hover-controlblogs bg-[#fff]`
-                    // }
-                    // onClick={(e) => {
-                    //   setId(2);
-                    // }}
                   ></span>
                 </div>
               </div>
