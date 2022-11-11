@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-const ProjectItem = ({ projectData }) => {
+const ProjectItem = ({ projectData, className }) => {
   return (
-    <div className="bg-[#222] rounded-[10px] overflow-hidden hover-item">
-      <div className="w-full h-[200px]">
+    <div className={`bg-[#222] rounded-[10px] overflow-hidden hover-item myplace ${className}`}>
+      <div className="w-full h-[200px] img">
         <img
           src={
             projectData?.images &&
@@ -18,7 +18,7 @@ const ProjectItem = ({ projectData }) => {
           className="object-cover w-full h-full cursor-pointer"
         />
       </div>
-      <div className="text-[#fff] p-[20px] flex flex-col">
+      <div className="text-[#fff] p-[20px] flex flex-col placecontent">
         <div className="grow h-[182px]">
           <div className="flex justify-between items-center mb-4">
             <div className="flex">
