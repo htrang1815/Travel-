@@ -10,6 +10,7 @@ const projectSlice = createSlice({
       ...state,
       project: action.payload,
     }),
+
     getProject() {},
   },
 });
