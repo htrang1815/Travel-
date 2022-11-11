@@ -527,12 +527,12 @@
       border: none;
       background-color: #111;
       color: #ffbc4b;
-      
+
       font-weight: bold;
       cursor: pointer;
       margin-top: 10px;
     }
-    button:hover{
+    button:hover {
       background-color: #ffbc4b;
       color: #111;
     }
@@ -573,14 +573,13 @@
 //Guide-review
 //Project Detail
 // Modal review
-.modal-review{
+.modal-review {
   .MuiBox-root {
-    span{
+    span {
       color: #ffbc4b;
-      
     }
-    .MuiRating-decimal{
-      .MuiSvgIcon-root{
+    .MuiRating-decimal {
+      .MuiSvgIcon-root {
         font-size: 22px;
       }
     }
@@ -597,4 +596,68 @@
 .scrollcss ::-webkit-scrollbar-thumb {
   background: #ffbc4b;
   border-radius: 5rem;
+}
+
+//UserPage
+//User-Menu
+.content__menu a {
+  color: #ffbc4b;
+  font-weight: 600;
+  font-size: 18px;
+}
+.react-tabs {
+  .react-tabs__tab--selected {
+    background: #ffbc4b;
+  }
+}
+//My place
+.place-saving {
+  .myplace {
+    border: 1px solid #ffbc4b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .img {
+      width: 30%;
+      height: 100%;
+    }
+    .placecontent {
+      width: 70%;
+      padding: 35px;
+      height: auto;
+    }
+  }
+}
+//My blog
+.myblog {
+  .myblog-item {
+    border: 1px solid #ffbc4b;
+    display: flex;
+    align-items: center;
+    height: 200px;
+    .img{
+      width: 30%;
+    }
+    .blog-content{
+      width: 70%;
+    }
+  }
+}
+// Guide Saving
+.guide-saving {
+  .myguide-item {
+    border: 1px solid #ffbc4b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 200px;
+    .img {
+      width: 30%;
+      height: 200px;
+    }
+    .guidecontent {
+      width: 65%;
+    }
+  }
 }

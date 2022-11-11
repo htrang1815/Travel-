@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ButtonBlogs from "../../../components/button/ButtonBlogs";
+import ButtonAbout from "../../../components/button/ButtonAbout";
 import videoblog from "../../../assets/videos/Sea - 6399.mp4";
 import videoblog1 from "../../../assets/videos/about-vid-2.mp4";
 import videoblog2 from "../../../assets/videos/about-vid-3.mp4";
@@ -52,7 +52,6 @@ const AboutUs = () => {
       >
         {aboutItem.map((item, index) => (
           <SwiperSlide key={index}>
-
             <div className=" flex flex-row items-center gap-5 mt-[50px] py-[30px] px-[9%] transition-about">
               <div className="mr-[10px]">
                 <video
@@ -63,12 +62,9 @@ const AboutUs = () => {
                   className="w-full rounded-[10px] object-contain"
                 ></video>
                 <div className="text-center px-0 py-[20px] block ">
-                  <span
-                  ></span>
-                  <span
-                  ></span>
-                  <span
-                  ></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
                 </div>
               </div>
               <div className="mb-[50px]">
@@ -81,10 +77,10 @@ const AboutUs = () => {
                 <p className="text-[#aaa] text-[14px] py-[10px] leading-[28px]">
                   {item.content}
                 </p>
-                <ButtonBlogs
+                <ButtonAbout
                   className="mt-[10px]"
                   text="Read More"
-                ></ButtonBlogs>
+                ></ButtonAbout>
               </div>
             </div>
           </SwiperSlide>

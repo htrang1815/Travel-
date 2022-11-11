@@ -5,12 +5,12 @@ import guide1 from '../../assets/images/guides/pic-4.png'
 
 const GuideItem = () => {
     return (
-        <div className="bg-[#222] rounded-[10px] overflow-hidden hover-item cursor-pointer">
-            <div className="w-full h-[200px] relative">
+        <div className="bg-[#222] rounded-[10px] overflow-hidden hover-item cursor-pointer myguide-item">
+            <div className="w-full h-[200px] relative img">
                 <img src={guide1} alt="" className="object-cover w-full h-full" />
                 <span className="block text-primary text-[14px] rounded-lg font-[500] mb-4 absolute px-2 py-1 bg-[#222] top-[2%] right-[2%]">$478.00 </span>
             </div>
-            <div className="text-[#fff] p-[20px]">
+            <div className="text-[#fff] p-[20px] guidecontent">
                 <div className="">
                     <div className="flex items-center mb-4">
                         <h3 className="text-[16px] font-[600] "> Biese Cooper</h3>

@@ -7,11 +7,12 @@ const UserAvata = ({ className, show, setShow = () => {} }) => {
       onClick={() => {
         setShow(!show);
       }}
+      className='flex items-center justify-center'
     >
       <img
         src={avt1}
         alt=""
-        className={`${className} rounded-full w-[30px] h-[30px]`}
+        className={`${className} object-cover rounded-full w-[30px] h-[30px]`}
       />
     </div>
   );

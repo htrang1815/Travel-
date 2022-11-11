@@ -75,7 +75,14 @@ const Header = () => {
             className="text-[17px] text-[#aaa] mx-[10px] cursor-pointer capitalize hover-menu"
             key={link.id}
           >
-            <Link to={link.to}>{link.title}</Link>
+            <Link
+              to={link.to}
+              onClick={() => {
+                window.scrollTo(10, 0);
+              }}
+            >
+              {link.title}
+            </Link>
           </li>
         ))}
       </div>

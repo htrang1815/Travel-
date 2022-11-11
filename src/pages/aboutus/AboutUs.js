@@ -1,5 +1,4 @@
 import React from "react";
-import Advance from "../home/advance/Advance";
 import AdvanceItem from "../home/advance/AdvanceItem";
 import Footer from "../home/footer/Footer";
 import Header from "../home/header/Header";
@@ -9,7 +8,7 @@ const AboutUs = () => {
     <div className='bg-[#111] '>
       <Header></Header>
       <div>
-        <div className="my-0 mx-auto mt-[78px] w-[90%] min-h-[80vh] bg-bg-poster-about rounded-[10px]  relative flex items-center justify-center bg-no-repeat bg-cover">
+        <div className="my-0 mx-auto mt-[68px] w-[90%] min-h-[80vh] bg-bg-poster-about rounded-[10px]  relative flex items-center justify-center bg-no-repeat bg-cover">
           <div className="absolute text-[24px] w-[600px] p-0 m-0 mr-[50px] capitalize text-center">
             <h3 className="text-[70px] text-shadow font-[700] text-primary">About us </h3>
             <span className="text-[18px] normal-case text-[#111]">

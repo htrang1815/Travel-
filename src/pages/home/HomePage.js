@@ -23,10 +23,10 @@ const HomePage = () => {
       <Slider></Slider>
       <AboutUs></AboutUs>
       <PopularProject></PopularProject>
-      <Advance></Advance>
-      <Gallery></Gallery>
-      <Review></Review>
       <Blog></Blog>
+      <Advance></Advance>
+      <Review></Review>
+      <Gallery></Gallery>
       <Banner></Banner>
       <Footer></Footer>
     </div>
