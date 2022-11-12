@@ -50,6 +50,7 @@ const ContactForm = () => {
             label="Message"
             id="message"
             rows="4"
+            control={control}
           ></Textarea>
           <div className="text-center">
             <ButtonContact className="overflow-hidden  ">Send</ButtonContact>

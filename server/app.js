@@ -10,6 +10,7 @@ const AppError = require("./utils/appError");
 const userRoutes = require("./routes/userRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 
 // => morgan giúp cta có thể xem đc kết quả của request ngay trên console.log
 
@@ -24,7 +25,11 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 // 2. Để data dc gửi sang client sẽ đc chuyển
 // đổi sang kiểu json()
 
-app.use(express.json());
+app.use(
+  express.json({
+    verify: (req, res, buffer) => (req["rawBody"] = buffer),
+  })
+);
 
 // A. MIDDLEWARES
 app.use(morgan("dev"));
@@ -35,6 +40,7 @@ app.use(cookieParser());
 // C. ROUTES
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/projects", projectRoutes);
+app.use("api/v1/reviews", reviewRoutes);
 
 // -- Tuyến dg checkout (cho thanh toán)
 app.use("/api/v1/bookings", bookingRoutes);

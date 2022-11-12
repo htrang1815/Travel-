@@ -9,7 +9,6 @@ import { setShowMorePhoto } from "../../store/showModal/showSlice";
 const ModalBox = () => {
   const { showMorePhoto, photo } = useSelector((state) => state.show);
 
-  console.log(photo);
   const dispatch = useDispatch();
 
   return ReactDOM.createPortal(

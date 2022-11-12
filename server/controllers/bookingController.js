@@ -1,6 +1,7 @@
 const stripeAPI = require("../stripe");
 const Project = require("../models/projectModel");
 const catchAsync = require("../utils/catchAsync");
+const Booking = require("../models/bookingModel");
 
 exports.getCheckoutSession = catchAsync(async (req, res) => {
   const domainUrl = process.env.DOMAIN_URL;
@@ -11,8 +12,8 @@ exports.getCheckoutSession = catchAsync(async (req, res) => {
   // 2. Create checkout session
   const session = await stripeAPI.checkout.sessions.create({
     payment_method_types: ["card"],
-    success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${domainUrl}/canceled`,
+    success_url: `${domainUrl}/success?place=${req.params.tourId}&user=${req.user.id}&price=${project.price}`,
+    cancel_url: `${domainUrl}/project/${req.params.tourId}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
     //-- Dữ liệu tour truyền vào Booking Page

@@ -11,3 +11,7 @@ export const connectWithSocketServer = (userDetails) => {
     // console.log(socket.id);
   });
 };
+
+export const createReview = (data) => {
+  socket.emit("create-comment", data);
+};

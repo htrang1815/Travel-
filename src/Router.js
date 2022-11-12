@@ -6,6 +6,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
 import BlogsPage from "./pages/blogs/BlogsPage";
 import WriteBlog from "./pages/blogs/writeblog/WriteBlog";
+import BookingSuccessful from "./pages/booking/BookingSuccessful";
 import ContactPage from "./pages/contact/ContactPage";
 import GuidePage from "./pages/guides/GuidePage";
 import HomePage from "./pages/home/HomePage";
@@ -38,7 +39,14 @@ const Router = () => {
           element={<ProjectDetails></ProjectDetails>}
         ></Route>
         <Route path="/admin/*" element={<AdminPage></AdminPage>}></Route>
-        <Route path="/userprofile" element={<UserProfilePage></UserProfilePage>}></Route>
+        <Route
+          path="/userprofile"
+          element={<UserProfilePage></UserProfilePage>}
+        ></Route>
+        <Route
+          path="/success"
+          element={<BookingSuccessful></BookingSuccessful>}
+        ></Route>
       </Routes>
     </div>
   );

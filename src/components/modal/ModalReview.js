@@ -3,14 +3,63 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { React } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
+import useGetImageUrl from "../../hooks/useGetImageUrl";
 import { setShowModalReview } from "../../store/showModal/showSlice";
 import BasicRating from "../icon/ReviewStar";
 import Textarea from "../input/Textarea";
+import { useForm } from "react-hook-form";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { createReview } from "../../realtimeCommunication/socketConnection";
+import useAuthStateChange from "../../hooks/useAuthStateChange";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import domain from "../../utils/common";
 
 const ModalReview = () => {
   const { showModalReview } = useSelector((state) => state.show);
-  console.log(showModalReview);
+  const { rating } = useSelector((state) => state.review);
+  console.log(rating);
+  const { user } = useAuthStateChange();
+  const { imageCover, getImageUrl } = useGetImageUrl();
+  const { projectId } = useParams();
+
   const dispatch = useDispatch();
+
+  const schema = yup.object({
+    review: yup
+      .string()
+      .required("Please enter your review")
+      .min(30, "Your review must have at least 30 characters."),
+  });
+
+  const {
+    handleSubmit,
+    formState: { errors, isValid, isSubmitting },
+    control,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    //mode: onChange để sử dụng đc thằng isValid (ko nó sẽ mãi mãi là false)
+  });
+
+  const handleReviewModel = async (values) => {
+    if (isValid) {
+      const review = {
+        review: values.review,
+        rating: 5,
+        user: user._id,
+        place: projectId,
+        image: imageCover || "",
+      };
+      // if (rating && rating !== 0) {
+      //   await axios.patch(`${domain}/api/v1/projects`, );
+      // }
+      createReview(review);
+    }
+  };
+
   return ReactDOM.createPortal(
     <div
       className={`fixed top-0 bottom-0 right-0 left-0 z-[1010] flex justify-center items-center visible opacity-100 transition ease-in duration-200 ${
@@ -24,17 +73,23 @@ const ModalReview = () => {
         }}
       ></div>
       <div className=" bg-[#fff] w-[40%] m-h-[35%] z-[500]">
-        <div className="py-[20px] px-[30px] flex flex-col items-center justify-center">
+        <form
+          className="py-[20px] px-[30px] flex flex-col items-center justify-center"
+          onSubmit={handleSubmit(handleReviewModel)}
+        >
           <BasicRating></BasicRating>
           <div className="w-full relative">
             <Textarea
+              id="review"
               label="Your review"
               type="text"
               rows="5"
               placeholder="Write your review"
               className="p-8 pr-[30%] w-full h-full"
               classNameLabel="text-[#111]"
+              control={control}
             ></Textarea>
+
             <img
               src="https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
@@ -44,6 +99,7 @@ const ModalReview = () => {
               type="file"
               accept="image/*"
               id="banner-upload"
+              onChange={getImageUrl}
               hidden
             ></input>
             <label
@@ -56,14 +112,16 @@ const ModalReview = () => {
               ></FontAwesomeIcon>
             </label>
           </div>
-
+          <p className="text-[#f15545] font-semibold mb-[10px]">
+            {errors.review?.message}
+          </p>
           <button
             className="text-primary border border-solid border-primary  px-4 py-3 rounded-[10px] w-[30%]
            hover-button"
           >
             Send
           </button>
-        </div>
+        </form>
       </div>
     </div>,
     document.querySelector("body")
