@@ -4,6 +4,7 @@ import projectListSlice from "./projectList/slice";
 import projectSlice from "./project/slice";
 import showSlice from "./showModal/showSlice";
 import reviewSlice from "./review/reviewSlice";
+import loadingSlice from "./loading/loadingSlice";
 
 export const reducer = combineReducers({
   auth: authSlice,
@@ -11,4 +12,5 @@ export const reducer = combineReducers({
   project: projectSlice,
   show: showSlice,
   review: reviewSlice,
+  loading: loadingSlice,
 });

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase.config";
+import { useDispatch } from "react-redux";
+import { setLoadingButtonReview } from "../store/loading/loadingSlice";
 
 export default function useGetImageUrl() {
   const [imageCover, setImageCover] = useState("");
+  const dispatch = useDispatch();
   const getImageUrl = (e) => {
     const file = e.target.files[0];
 
@@ -27,7 +30,10 @@ export default function useGetImageUrl() {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref)
-          .then((url) => setImageCover(url))
+          .then((url) => {
+            setImageCover(url);
+            dispatch(setLoadingButtonReview(false));
+          })
           .catch((err) => {
             console.log(err.message);
           });

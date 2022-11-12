@@ -25,7 +25,7 @@ exports.createProject = catchAsync(async (req, res) => {
 });
 
 exports.getProject = catchAsync(async (req, res, next) => {
-  const project = await Project.findById(req.params.id);
+  const project = await Project.findById(req.params.id).populate("reviews");
 
   if (!project) {
     return next(new AppError("No document found with that ID", 404));
