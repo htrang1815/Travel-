@@ -7,15 +7,12 @@ const router = express.Router();
 // nested route
 router.use("/:placeId/reviews", reviewRoutes);
 
-router
-  .route("/")
-  .get(projectController.getAllProjects)
-  .post(projectController.createProject);
+router.get('/', projectController.getAllProjects);
+router.get('/filter', projectController.getProjectsByFilter);
+router.post('/', projectController.createProject);
 
-router
-  .route("/:id")
-  .get(projectController.getProject)
-  .patch(projectController.updateProject)
-  .delete(projectController.deleteProject);
+router.get('/:id', projectController.getProject);
+router.patch('/:id', projectController.updateProject);
+router.delete('/:id', projectController.deleteProject);
 
 module.exports = router;

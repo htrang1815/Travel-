@@ -14,6 +14,37 @@ exports.getAllProjects = catchAsync(async (req, res) => {
   });
 });
 
+exports.getProjectsByFilter = catchAsync(async (req, res) => {
+  const { name, limit = 20 } = req.query;
+  const { ratingAverageSort = -1, priceSort = -1 } = req.query;
+  const match = {};
+  const sort = {};
+
+  if (name) {
+    match.name = name;
+  }
+
+  if (ratingAverageSort) {
+    sort.ratingAverage = ratingAverageSort;
+  }
+  if (priceSort) {
+    sort.price = priceSort;
+  }
+
+  const projects = await Project.aggregate()
+    .match({ ...match })
+    .sort({ ...sort })
+    .limit(+limit);
+
+  res.status(200).json({
+    status: "success",
+    results: projects.length,
+    data: {
+      projects,
+    },
+  });
+});
+
 exports.createProject = catchAsync(async (req, res) => {
   const newProject = await Project.create(req.body);
   res.status(201).json({
