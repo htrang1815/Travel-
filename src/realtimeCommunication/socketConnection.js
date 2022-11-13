@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { setReviewInfo } from "../store/review/reviewSlice";
+import { setReviewInfoInTour } from "../store/review/reviewSlice";
 
 let socket = null;
 
@@ -15,7 +15,8 @@ export const connectWithSocketServer = (user, dispatch) => {
   });
 
   socket.on("sendReviewToClient", (review) => {
-    dispatch(setReviewInfo(review));
+    console.log(review);
+    dispatch(setReviewInfoInTour(review));
   });
 };
 

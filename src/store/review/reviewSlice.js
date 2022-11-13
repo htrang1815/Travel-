@@ -3,20 +3,23 @@ const reviewSlice = createSlice({
   name: "review",
   initialState: {
     rating: 0,
-    reviewInfo: {},
+    reviewInATour: [],
   },
   reducers: {
     setRating: (state, action) => ({
       ...state,
       rating: action.payload,
     }),
-    setReviewInfo: (state, action) => ({
+    setReviewInfoInTour: (state, action) => ({
       ...state,
-      reviewInfo: action.payload,
+      reviewInATour: action.payload,
     }),
+
+    getReviewInTour() {},
   },
 });
 
-export const { setRating, setReviewInfo } = reviewSlice.actions;
+export const { setRating, setReviewInfoInTour, getReviewInTour } =
+  reviewSlice.actions;
 
 export default reviewSlice.reducer;

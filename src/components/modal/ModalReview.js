@@ -58,8 +58,7 @@ const ModalReview = () => {
               image: imageCover || "",
             }
           );
-          // console.log(review);
-          createReview(review);
+          createReview(review.data.data);
         }
       } catch (err) {
         console.log(err);

@@ -1,3 +1,4 @@
+const Review = require("./models/reviewModel");
 const serverStore = require("./serverStore");
 const disconnectHandler = require("./socketHandlers/disconnectHandler");
 const newConnectionHandler = require("./socketHandlers/newConnectionHandler");
@@ -22,9 +23,11 @@ const resgisterSocketServer = (server) => {
       socket.join(placeId);
     });
 
-    socket.on("create-comment", (review) => {
-      // console.log(review);
-      socket.to(review.place).emit("sendReviewToClient", review);
+    socket.on("create-comment", async (review) => {
+      console.log(review.reviews);
+      const reviewList = await Review.find({ place: review.reviews.place });
+
+      socket.to(review.reviews.place).emit("sendReviewToClient", reviewList);
     });
 
     socket.on("disconnect", () => {
