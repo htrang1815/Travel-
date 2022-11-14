@@ -12,16 +12,18 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { createReview } from "../../realtimeCommunication/socketConnection";
-import useAuthStateChange from "../../hooks/useAuthStateChange";
+
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import domain from "../../utils/common";
+import { setLoadingButtonReview } from "../../store/loading/loadingSlice";
 
 const ModalReview = () => {
   const { showModalReview } = useSelector((state) => state.show);
   const { rating } = useSelector((state) => state.review);
-  console.log(rating);
-  const { user } = useAuthStateChange();
+  const { loadingButtonReview } = useSelector((state) => state.loading);
+
+  console.log(loadingButtonReview);
   const { imageCover, getImageUrl } = useGetImageUrl();
   const { projectId } = useParams();
 
@@ -46,17 +48,21 @@ const ModalReview = () => {
 
   const handleReviewModel = async (values) => {
     if (isValid) {
-      const review = {
-        review: values.review,
-        rating: 5,
-        user: user._id,
-        place: projectId,
-        image: imageCover || "",
-      };
-      // if (rating && rating !== 0) {
-      //   await axios.patch(`${domain}/api/v1/projects`, );
-      // }
-      createReview(review);
+      try {
+        if (rating && rating !== 0) {
+          const review = await axios.post(
+            `${domain}/api/v1/projects/${projectId}/reviews`,
+            {
+              review: values.review,
+              rating: 5,
+              image: imageCover || "",
+            }
+          );
+          createReview(review.data.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -91,7 +97,10 @@ const ModalReview = () => {
             ></Textarea>
 
             <img
-              src="https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={
+                imageCover ||
+                "https://wegoboard.com/img/p/fr-default-large_default.jpg"
+              }
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />
@@ -99,7 +108,10 @@ const ModalReview = () => {
               type="file"
               accept="image/*"
               id="banner-upload"
-              onChange={getImageUrl}
+              onChange={(e) => {
+                dispatch(setLoadingButtonReview(true));
+                getImageUrl(e);
+              }}
               hidden
             ></input>
             <label
@@ -116,10 +128,14 @@ const ModalReview = () => {
             {errors.review?.message}
           </p>
           <button
-            className="text-primary border border-solid border-primary  px-4 py-3 rounded-[10px] w-[30%]
-           hover-button"
+            className="text-primary border border-solid border-primary  px-4 py-3 rounded-[10px] w-[30%] hover-button cursor-pointer"
+            disabled={loadingButtonReview ? true : false}
           >
-            Send
+            {loadingButtonReview ? (
+              <div className="w-10 h-10 rounded-full border-[#ffbc4a] border-solid border-t-[transparent] border-b-[transparent] animate-spin mx-auto loadingsend"></div>
+            ) : (
+              "Send"
+            )}
           </button>
         </form>
       </div>

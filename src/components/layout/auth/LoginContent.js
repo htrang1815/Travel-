@@ -97,7 +97,7 @@ const LoginContent = () => {
       const provider = new FacebookAuthProvider();
       const response = await signInWithPopup(auth, provider);
       const user = response.user;
-      console.log(user);
+      // console.log(user);
     } catch (err) {
       console.log(err);
     }

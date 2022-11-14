@@ -13,12 +13,17 @@ import ModalBox from "../../components/modal/ModalBox";
 import TourGuide from "./tourguide/TourGuide";
 import Reviews from "./projectdetail/contentdetail/Reviews";
 import ModalReview from "../../components/modal/ModalReview";
+import { joinPlace } from "../../realtimeCommunication/socketConnection";
 
 const ProjectDetails = () => {
   const currentURL = window.location.href;
 
   const { projectId } = useParams();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    joinPlace(projectId);
+  }, [projectId]);
 
   useEffect(() => {
     dispatch(getProject(projectId));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Input from "../../components/input/Input";
 
 import { useForm } from "react-hook-form";
@@ -12,9 +12,48 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import Alert from "../../components/common/Alert";
+import mapboxgl from "../../mapbox/mapbox";
 
 const ContactForm = () => {
   const { control } = useForm();
+  const mapContainer = useRef(null);
+
+  const map = useRef(null);
+  useEffect(() => {
+    map.current = new mapboxgl.Map({
+      // Thẻ chứa map
+      container: mapContainer.current,
+      style: "mapbox://styles/quangvu9501/cla2ozjnu001v14sgnvbllz72",
+      center: [106.3225388, 20.9430878],
+      zoom: 12,
+      interactive: false,
+    });
+
+    const bounds = new mapboxgl.LngLatBounds();
+    map.current.on("load", () => {
+      const [lat, lng] = [20.9430878, 106.3225388];
+      const el = document.createElement("div");
+      el.className = "marker";
+      new mapboxgl.Marker({
+        element: el,
+        anchor: "bottom",
+      })
+        .setLngLat([lng, lat])
+        .addTo(map.current);
+
+      new mapboxgl.Popup()
+        .setLngLat([lng, lat])
+        .setHTML(
+          `<p>
+            <h1>Travel company</h1>
+            <p>18 Binh Giang, Hai Dưong City, Vietnam</p>
+        </p>`
+        )
+        .addTo(map.current);
+
+      bounds.extend([lng, lat]);
+    });
+  });
   return (
     <div className="px-[9%] py-[100px] h-full flex justify-center items-center mt-[20px] relative">
       <div className="bg-[#222] w-[90%] h-full bg-opacity-70 rounded-[50px] p-[5%] pt-[5%] pb-[2%] relative flex">
@@ -57,10 +96,10 @@ const ContactForm = () => {
           </div>
         </div>
         <div className="w-full pl-[6%] flex flex-col">
-          <div className="w-full bg-primary flex-grow my-[20px] rounded-lg">
-            {" "}
-            Map
-          </div>
+          <div
+            className="w-full bg-primary flex-grow my-[20px] rounded-lg"
+            ref={mapContainer}
+          ></div>
           <div className="icon flex items-center justify-between">
             <div className="social w-[45%] flex items-center justify-between">
               <a

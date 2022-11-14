@@ -1,79 +1,75 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 
-const projectSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "A project must have a name"],
-    unique: true,
-    trim: true,
-    maxlength: [
-      80,
-      "A project name must have less or equal than 80 characters",
-    ],
-    minlength: [5, "A project name must have more or equal than 5 characters"],
-  },
-  slug: String,
-  duration: {
-    type: Number,
-    required: [true, "A project must have a duration"],
-  },
-  ratingAverage: {
-    type: Number,
-    default: 4.5,
-    min: [1, "Rating must be above 1.0"],
-    max: [5, "Rating must be below 5.0"],
-  },
-  ratingsQuantity: {
-    type: Number,
-    default: 0,
-  },
-  price: {
-    type: Number,
-    required: [true, "A project must have a price"],
-  },
-  images: [String],
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-  summary: {
-    type: String,
-    trim: true,
-    required: [true, "A project must have a description"],
-  },
-  maxGroupSize: {
-    type: Number,
-    required: [true, "A project must have a group size"],
-  },
-  experience: {
-    type: String,
-    trim: true,
-  },
-  include: {
-    accomodation: {
+const projectSchema = new mongoose.Schema(
+  {
+    name: {
       type: String,
+      required: [true, "A project must have a name"],
+      unique: true,
+      trim: true,
+      maxlength: [
+        80,
+        "A project name must have less or equal than 80 characters",
+      ],
+      minlength: [
+        5,
+        "A project name must have more or equal than 5 characters",
+      ],
     },
-    meals: {
+    slug: String,
+    duration: {
+      type: Number,
+      required: [true, "A project must have a duration"],
+    },
+    ratingAverage: {
+      type: Number,
+      default: 4.5,
+      min: [1, "Rating must be above 1.0"],
+      max: [5, "Rating must be below 5.0"],
+      set: (val) => Math.round(val * 10) / 10,
+      // 5.6666 => 5.7
+    },
+    ratingsQuantity: {
+      type: Number,
+      default: 0,
+    },
+    price: {
+      type: Number,
+      required: [true, "A project must have a price"],
+    },
+    images: [String],
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+    },
+    summary: {
       type: String,
+      trim: true,
+      required: [true, "A project must have a description"],
     },
-    transport: {
+    maxGroupSize: {
+      type: Number,
+      required: [true, "A project must have a group size"],
+    },
+    experience: {
       type: String,
+      trim: true,
     },
-  },
-  startDates: [Date],
-  startLocation: {
-    // GeoJSON
-    type: {
-      type: String,
-      default: "Point",
-      enum: ["Point"],
+    include: {
+      accomodation: {
+        type: String,
+      },
+      meals: {
+        type: String,
+      },
+      transport: {
+        type: String,
+      },
     },
-    coordinates: [Number],
-    description: String,
-  },
-  locations: [
-    {
+    startDates: [Date],
+    startLocation: {
+      // GeoJSON
       type: {
         type: String,
         default: "Point",
@@ -81,15 +77,38 @@ const projectSchema = new mongoose.Schema({
       },
       coordinates: [Number],
       description: String,
-      day: Number,
     },
-  ],
-  guides: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: "User",
-    },
-  ],
+    locations: [
+      {
+        type: {
+          type: String,
+          default: "Point",
+          enum: ["Point"],
+        },
+        coordinates: [Number],
+        description: String,
+        day: Number,
+      },
+    ],
+    guides: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
+
+// Lưu ảo 1 mảng chứa các id của reviews
+projectSchema.virtual("reviews", {
+  ref: "Review",
+  // trường place bên Review
+  foreignField: "place",
+  localField: "_id",
 });
 
 projectSchema.pre("save", function (next) {
