@@ -11,6 +11,7 @@ const userRoutes = require("./routes/userRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
+const guideRoutes = require("./routes/guideRoutes");
 
 // => morgan giúp cta có thể xem đc kết quả của request ngay trên console.log
 
@@ -40,7 +41,8 @@ app.use(cookieParser());
 // C. ROUTES
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/projects", projectRoutes);
-app.use("api/v1/reviews", reviewRoutes);
+app.use("/api/v1/reviews", reviewRoutes);
+app.use("/api/v1/guides", guideRoutes);
 
 // -- Tuyến dg checkout (cho thanh toán)
 app.use("/api/v1/bookings", bookingRoutes);

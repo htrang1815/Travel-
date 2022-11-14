@@ -7,6 +7,7 @@ import Banner from "./banner/Banner";
 import Blog from "./blog/Blog";
 import Footer from "./footer/Footer";
 import Gallery from "./gallery/Gallery";
+import OurGuide from "./guide/OurGuide";
 import Header from "./header/Header";
 import PopularProject from "./popular-project/PopularProject";
 import Review from "./review/Review";
@@ -23,6 +24,7 @@ const HomePage = () => {
       <Slider></Slider>
       <AboutUs></AboutUs>
       <PopularProject></PopularProject>
+      <OurGuide></OurGuide>
       <Blog></Blog>
       <Advance></Advance>
       <Review></Review>

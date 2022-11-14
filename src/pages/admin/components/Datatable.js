@@ -10,7 +10,7 @@ const Datatable = ({ columns, rows, inputs, title }) => {
   // const columns = columnsdata;
   return (
     <>
-      <div className="datatable ">
+      <div className={`datatable `}>
         <div className="datatableTitle ">
           <button
             className="link"

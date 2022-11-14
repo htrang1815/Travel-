@@ -3,14 +3,14 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 
 const FormInput = ({inputs}) => {
     return (
-        <div className='text-primary min-h-[70vh]'>
+        <div className='text-primary min-h-[80vh]'>
         <div
         className={`new w-full flex top-[65px] right-[50%] translate-x-[50%] fixed z-[1020] bg-[#fff] flex-col   `}
       >
         <div className="top ">
           <h1>Edit my Info</h1>
         </div>
-        <div className="bottom max-h-[60vh] h-full scrollcss">
+        <div className="bottom max-h-[60vh] h-full">
           <div className="left">
             <img
               src={
@@ -20,7 +20,7 @@ const FormInput = ({inputs}) => {
             />
           </div>
           <div className="right">
-            <form className="overflow-y-scroll h-full pr-[5px]">
+            <form className=" h-full pr-[5px]">
               <div className="formInput ">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />

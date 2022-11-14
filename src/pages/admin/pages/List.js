@@ -66,6 +66,8 @@ const List = () => {
               <Datatable
                 columns={commentColumns}
                 rows={commentRows}
+                inputs={placeInputs}
+                title="places"
               ></Datatable>
             }
           ></Route>

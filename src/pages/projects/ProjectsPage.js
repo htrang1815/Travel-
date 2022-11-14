@@ -16,7 +16,7 @@ const ProjectsPage = () => {
   useEffect(() => {
     dispatch(getProjectList());
   }, [dispatch]);
-
+console.log(getProjectList());
   return (
     <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
       <Header></Header>

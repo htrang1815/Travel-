@@ -63,7 +63,6 @@ const ProjectItem = ({ projectData, className }) => {
           <ButtonDetailProjects
             text="Read More"
             projectId={projectData?._id}
-            
           ></ButtonDetailProjects>
         </div>
       </div>

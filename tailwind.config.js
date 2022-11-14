@@ -13,6 +13,7 @@ module.exports = {
         "bg-poster-about" : "url('/src/assets/images/about/aboutposter.jpeg')",
         "bg-poster-guide" : "url('/src/assets/images/guides/guideposter.jpeg')",
         "bg-guide-detail" : "url('/src/assets/images/guides/guidedetail.jpeg')",
+        "bg-success" : "url('/src/assets/images/poster/successposter.jpeg')",
       },
     },
     colors: {

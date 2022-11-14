@@ -13,7 +13,6 @@ const ContentRight = () => {
       <Tabs>
         <TabList className="flex items-center justify-between text-primary text-[16px]">
           <Tab>Place save</Tab>
-          <Tab>Guide save</Tab>
           <Tab>Booking</Tab>
           <Tab>My blog</Tab>
           <Tab>My review</Tab>
@@ -26,25 +25,7 @@ const ContentRight = () => {
               <PlaceSaveItem></PlaceSaveItem>
               <PlaceSaveItem></PlaceSaveItem>
               <PlaceSaveItem></PlaceSaveItem>
-              <PlaceSaveItem></PlaceSaveItem>              
-            </div>
-            <div className="text-center">
-              <ButtonLoadMore
-                text="Load More"
-                className="text-primary mt-[30px]"
-              ></ButtonLoadMore>
-            </div>
-          </div>
-        </TabPanel>
-
-        <TabPanel>
-          <div>
-            <div className="guide-saving mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
-              <GuideSaveItem></GuideSaveItem>
-              <GuideSaveItem></GuideSaveItem>
-              <GuideSaveItem></GuideSaveItem>
-              <GuideSaveItem></GuideSaveItem>
-              <GuideSaveItem></GuideSaveItem>  
+              <PlaceSaveItem></PlaceSaveItem>
             </div>
             <div className="text-center">
               <ButtonLoadMore
@@ -87,22 +68,15 @@ const ContentRight = () => {
             </div>
           </div>
         </TabPanel>
-
 
         <TabPanel>
           <div>
             <div className="myreview mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
-              <MyReviewItem>
-              </MyReviewItem>
-              <MyReviewItem>
-              </MyReviewItem>
-              <MyReviewItem>
-              </MyReviewItem>
-              <MyReviewItem>
-              </MyReviewItem>
-              <MyReviewItem>
-              </MyReviewItem>
-              
+              <MyReviewItem></MyReviewItem>
+              <MyReviewItem></MyReviewItem>
+              <MyReviewItem></MyReviewItem>
+              <MyReviewItem></MyReviewItem>
+              <MyReviewItem></MyReviewItem>
             </div>
             <div className="text-center">
               <ButtonLoadMore

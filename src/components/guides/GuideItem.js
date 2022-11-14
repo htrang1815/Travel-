@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import guide1 from '../../assets/images/guides/pic-4.png'
 
-const GuideItem = () => {
+const GuideItem = ({guideData, className}) => {
     return (
         <div className="bg-[#222] rounded-[10px] overflow-hidden hover-item cursor-pointer myguide-item">
             <div className="w-full h-[200px] relative img">

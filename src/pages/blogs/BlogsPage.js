@@ -7,13 +7,15 @@ import PosterBLog from "./PosterBLog";
 
 const BlogsPage = () => {
   return (
-    <div className="bg-[#111] m-0 ">
-      <Header></Header>
-      <PosterBLog></PosterBLog>
-      <AdminPick></AdminPick>
-      <ClientPick></ClientPick>
-      <Footer className="bg-[#222]"></Footer>
-    </div>
+    <>
+      <div className="bg-[#111] m-0 ">
+        <Header></Header>
+        <PosterBLog></PosterBLog>
+        <AdminPick></AdminPick>
+        <ClientPick></ClientPick>
+        <Footer className="bg-[#222]"></Footer>
+      </div>
+    </>
   );
 };
 
