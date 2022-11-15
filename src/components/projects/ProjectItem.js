@@ -4,10 +4,13 @@ import ButtonDetailProjects from "../button/ButtonDetailProject";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { Rating } from "@mui/material";
 
 const ProjectItem = ({ projectData, className }) => {
   return (
-    <div className={`bg-[#222] rounded-[10px] overflow-hidden hover-item myplace ${className}`}>
+    <div
+      className={`bg-[#222] rounded-[10px] overflow-hidden hover-item myplace ${className}`}
+    >
       <div className="w-full h-[200px] img">
         <img
           src={
@@ -22,13 +25,28 @@ const ProjectItem = ({ projectData, className }) => {
         <div className="grow h-[182px]">
           <div className="flex justify-between items-center mb-4">
             <div className="flex">
-              <div className="text-primary text-[14px] mr-[5px]">
-                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-              </div>
+              <Rating
+                className="text-primary text-[14px] mr-[5px]"
+                readOnly
+                icon={
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    color="#ffbc4a"
+                  ></FontAwesomeIcon>
+                }
+                emptyIcon={
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    color="#aaaaaa"
+                  ></FontAwesomeIcon>
+                }
+                style={{
+                  color: "#ffbc4a",
+                  fontSize: "20",
+                }}
+                defaultValue={projectData?.ratingAverage || 0}
+                precision={0.5}
+              ></Rating>
               <span className="text-[14px] font-[600] mr-[5px]">
                 {projectData?.ratingAverage}
               </span>
@@ -40,7 +58,9 @@ const ProjectItem = ({ projectData, className }) => {
               {projectData?.maxGroupSize}+Guides
             </span>
           </div>
-          <h3 className="text-[16px] font-[600] mb-4 text-wrap-title">{projectData?.name}</h3>
+          <h3 className="text-[16px] font-[600] mb-4 text-wrap-title">
+            {projectData?.name}
+          </h3>
           <span className="text-14px block mb-4">
             <FontAwesomeIcon
               icon={faLocationDot}

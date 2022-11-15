@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import GuideAvatar from "./GuideAvatar";
 
 const PosterDetail = ({ className }) => {
+  const { guide } = useSelector((state) => state.guide);
   return (
     <div className="relative h-[50vh]">
       <div
@@ -10,9 +12,8 @@ const PosterDetail = ({ className }) => {
         <div className="absolute left-[9%] bottom-0 flex items-end justify-between w-[82%]">
           <GuideAvatar
             className=""
-            guideName="Wade Copper"
           ></GuideAvatar>
-          <button type="submit" className="text-primary px-[10px] py-[5px] border border-solid border-[#ffbc4b] rounded-lg hover-button">Contact me</button>
+          
         </div>
       </div>
     </div>

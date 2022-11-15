@@ -5,7 +5,7 @@ import ProjectItem from "../../../components/projects/ProjectItem";
 
 const ProjectList = () => {
   const { projectList } = useSelector((state) => state.projectList);
-  console.log(projectList);
+  console.log("projectList : ",projectList);
   return (
     <div className="py-[30px] px-[9%]">
       <div className="w-full  grid grid-cols-4 grid-rows-2 gap-[15px]  mb-[30px]">

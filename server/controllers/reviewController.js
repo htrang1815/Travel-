@@ -21,6 +21,7 @@ exports.createReview = catchAsync(async (req, res) => {
   // Allow nested routes
 
   if (!req.body.place) req.body.place = req.params.placeId;
+  if (!req.body.guide) req.body.guide = req.params.guideId;
   if (!req.body.user) req.body.user = req.user.id;
 
   const newReviews = await Review.create(req.body);

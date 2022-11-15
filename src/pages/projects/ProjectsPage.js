@@ -9,6 +9,7 @@ import TourGuide from "./tourguide/TourGuide";
 import Footer from "../home/footer/Footer";
 import { useDispatch } from "react-redux";
 import { getProjectList } from "../../store/projectList/slice";
+import ModalFilter from "../../components/modal/modalFilter/ModalFilter";
 
 const ProjectsPage = () => {
   const dispatch = useDispatch();
@@ -16,16 +17,19 @@ const ProjectsPage = () => {
   useEffect(() => {
     dispatch(getProjectList());
   }, [dispatch]);
-console.log(getProjectList());
+  console.log("getprojectlist",getProjectList());
   return (
-    <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
-      <Header></Header>
-      <Poster title="Explore the world for your self"></Poster>
-      <Search></Search>
-      <ProjectList></ProjectList>
-      <TourGuide className="py-[30px] px-[9%] "></TourGuide>
-      <Footer className="bg-[#222]"></Footer>
-    </div>
+    <>
+      <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
+        <Header></Header>
+        <Poster title="Explore the world for your self"></Poster>
+        <Search></Search>
+        <ProjectList></ProjectList>
+        <TourGuide className="py-[30px] px-[9%] "></TourGuide>
+        <Footer className="bg-[#222]"></Footer>
+      </div>
+      <ModalFilter></ModalFilter>
+    </>
   );
 };
 

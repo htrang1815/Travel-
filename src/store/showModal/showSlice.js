@@ -7,6 +7,8 @@ const showSlice = createSlice({
     showAddNew: false,
     showModalReview: false,
     showModalUser: false,
+    showFilter: false,
+    showContactGuide: false,
     photo: [],
   },
   reducers: {
@@ -34,6 +36,14 @@ const showSlice = createSlice({
       ...state,
       photo: action.payload,
     }),
+    setShowFilter: (state, action) => ({
+      ...state,
+      showFilter: action.payload,
+    }),
+    setShowContactGuide: (state, action) => ({
+      ...state,
+      showContactGuide: action.payload,
+    }),
   },
 });
 
@@ -43,7 +53,9 @@ export const {
   setShowAddNew,
   setPhoto,
   setShowModalReview,
-  setShowModalUser
+  setShowModalUser,
+  setShowFilter,
+  setShowContactGuide
 } = showSlice.actions;
 
 export default showSlice.reducer;

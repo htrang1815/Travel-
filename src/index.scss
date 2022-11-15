@@ -572,7 +572,63 @@
   }
 }
 //Guide-review
+//GuideDetail
+.guide-share{
+  .save{
+    display: none;
+  }
+}
+.contactguide{
+  .hover-social:hover{
+    background-color: #ffbc4b;
+    .icon{
+      color: #111;
+    }
+  }
+  .scrollcss ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .scrollcss ::-webkit-scrollbar-track {
+    background: #111;
+  }
+  
+  .scrollcss ::-webkit-scrollbar-thumb {
+    background: #ffbc4b;
+    border-radius: 5rem;
+  }
+}
 //Project Detail
+.filter{
+  .hover-btn:hover{
+    background-color: #111;
+    color: #ffbc4b;
+  }
+}
+  .filter-lenght{
+    .MuiSlider-rail{
+      color: #111;
+      
+    }
+    .MuiSlider-track{
+      color: #111;
+
+    }
+    .MuiSlider-thumb{
+      color: #111;
+    }
+  }
+  .filterdeparture{
+    .MuiFormControl-root{
+      .css-14lo706{
+        display: none;
+      }
+      .MuiChip-label{
+        color:#111;
+      }
+
+    }
+  }
 // Modal review
 .modal-review {
   .MuiBox-root {
@@ -660,5 +716,18 @@
     .guidecontent {
       width: 65%;
     }
+  }
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: inherit;
+  &:before,
+  &:after {
+      box-sizing: inherit;
   }
 }

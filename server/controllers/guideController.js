@@ -23,4 +23,19 @@ exports.getAllGuide = catchAsync(async (req, res) => {
     });
   });
 
+  exports.getGuide = catchAsync(async (req, res, next) => {
+    const guide = await Guide.findById(req.params.id);
+  
+    if (!guide) {
+      return next(new AppError("No document found with that ID", 404));
+    }
+  
+    res.status(200).json({
+      status: "success",
+      data: {
+        guide,
+      },
+    });
+  });
+
   

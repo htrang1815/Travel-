@@ -6,6 +6,7 @@ import showSlice from "./showModal/showSlice";
 import reviewSlice from "./review/reviewSlice";
 import guideListSlice from "./guide/slice";
 import loadingSlice from "./loading/loadingSlice";
+import guideSlice from "./guide/slice";
 
 export const reducer = combineReducers({
   auth: authSlice,
@@ -14,5 +15,6 @@ export const reducer = combineReducers({
   show: showSlice,
   review: reviewSlice,
   guideList: guideListSlice,
+  guide: guideSlice,
   loading: loadingSlice,
 });

@@ -1,9 +1,13 @@
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Rating } from "@mui/material";
 import React from "react";
-import ButtonFilter from "../../../../../components/button/ButtonFilter";
+import { useSelector } from "react-redux";
 import StarIcon from "../../../../../components/icon/StarIcon";
 import InputRiews from "./InputRiews";
 
 const OverallReview = () => {
+  const { project } = useSelector((state) => state.project);
   return (
     <div>
       <h3 className="text-primary text-[18px] mb-[20px]">
@@ -16,17 +20,45 @@ const OverallReview = () => {
               Overall rating
             </span>
             <h2 className="text-[24px] font-[600] text-primary mb-[10px]">
-              4.7 /5
+              {project?.ratingAverage}
             </h2>
-            <StarIcon></StarIcon>
-            <span className="text-[#ccc] text-[14px]">Base on 663 reviews</span>
+            <div className="text-primary">
+              <Rating
+                readOnly
+                icon={
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    color="#ffbc4a"
+                  ></FontAwesomeIcon>
+                }
+                emptyIcon={
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    color="#aaaaaa"
+                  ></FontAwesomeIcon>
+                }
+                style={{
+                  color: "#ffbc4a",
+                }}
+                sx={20}
+                defaultValue={project?.ratingAverage}
+                precision={0.5}
+              ></Rating>
+            </div>
+            <span className="text-[#ccc] text-[14px]">
+              Base on {project?.ratingsQuantity} reviews
+            </span>
           </div>
-            <InputRiews></InputRiews>
+          <InputRiews></InputRiews>
         </div>
-          <div>
-            <ButtonFilter>Alls</ButtonFilter>
-            <ButtonFilter>Latest</ButtonFilter>
-          </div>
+        <div>
+          <button className="p-3 text-primary border border-solid border-primary mr-[12px] rounded-[12px]">
+            Oldest
+          </button>
+          <button className="p-3 text-primary border border-solid border-primary rounded-[12px]">
+            Latest
+          </button>
+        </div>
       </div>
     </div>
   );
