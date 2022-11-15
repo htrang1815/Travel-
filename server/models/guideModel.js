@@ -21,6 +21,14 @@ const guideSchema = new mongoose.Schema({
     min: [1, "Rating must be above 1.0"],
     max: [5, "Rating must be below 5.0"],
   },
+  address: {
+    type: String,
+    require: [true, "Guide must have country"],
+  },
+  language: {
+    type: String,
+    require: [true, "Guide must have language"],
+  },
   ratingsQuantity: {
     type: Number,
     default: 0,
@@ -31,30 +39,41 @@ const guideSchema = new mongoose.Schema({
       ref: "Project",
     },
   ],
+  reason: {
+    type: String,
+  },
   experience: {
     type: String,
   },
   contact: {
     phone: {
-        type: String,
-        required: [true, "Guide must have phone"],
-        unique: true,
+      type: String,
+      required: [true, "Guide must have phone"],
+      unique: true,
     },
     email: {
-        type: String,
-        required: [true, "Guide must have email"],
-        unique: true,
-        validator: [validator.isEmail, "Please provide a valid email"],
+      type: String,
+      required: [true, "Guide must have email"],
+      unique: true,
+      validator: [validator.isEmail, "Please provide a valid email"],
     },
     facebook: {
-        type: String,
-        default: "https://www.facebook.com/BLACKPINKOFFICIAL",
+      type: String,
+      default: "https://www.facebook.com/BLACKPINKOFFICIAL",
     },
     instagram: {
-        type: String,
-        "instagram": "https://www.instagram.com/blackpinkofficial/"
+      type: String,
+      instagram: "https://www.instagram.com/blackpinkofficial/",
     },
   },
+});
+
+guideSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "place",
+    select: "name duration",
+  });
+  next();
 });
 
 const Guide = mongoose.model("Guide", guideSchema);

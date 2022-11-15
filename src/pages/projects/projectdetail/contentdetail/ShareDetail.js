@@ -5,11 +5,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setShowShare } from "../../../../store/showModal/showSlice";
 
-const ShareDetail = () => {
+const ShareDetail = ({className}) => {
   const dispatch = useDispatch();
   return (
     <>
-      <div className="save&share flex justify-end">
+      <div className={`save&share flex justify-end ${className}`}>
         <button className="save px-[10px] py-[5px] text-primary text-[14px] border border-solid border-[#ffbc4b] rounded-lg hover-button mr-[10px]">
           <FontAwesomeIcon
             className=" mr-[5px]"

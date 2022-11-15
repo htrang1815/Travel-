@@ -1,18 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const guideListSlice = createSlice({
-    name: "guideList",
-    initialState: {
-        guideList: [],
-    },
-    reducers: {
-        setGuideList: (state, action) => ({
-            ...state,
-            guideList: action.payload,
-        }),
-        getGuideList() {},
-    }
-});
-export const { setGuideList, getGuideList } = guideListSlice.actions;
+const guideSlice = createSlice({
+  name: "guide",
+  initialState: {
+    guide: {},
+  },
+  reducers: {
+    setGuide: (state, action) => ({
+      ...state,
+      guide: action.payload,
+    }),
 
-export default guideListSlice.reducer;
+    getGuide() {},
+  },
+});
+
+export const { setGuide, getGuide } = guideSlice.actions;
+
+export default guideSlice.reducer;

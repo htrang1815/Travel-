@@ -42,10 +42,7 @@ app.use(cookieParser());
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/reviews", reviewRoutes);
-<<<<<<< HEAD
 app.use("/api/v1/guides", guideRoutes);
-=======
->>>>>>> ebbdb26580c71e1af8725fde787f7c39f8cafcce
 
 // -- Tuyến dg checkout (cho thanh toán)
 app.use("/api/v1/bookings", bookingRoutes);

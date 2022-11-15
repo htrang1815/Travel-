@@ -2,6 +2,7 @@ import React from "react";
 import avt1 from "../../assets/images/guides/pic-2.png";
 
 const UserAvata = ({ className, show, setShow = () => {}, avatar = "" }) => {
+  console.log(avatar);
   return (
     <div
       onClick={() => {

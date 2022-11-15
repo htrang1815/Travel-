@@ -1,5 +1,4 @@
 import React from "react";
-
 import CollapsibleDetail from "./accordion/CollapsibleDetail";
 import { useSelector } from "react-redux";
 

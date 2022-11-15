@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import GuideItem from "../../../components/guides/GuideItem"
 
 const OurGuide = () => {
+  const { guideList } = useSelector((state) => state.guideList);
   return (
     <div className="py-[30px] px-[9%] ">
       <div className="text-center mb-[20px]">
@@ -11,14 +13,9 @@ const OurGuide = () => {
         </h1>
       </div>
       <div className="grid grid-cols-4 gap-[15px]">
-      <GuideItem></GuideItem>      
-      <GuideItem></GuideItem>      
-      <GuideItem></GuideItem>      
-      <GuideItem></GuideItem>      
-      <GuideItem></GuideItem>      
-      <GuideItem></GuideItem>      
-      <GuideItem></GuideItem>      
-      <GuideItem></GuideItem>      
+      {guideList?.map((guide) => (
+          <GuideItem  key={guide._id} guideData={guide}></GuideItem>
+        ))}     
       </div>
     </div>
   );

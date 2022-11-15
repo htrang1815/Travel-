@@ -1,5 +1,4 @@
 import React from "react";
-import StarIcon from "../../../../../components/icon/StarIcon";
 import UserInfo from "../../../../../components/user/UserInfo";
 import imgreview from "../../../../../assets/images/gallery/gallery-img-1.jpg";
 import { Rating } from "@mui/material";
@@ -29,7 +28,7 @@ const ReviewItem = ({ children, review }) => {
         <p className="w-[80%]">{children}</p>
         {review?.image && review?.image?.length !== 0 ? (
           <div className="w-[20%] h-[80px] flex justify-end gap-3">
-            <img src={imgreview} className=" object-cover w-[80%]" alt="" />
+            <img src={review.image} className=" object-cover w-[80%]" alt="" />
           </div>
         ) : (
           ""

@@ -2,8 +2,10 @@ import React from "react";
 import GuideItem from "../../../components/guides/GuideItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+import { useSelector } from "react-redux";
 
 const TourGuide = ({ className }) => {
+  const { guideList } = useSelector((state) => state.guideList);
   return (
     <div className={`${className} recommend py-[30px] px-[9%]`}>
       <div className="text-left  mb-[20px]">
@@ -26,7 +28,13 @@ const TourGuide = ({ className }) => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
+        {guideList?.map((guide) => (
           <SwiperSlide>
+            {" "}
+            <GuideItem  key={guide._id} guideData={guide}></GuideItem>
+          </SwiperSlide>
+        ))}  
+          {/* <SwiperSlide>
             {" "}
             <GuideItem></GuideItem>
           </SwiperSlide>
@@ -73,7 +81,7 @@ const TourGuide = ({ className }) => {
           <SwiperSlide>
             {" "}
             <GuideItem></GuideItem>
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
       </>
     </div>

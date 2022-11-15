@@ -14,6 +14,8 @@ import TourGuide from "./tourguide/TourGuide";
 import Reviews from "./projectdetail/contentdetail/Reviews";
 import ModalReview from "../../components/modal/ModalReview";
 import { joinPlace } from "../../realtimeCommunication/socketConnection";
+import { getGuide } from "../../store/guide/slice";
+import { getGuideList } from "../../store/guideList/slice";
 
 const ProjectDetails = () => {
   const currentURL = window.location.href;
@@ -27,6 +29,7 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     dispatch(getProject(projectId));
+    dispatch(getGuideList());
   }, [dispatch, projectId]);
 
   return (

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Guide = require("./guideModel");
 const Project = require("./projectModel");
 
 const reviewSchema = new mongoose.Schema(
@@ -25,6 +26,10 @@ const reviewSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Project",
     },
+    guide: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Guide",
+    },
     image: { type: String },
   },
   {
@@ -33,16 +38,21 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-reviewSchema.index({ place: 1, user: 1 }, { unique: true });
+reviewSchema.index({ place: 1, user: 1,  }, { unique: true });
 
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
     select: "name avatarUrl",
-  }).populate({
-    path: "place",
-    select: "_id name",
-  });
+  })
+    .populate({
+      path: "place",
+      select: "_id name",
+    })
+    .populate({
+      path: "guide",
+      select: "_id name avatarUrl",
+    });
   next();
 });
 
@@ -75,8 +85,36 @@ reviewSchema.statics.calcAverageRatings = async function (placeId) {
   }
 };
 
+reviewSchema.statics.calcAverageRatingsGuide = async function (guideId) {
+  const stats = await this.aggregate([
+    {
+      $match: { guide: guideId },
+    },
+    {
+      $group: {
+        _id: "$guide",
+        nRating: { $sum: 1 },
+        avgRating: { $avg: "$rating" },
+      },
+    },
+  ]);
+
+  if (stats.length > 0) {
+    await Guide.findByIdAndUpdate(guideId, {
+      ratingsQuantity: stats[0].nRating,
+      ratingAverage: stats[0].avgRating,
+    });
+  } else {
+    await Guide.findByIdAndUpdate(guideId, {
+      ratingsQuantity: 0,
+      ratingAverage: 4.5,
+    });
+  }
+};
+
 reviewSchema.post("save", function () {
   this.constructor.calcAverageRatings(this.place);
+  this.constructor.calcAverageRatingsGuide(this.guide);
 
   // this.constructor: chính là thằng Review
 });
@@ -91,6 +129,7 @@ reviewSchema.pre(/^findOneAnd/, async function (next) {
 
 reviewSchema.post(/^findOneAnd/, async function () {
   await this.r.constructor.calcAverageRatings(this.r.place._id);
+  await this.r.constructor.calcAverageRatingsGuide(this.r.guide._id);
 });
 
 const Review = mongoose.model("Review", reviewSchema);

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const GuideList = () => {
 
   const { guideList } = useSelector((state) => state.guideList);
-  console.log(guideList);
+  console.log("guideList",guideList);
   return (
     <div className="py-[30px] px-[9%]">
       <div className="w-full py-[30px] grid grid-cols-4 grid-rows-2 gap-[15px]  mb-[30px]">

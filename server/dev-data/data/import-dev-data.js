@@ -12,9 +12,7 @@ dotenv.config({ path: "./config.env" });
 const project = JSON.parse(
   fs.readFileSync(`${__dirname}/project.json`, "utf-8")
 );
-const guide = JSON.parse(
-  fs.readFileSync(`${__dirname}/guide.json`, "utf-8")
-);
+const guide = JSON.parse(fs.readFileSync(`${__dirname}/guide.json`, "utf-8"));
 
 project.forEach((el) => {
   console.log(el.images);
@@ -29,7 +27,7 @@ const importData = async () => {
     await Project.create(project);
     console.log("Data successfully loaded!");
     await Guide.create(guide);
-    console.log("Guide loaded")
+    console.log("Guide loaded");
   } catch (err) {
     console.log(err);
   }
@@ -44,6 +42,10 @@ const deleteData = async () => {
     });
     await Project.deleteMany();
     console.log("Data successfully deleted!");
+    
+    await Guide.deleteMany();
+    console.log("Data successfully deleted!");
+    
     process.exit();
   } catch (err) {
     console.log(err);

@@ -1,22 +1,15 @@
 import { call, put } from "redux-saga/effects";
-import requestGetGuideList from "./callApi";
-import { setGuideList } from "./slice";
- 
-export default function* handleGetGuideList(actions) {
-// actions ở đây khác vs action.payload trong slice.js
- try {
-   // Gọi đến hàm call API, tham số thứ hai là prop truyền vào API
-   const response = yield call(requestGetGuideList, actions.payload);
-  console.log(response)
-   // Lấy dữ liệu  cần
-   const { guides } = response.data.data;
- 
-   // update lại state
-   yield put(setGuideList(guides));
-   //  sets đc truyền vào set chính 
-   // là action.payload trong slice.js
- } catch (err) {
-   console.log(err);
- }
+import requestGetGuide from "./callApi";
+import { setGuide } from "./slice";
+
+export default function* handleGetGuide(actions) {
+  try {
+    const response = yield call(requestGetGuide, actions.payload);
+
+    const { guide } = response.data.data;
+
+    yield put(setGuide(guide));
+  } catch (err) {
+    console.log(err);
+  }
 }
- 
