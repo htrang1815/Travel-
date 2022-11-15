@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import ButtonLoadMore from "../../../../components/button/ButtonLoadMore";
 import ReviewItem from "./ReviewItem";
+import { getReviewInAGuide } from "../../../../store/reviewGuide/reviewSlice";
 
 const ReviewGuide = ({ guideName, className }) => {
+  const dispatch = useDispatch();
+  const { guideId } = useParams();
+
+  const { reviewInAGuide } = useSelector((state) => state.reviewGuide);
+  useEffect(() => {
+    dispatch(getReviewInAGuide(guideId));
+  }, [dispatch, guideId]);
+  console.log(reviewInAGuide);
   return (
     <div
       className={`${className} border border-solid border-primary min-h-[80vh] flex flex-col rounded-[10px] pb-[10px] px-[8px]`}
@@ -13,7 +24,12 @@ const ReviewGuide = ({ guideName, className }) => {
         </h2>
       </div>
       <div className="review-list px-[10px] h-auto flex-grow overflow-hidden ">
-        <div className="">
+        {reviewInAGuide?.map((review) => (
+          <ReviewItem key={review._id} review={review}>
+            {review.review}{" "}
+          </ReviewItem>
+        ))}
+        {/* <div className="">
           <ReviewItem>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolor
             aspernatur rem provident quis ducimus blanditiis tempora illum
@@ -50,14 +66,14 @@ const ReviewGuide = ({ guideName, className }) => {
             corporis eius, dignissimos, vitae architecto! Voluptatum placeat
             quidem fugit quam laborum debitis.
           </ReviewItem>
-        </div>
+        </div> */}
       </div>
-        <div className="text-center">
-          <ButtonLoadMore
-            text="Load more"
-            className="text-primary"
-          ></ButtonLoadMore>
-        </div>
+      <div className="text-center">
+        <ButtonLoadMore
+          text="Load more"
+          className="text-primary"
+        ></ButtonLoadMore>
+      </div>
     </div>
   );
 };

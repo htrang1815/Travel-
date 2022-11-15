@@ -5,6 +5,7 @@ import projectSaga from "./project/saga";
 import projectListSaga from "./projectList/saga";
 import projectInTourSaga from "./review/saga";
 import guideSaga from "./guide/saga";
+import reviewInGuideSaga from "./reviewGuide/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -14,5 +15,6 @@ export default function* rootSaga() {
     fork(guideListSaga),
     fork(projectInTourSaga),
     fork(guideSaga),
+    fork(reviewInGuideSaga)
   ]);
 }
