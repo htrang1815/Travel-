@@ -4,8 +4,10 @@ const catchAsync = require("../utils/catchAsync");
 
 exports.getAllReviews = catchAsync(async (req, res) => {
   let filter = {};
+  console.log(req.params);
 
   if (req.params.placeId) filter = { place: req.params.placeId };
+  if (req.params.guideId) filter = { guide: req.params.guideId };
 
   const reviews = await Review.find(filter);
   res.status(200).json({

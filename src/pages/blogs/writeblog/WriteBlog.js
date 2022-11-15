@@ -39,6 +39,9 @@ const WriteBlog = () => {
           type="text"
           placeholder="Start writing here ... "
           className="block w-full min-h-[600px] 0 outline-none resize-none border-none p-[10px] rounded-[10px] mt-4 leading-[30px] font-[500] pb-[100px] whitespace-pre-wrap normal-case scroll-textarea"
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
         ></textarea>
       </div>
       <div className="fixed bottom-0 left-[50%] ml-[-60px] w-auto h-[60px] bg-[#fff] z-20 flex justify-center items-center ">

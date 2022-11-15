@@ -4,7 +4,7 @@ import projectListSlice from "./projectList/slice";
 import projectSlice from "./project/slice";
 import showSlice from "./showModal/showSlice";
 import reviewSlice from "./review/reviewSlice";
-import guideListSlice from "./guideList/slice";
+import guideListSlice from "./guide/slice";
 import loadingSlice from "./loading/loadingSlice";
 import guideSlice from "./guide/slice";
 import reviewGuideSlice from './guideList/slice'
