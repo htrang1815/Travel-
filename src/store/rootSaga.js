@@ -12,7 +12,6 @@ export default function* rootSaga() {
     fork(authSaga),
     fork(projectListSaga),
     fork(projectSaga),
-    fork(guideListSaga),
     fork(projectInTourSaga),
     fork(guideListSaga),
     fork(guideSaga),

@@ -4,6 +4,7 @@ import GuideItem from "../../../components/guides/GuideItem"
 
 const OurGuide = () => {
   const { guideList } = useSelector((state) => state.guideList);
+  console.log(guideList);
   return (
     <div className="py-[30px] px-[9%] ">
       <div className="text-center mb-[20px]">

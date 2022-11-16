@@ -4,10 +4,10 @@ import projectListSlice from "./projectList/slice";
 import projectSlice from "./project/slice";
 import showSlice from "./showModal/showSlice";
 import reviewSlice from "./review/reviewSlice";
-import guideListSlice from "./guide/slice";
+import guideListSlice from "./guideList/slice";
 import loadingSlice from "./loading/loadingSlice";
 import guideSlice from "./guide/slice";
-import reviewGuideSlice from './guideList/slice'
+import reviewGuideSlice from "./guideList/slice";
 
 export const reducer = combineReducers({
   auth: authSlice,
@@ -18,5 +18,5 @@ export const reducer = combineReducers({
   guideList: guideListSlice,
   guide: guideSlice,
   loading: loadingSlice,
-  reviewGuide : reviewGuideSlice,
+  reviewGuide: reviewGuideSlice,
 });
