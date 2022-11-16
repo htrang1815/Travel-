@@ -22,7 +22,7 @@ const ModalFilter = () => {
           dispatch(setShowFilter(false));
         }}
       ></div>
-      <div className=" bg-primary w-[40%] min-h-[45%] z-[500] p-[2%] filter">
+      <div className=" bg-primary w-max min-h-[45%] z-[500] p-[2%] filter">
         <div>
           <span className="text-[20px] text-[#111] font-[500] mb-[10px]">
             Lenght
@@ -41,8 +41,10 @@ const ModalFilter = () => {
           </span>
           <FilterDeparture></FilterDeparture>
         </div>
-        <div className='text-center mt-[15px]'>
-          <button className='text-[16px] px-[30px] py-[8px] text-[#111] border border-solid border-[#111] rounded-md hover-btn'>Result</button>
+        <div className="text-center mt-[15px]">
+          <button className="text-[16px] px-[30px] py-[8px] text-[#111] border border-solid border-[#111] rounded-md hover-btn">
+            Result
+          </button>
         </div>
       </div>
     </div>,

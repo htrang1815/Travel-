@@ -103,6 +103,8 @@ const projectSchema = new mongoose.Schema(
   }
 );
 
+projectSchema.index({ name: 1, guides: 1 });
+
 // Lưu ảo 1 mảng chứa các id của reviews
 projectSchema.virtual("reviews", {
   ref: "Review",

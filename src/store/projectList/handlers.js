@@ -3,9 +3,9 @@ import requestGetProjectList from "./callApi";
 
 import { setProjectList } from "./slice";
 
-export default function* handleGetProjectList() {
+export default function* handleGetProjectList(actions) {
   try {
-    const response = yield call(requestGetProjectList);
+    const response = yield call(requestGetProjectList, actions.payload);
     const { projects } = response.data.data;
 
     yield put(setProjectList(projects));

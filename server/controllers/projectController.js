@@ -3,8 +3,26 @@ const AppError = require("../utils/appError");
 const Project = require("../models/projectModel");
 
 exports.getAllProjects = catchAsync(async (req, res) => {
-  const projects = await Project.find();
+  let queryObj = { ...req.query };
 
+  // if (Object.values(queryObj)[0].includes("/")) {
+  //   queryObj = {
+  //     ...queryObj,
+  //     name: Object.values(queryObj)[0].replace(/"([^"]+(?="))"/g, "$1"),
+  //   };
+  // }
+
+  const excludedFields = ["page", "sort", "limit", "fields"];
+
+  // Loại các thằng page, ... ra khỏi chuỗi truy vấn
+  excludedFields.forEach((el) => delete queryObj[el]);
+
+  let queryStr = JSON.stringify(queryObj);
+  queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+  console.log(queryStr);
+
+  const query = Project.find(JSON.parse(queryStr));
+  const projects = await query;
   res.status(200).json({
     status: "success",
     results: projects.length,

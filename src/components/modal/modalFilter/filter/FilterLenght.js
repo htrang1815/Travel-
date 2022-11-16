@@ -1,7 +1,7 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import { Typography } from '@mui/material';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import { Typography } from "@mui/material";
 
 function valuetext(value) {
   return `${value}`;
@@ -23,25 +23,22 @@ export default function FilterLenght() {
       setValue1([value1[0], Math.max(newValue[1], value1[0] + minDistance)]);
     }
   };
-  
 
   return (
-    <Box sx={{ width: 549 }} className='filter-lenght'>
-    <div className='flex items-center justify-between '>
+    <Box sx={{ width: 549 }} className="filter-lenght">
+      <div className="flex items-center justify-between ">
         <span className="text-[14px] text-[#111]">Min: {value1[0]}</span>
         <span className="text-[14px] text-[#111]">Max: {value1[1]}</span>
-    </div>
+      </div>
       <Slider
-        getAriaLabel={() => 'Minimum distance'}
+        getAriaLabel={() => "Minimum distance"}
         value={value1}
         onChange={handleChange1}
         valueLabelDisplay="auto"
         getAriaValueText={valuetext}
         max={30}
         disableSwap
-        
       />
     </Box>
   );
-  
 }
