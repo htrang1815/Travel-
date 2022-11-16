@@ -2,8 +2,10 @@ import React from "react";
 import ProjectItem from "../../../../components/projects/ProjectItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+import { useSelector } from "react-redux";
 
 const Recommend = ({ className }) => {
+  const {projectList} = useSelector((state) => state.projectList)
   return (
     <div className={`${className} recommend`}>
       <div className="text-left  mb-[20px]">
@@ -26,6 +28,13 @@ const Recommend = ({ className }) => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
+        {projectList?.map((project) => (
+            <SwiperSlide key={project._id}>
+              {" "}
+              <ProjectItem projectData={project}></ProjectItem>
+            </SwiperSlide>
+          ))}
+          {/* <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
           <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
           <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
           <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
@@ -36,8 +45,7 @@ const Recommend = ({ className }) => {
           <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
           <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
           <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
-          <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
-          <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide>
+          <SwiperSlide> <ProjectItem></ProjectItem></SwiperSlide> */}
         </Swiper>
       </>
 

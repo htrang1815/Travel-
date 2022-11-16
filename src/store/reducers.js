@@ -7,7 +7,7 @@ import reviewSlice from "./review/reviewSlice";
 import guideListSlice from "./guideList/slice";
 import loadingSlice from "./loading/loadingSlice";
 import guideSlice from "./guide/slice";
-import reviewGuideSlice from "./guideList/slice";
+import reviewGuideSlice from "./reviewGuide/reviewSlice";
 
 export const reducer = combineReducers({
   auth: authSlice,

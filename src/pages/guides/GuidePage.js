@@ -6,12 +6,14 @@ import GuideList from "../projects/tourguide/components/GuideList";
 import Recommend from "../projects/tourguide/components/Recommend";
 import { useDispatch } from "react-redux";
 import {getGuideList} from "../../store/guideList/slice"
+import { getProjectList } from "../../store/projectList/slice";
 
 const GuidePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getGuideList());
+    dispatch(getProjectList())
   }, [dispatch]);
   console.log("getGuideList : ",getGuideList());
   return (
