@@ -4,32 +4,37 @@ const Project = require("../models/projectModel");
 
 exports.getAllProjects = catchAsync(async (req, res) => {
   let queryObj = { ...req.query };
+  const { name } = req.query;
 
-  // if (Object.values(queryObj)[0].includes("/")) {
-  //   queryObj = {
-  //     ...queryObj,
-  //     name: Object.values(queryObj)[0].replace(/"([^"]+(?="))"/g, "$1"),
-  //   };
-  // }
+  if (name) {
+    const projects = await Project.find({
+      name: new RegExp(name, "i"),
+    });
+    res.status(200).json({
+      status: "success",
+      results: projects.length,
+      data: {
+        projects,
+      },
+    });
+  } else {
+    const excludedFields = ["page", "sort", "limit", "fields"];
 
-  const excludedFields = ["page", "sort", "limit", "fields"];
+    // Loại các thằng page, ... ra khỏi chuỗi truy vấn
+    excludedFields.forEach((el) => delete queryObj[el]);
 
-  // Loại các thằng page, ... ra khỏi chuỗi truy vấn
-  excludedFields.forEach((el) => delete queryObj[el]);
-
-  let queryStr = JSON.stringify(queryObj);
-  queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-  console.log(queryStr);
-
-  const query = Project.find(JSON.parse(queryStr));
-  const projects = await query;
-  res.status(200).json({
-    status: "success",
-    results: projects.length,
-    data: {
-      projects,
-    },
-  });
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    const query = Project.find(JSON.parse(queryStr));
+    const projects = await query;
+    res.status(200).json({
+      status: "success",
+      results: projects.length,
+      data: {
+        projects,
+      },
+    });
+  }
 });
 
 exports.getProjectsByFilter = catchAsync(async (req, res) => {
