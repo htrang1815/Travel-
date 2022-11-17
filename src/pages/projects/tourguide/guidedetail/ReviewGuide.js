@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ButtonLoadMore from "../../../../components/button/ButtonLoadMore";
 import ReviewItem from "./ReviewItem";
 import { getReviewInAGuide } from "../../../../store/reviewGuide/reviewSlice";
+import InputRiews from "../../projectdetail/contentdetail/review/InputRiews";
 
 const ReviewGuide = ({ guideName, className }) => {
   const dispatch = useDispatch();
@@ -18,8 +19,9 @@ const ReviewGuide = ({ guideName, className }) => {
     <div
       className={`${className} border border-solid border-primary min-h-[40vh] flex flex-col rounded-[10px] pb-[10px] px-[8px]`}
     >
-      <div className="">
-        <h2 className="text-[16px] text-primary font-[500] pb-[10px] py-[10px]">
+      <div className="pt-[10px]">
+      <InputRiews className='mb-[10px]'></InputRiews>
+        <h2 className="text-[16px] text-primary font-[500] pb-[10px]">
           Client say about {guideName}
         </h2>
       </div>

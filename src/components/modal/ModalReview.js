@@ -30,9 +30,9 @@ const ModalReview = () => {
   const { rating } = useSelector((state) => state.review);
   const { loadingButtonReview } = useSelector((state) => state.loading);
 
-  console.log(loadingButtonReview);
+  // console.log(loadingButtonReview);
   const { imageCover, getImageUrl } = useGetImageUrl();
-  const { projectId } = useParams();
+  const { projectId, guideId } = useParams();
 
   const dispatch = useDispatch();
 
@@ -57,15 +57,27 @@ const ModalReview = () => {
     if (isValid) {
       try {
         if (rating && rating !== 0) {
-          const review = await axios.post(
-            `${domain}/api/v1/projects/${projectId}/reviews`,
-            {
-              review: values.review,
-              rating: 5,
-              image: imageCover || "",
-            }
-          );
-          createReview(review.data.data);
+          if (projectId) {
+            const review = await axios.post(
+              `${domain}/api/v1/projects/${projectId}/reviews`,
+              {
+                review: values.review,
+                rating: 5,
+                image: imageCover || "",
+              }
+            );
+            createReview(review.data.data);
+          } else {
+            const review = await axios.post(
+              `${domain}/api/v1/guides/${guideId}/reviews`,
+              {
+                review: values.review,
+                rating: 5,
+                image: imageCover || "",
+              }
+            );
+            createReview(review.data.data);
+          }        
         } else {
           dispatch(setShowAlert(true));
           dispatch(setAlertContent("You must rating"));
@@ -73,8 +85,7 @@ const ModalReview = () => {
         }
       } catch (err) {
         dispatch(setShowModalReview(false));
-        console.log(err);
-        // console.log(showModalAlert);
+        // console.log(err);
         dispatch(setShowAlert(true));
         dispatch(setAlertContent("You reviewed"));
         dispatch(setType("fail"));

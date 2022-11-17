@@ -27,3 +27,6 @@ export const createReview = (data) => {
 export const joinPlace = (data) => {
   socket.emit("join-place", data);
 };
+export const joinGuide = (data) => {
+  socket.emit("join-guide", data);
+};

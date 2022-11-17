@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../home/header/Header";
-import imgdefault from "../../assets/images/blogs/imgdedault.jpeg";
+import Moment from 'react-moment';
+// import 'moment-timezone';
 import Footer from "../home/footer/Footer";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,10 +22,10 @@ const BlogDetail = () => {
   }, [dispatch, blogId]);
 
   const { blog } = useSelector((state) => state.blog);
-  console.log("blog" , blog);
+  console.log("blog", blog);
   return (
     <div className="bg-[#111] ">
-      {/* <Header></Header> */}
+      <Header></Header>
       <div className="bg-[#111] w-full pt-[78px] h-[400px] px-[5%] ">
         <div className=" w-full h-full text-primary  bg-cover bg-center relative ">
           <img
@@ -39,12 +40,17 @@ const BlogDetail = () => {
           {blog?.title}
         </h1>
         <span className="normal-case pb-[20px] italic mr-[12px]">
-          Puslished at - {blog?.publishAt}
+          Puslished at - 
+          <Moment format="YYYY/MM/DD">
+          {blog?.publishAt}
+            </Moment>
         </span>
-        <span className="normal-case pb-[20px] italic">Create by - {blog?.user?.name}</span>
+        <span className="normal-case pb-[20px] italic">
+          Create by - {blog?.user?.name}
+        </span>
       </div>
       <div className="bg-[#111] w-full px-[7%] py-[20px]">
-        <p className="w-full bg-[#fff] px-[2%] py-[10] text-[#111]">
+        <p className="w-full bg-[#fff] px-[2%] py-[10px] leading-9d l text-[#111]">
           {blog?.article}
         </p>
       </div>
