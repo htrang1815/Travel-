@@ -6,20 +6,19 @@ import lodash from "lodash";
 import ButtonFilter from "../../../components/button/ButtonFilter";
 import axios from "axios";
 import domain from "../../../utils/common";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProjectList } from "../../../store/projectList/slice";
 // import Filter from './Filter';
 
 const Search = () => {
   const dispatch = useDispatch();
+  const { projectPage } = useSelector((state) => state.projectList);
+
   const handleSearch = lodash.debounce(async (e) => {
     e.preventDefault();
-    // const result = await axios.get(
-    //   `${domain}/api/v1/projects?name=${e.target.value}`
-    // );
-    // console.log(result.data.data.projects.name);
+
     console.log(e.target.value);
-    dispatch(getProjectList(e.target.value));
+    dispatch(getProjectList({ query: e.target.value, page: projectPage }));
   }, 500);
   return (
     <div className="w-full py-[30px] px-[9%]  rounded-[10px] ">

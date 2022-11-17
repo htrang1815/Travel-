@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
   },
   dateOfBirth: { type: Date, default: Date.now },
 
+  bookmark: [{
+    type: mongoose.Schema.ObjectId,
+    ref: "Place",
+  }],
   password: {
     type: String,
     required: [isUnRequired, "Please provide a password"],

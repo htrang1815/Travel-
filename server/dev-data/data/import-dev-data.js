@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const Project = require("../../models/projectModel");
 const Guide = require("../../models/guideModel");
 const Blog = require("../../models/blogModel");
+const User = require("../../models/userModel");
 
 dotenv.config({ path: "./config.env" });
 
@@ -16,6 +17,9 @@ const project = JSON.parse(
 const guide = JSON.parse(fs.readFileSync(`${__dirname}/guide.json`, "utf-8"));
 
 const blog = JSON.parse(fs.readFileSync(`${__dirname}/blog.json`, "utf-8"));
+
+const user = JSON.parse(fs.readFileSync(`${__dirname}/user.json`, "utf-8"));
+ 
 
 project.forEach((el) => {
   console.log(el.images);
@@ -33,6 +37,8 @@ const importData = async () => {
     console.log("Guide loaded");
     await Blog.create(blog);
     console.log("Blog loaded");
+    await User.create(user);
+    console.log("User loaded");
   } catch (err) {
     console.log(err);
   }
@@ -53,6 +59,9 @@ const deleteData = async () => {
 
     await Blog.deleteMany();
     console.log("Blog successfully deleted!");
+
+    await User.deleteMany();
+    console.log("User successfully deleted!");
 
     process.exit();
   } catch (err) {

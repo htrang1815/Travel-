@@ -5,7 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const BlogItem = ({ blogData, className }) => {
-  // console.log(blogData?.publishedAt);
+  console.log(blogData?.bannerImage);
   const navigate = useNavigate();
   return (
     <div

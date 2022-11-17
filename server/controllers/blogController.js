@@ -36,6 +36,7 @@ exports.getBlog = catchAsync(async (req, res, next) => {
     },
   });
 });
+
 exports.updateBlog = catchAsync(async (req, res, next) => {
   const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -55,6 +56,7 @@ exports.updateBlog = catchAsync(async (req, res, next) => {
     },
   });
 });
+
 exports.deleteBlog = catchAsync(async (req, res, next) => {
   const blog = await Blog.findByIdAndDelete(req.params.id);
   if (!blog) {
