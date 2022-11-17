@@ -16,7 +16,7 @@ const ReviewGuide = ({ guideName, className }) => {
   console.log(reviewInAGuide);
   return (
     <div
-      className={`${className} border border-solid border-primary min-h-[80vh] flex flex-col rounded-[10px] pb-[10px] px-[8px]`}
+      className={`${className} border border-solid border-primary min-h-[40vh] flex flex-col rounded-[10px] pb-[10px] px-[8px]`}
     >
       <div className="">
         <h2 className="text-[16px] text-primary font-[500] pb-[10px] py-[10px]">

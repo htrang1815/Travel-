@@ -5,9 +5,12 @@ import projectSlice from "./project/slice";
 import showSlice from "./showModal/showSlice";
 import reviewSlice from "./review/reviewSlice";
 import guideListSlice from "./guideList/slice";
+import blogListSlice from "./blogList/slice";
 import loadingSlice from "./loading/loadingSlice";
 import guideSlice from "./guide/slice";
+import blogSlice from "./blog/slice";
 import reviewGuideSlice from "./reviewGuide/reviewSlice";
+import alertSlice from "./alert/alertSlice";
 
 export const reducer = combineReducers({
   auth: authSlice,
@@ -19,4 +22,7 @@ export const reducer = combineReducers({
   guide: guideSlice,
   loading: loadingSlice,
   reviewGuide: reviewGuideSlice,
+  alert: alertSlice,
+  blogList: blogListSlice,
+  blog: blogSlice,
 });

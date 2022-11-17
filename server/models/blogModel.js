@@ -11,7 +11,7 @@ const blogSchema = new mongoose.Schema({
   },
   publishedAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now() ,
   },
   user: {
     type: mongoose.Schema.ObjectId,
@@ -22,6 +22,14 @@ const blogSchema = new mongoose.Schema({
     type: String,
   },
 });
+blogSchema.pre(/^find/, function(next){
+  this.populate({
+    path: "user",
+    select: "name avatarUrl"
+  });
+  next();
+});
+
 
 const Blog = mongoose.model("Blog", blogSchema);
 

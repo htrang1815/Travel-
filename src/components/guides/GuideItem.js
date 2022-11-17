@@ -33,9 +33,10 @@ const GuideItem = ({guideData, className}) => {
         }
         style={{
           color: "#ffbc4a",
+          fontSize : 20,
         }}
-        sx={20}
-        defaultValue={guideData?.ratingAverage}
+        // sx={20, color: "#ffbc4a"}
+        defaultValue={guideData?.ratingAverage || 4.5}
         precision={0.5}
       ></Rating>
                         </div>

@@ -5,6 +5,7 @@ import AboutUs from "./pages/aboutus/AboutUs";
 import AdminPage from "./pages/admin/AdminPage";
 import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
+import BlogDetail from "./pages/blogs/BlogDetail";
 import BlogsPage from "./pages/blogs/BlogsPage";
 import WriteBlog from "./pages/blogs/writeblog/WriteBlog";
 import BookingSuccessful from "./pages/booking/BookingSuccessful";
@@ -38,6 +39,10 @@ const Router = () => {
               element={<ProjectsPage></ProjectsPage>}
             ></Route>
             <Route path="/blog" element={<BlogsPage></BlogsPage>}></Route>
+            <Route
+              path="/blog/:blogId"
+              element={<BlogDetail></BlogDetail>}
+            ></Route>
             <Route
               path="/blog/writeblog"
               element={<WriteBlog></WriteBlog>}

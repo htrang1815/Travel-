@@ -29,9 +29,9 @@ const TourGuide = ({ className }) => {
           className="mySwiper"
         >
         {guideList?.map((guide) => (
-          <SwiperSlide>
+          <SwiperSlide key={guide._id}>
             {" "}
-            <GuideItem  key={guide._id} guideData={guide}></GuideItem>
+            <GuideItem   guideData={guide}></GuideItem>
           </SwiperSlide>
         ))}  
           {/* <SwiperSlide>

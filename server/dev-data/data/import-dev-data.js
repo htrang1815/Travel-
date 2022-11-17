@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Project = require("../../models/projectModel");
 const Guide = require("../../models/guideModel");
+const Blog = require("../../models/blogModel");
 
 dotenv.config({ path: "./config.env" });
 
@@ -13,6 +14,8 @@ const project = JSON.parse(
   fs.readFileSync(`${__dirname}/project.json`, "utf-8")
 );
 const guide = JSON.parse(fs.readFileSync(`${__dirname}/guide.json`, "utf-8"));
+
+const blog = JSON.parse(fs.readFileSync(`${__dirname}/blog.json`, "utf-8"));
 
 project.forEach((el) => {
   console.log(el.images);
@@ -28,6 +31,8 @@ const importData = async () => {
     console.log("Data successfully loaded!");
     await Guide.create(guide);
     console.log("Guide loaded");
+    await Blog.create(blog);
+    console.log("Blog loaded");
   } catch (err) {
     console.log(err);
   }
@@ -41,11 +46,14 @@ const deleteData = async () => {
       console.log("DB connection successful!");
     });
     await Project.deleteMany();
-    console.log("Data successfully deleted!");
-    
+    console.log("Place successfully deleted!");
+
     await Guide.deleteMany();
-    console.log("Data successfully deleted!");
-    
+    console.log("Guide successfully deleted!");
+
+    await Blog.deleteMany();
+    console.log("Blog successfully deleted!");
+
     process.exit();
   } catch (err) {
     console.log(err);

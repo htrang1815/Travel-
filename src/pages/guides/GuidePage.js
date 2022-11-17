@@ -15,7 +15,7 @@ const GuidePage = () => {
     dispatch(getGuideList());
     dispatch(getProjectList())
   }, [dispatch]);
-  console.log("getGuideList : ",getGuideList());
+  // console.log("getGuideList : ",getGuideList());
   return (
     <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
       <Header></Header>

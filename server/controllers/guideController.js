@@ -37,5 +37,34 @@ exports.getAllGuide = catchAsync(async (req, res) => {
       },
     });
   });
+  exports.updateGuide = catchAsync(async (req, res, next) => {
+    const guide = await Guide.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      // (để nó sẽ trả về document mới nhất)
+      runValidators: true,
+      // (có chạy trình validate)
+    });
+  
+    if (!guide) {
+      return next(new AppError("No guide found with that ID", 404));
+    }
+  
+    res.status(200).json({
+      status: "success",
+      data: {
+        guide,
+      },
+    });
+  });
+  exports.deleteGuide = catchAsync(async (req, res, next) => {
+    const guide = await Guide.findByIdAndDelete(req.params.id);
+    if (!guide) {
+      return next(new AppError("No guide found with that ID", 404));
+    }
+    res.status(204).json({
+      status: "success",
+      data: null,
+    });
+  });
 
   

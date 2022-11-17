@@ -4,7 +4,7 @@ const blogController = require("../controllers/blogController");
 
 const router = express.Router();
 
-router.use(authController.protect);
+// router.use(authController.protect);
 
 router
   .route("/")

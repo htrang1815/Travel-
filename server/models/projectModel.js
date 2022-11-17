@@ -93,7 +93,7 @@ const projectSchema = new mongoose.Schema(
     guides: [
       {
         type: mongoose.Schema.ObjectId,
-        ref: "User",
+        ref: "Guide",
       },
     ],
   },

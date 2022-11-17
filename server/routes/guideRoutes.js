@@ -13,12 +13,12 @@ router
   .get(guideController.getAllGuide)
   .post(guideController.createGuide);
 
-router.get("/:id", guideController.getGuide);
+// router.get("/:id", guideController.getGuide);
 
-// router
-//   .route("/:id")
-//   .get(guideController.getBlog)
-//   .patch(guideController.updateBlog)
-//   .delete(guideController.deleteBlog);
+router
+  .route("/:id")
+  .get(guideController.getGuide)
+  .patch(guideController.updateGuide)
+  .delete(guideController.deleteGuide);
 
 module.exports = router;

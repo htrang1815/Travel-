@@ -20,7 +20,7 @@ const OverallReview = () => {
               Overall rating
             </span>
             <h2 className="text-[24px] font-[600] text-primary mb-[10px]">
-              {project?.ratingAverage}
+            {project?.ratingAverage}
             </h2>
             <div className="text-primary">
               <Rating
@@ -39,14 +39,15 @@ const OverallReview = () => {
                 }
                 style={{
                   color: "#ffbc4a",
+                  fontSize : 20,
                 }}
-                sx={20}
-                defaultValue={project?.ratingAverage}
+                // sx={20}
+                defaultValue={project?.ratingAverage || 4.5}
                 precision={0.5}
               ></Rating>
             </div>
             <span className="text-[#ccc] text-[14px]">
-              Base on {project?.ratingsQuantity} reviews
+              Base on {project?.ratingsQuantity || 0} reviews
             </span>
           </div>
           <InputRiews></InputRiews>

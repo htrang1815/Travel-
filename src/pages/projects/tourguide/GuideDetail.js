@@ -37,7 +37,7 @@ const GuideDetail = () => {
         <ControlDetail></ControlDetail>
         <PosterDetail></PosterDetail>
         <ProfileGuide></ProfileGuide>
-        <div className="px-[9%] py-[30px] grid grid-cols-3 gap-[30px] mb-[20px]">
+        <div className="px-[9%] py-[30px] grid grid-flow-row grid-cols-3 gap-[30px] mb-[20px]">
           <DescribeGuide className="col-span-2"></DescribeGuide>
           <ReviewGuide></ReviewGuide>
         </div>

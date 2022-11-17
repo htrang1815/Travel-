@@ -1,3 +1,4 @@
+import { faDiagramSuccessor } from "@fortawesome/free-solid-svg-icons";
 import { createSlice } from "@reduxjs/toolkit";
 const showSlice = createSlice({
   name: "show",
@@ -9,10 +10,19 @@ const showSlice = createSlice({
     showModalUser: false,
     showFilter: false,
     showContactGuide: false,
+    showModalAlert: {
+      showAlert: true,
+      alertContent: "",
+      alertType: "success",
+    },
     photo: [],
   },
   reducers: {
     setShowShare: (state, action) => ({
+      ...state,
+      showShare: action.payload,
+    }),
+    setShowModalAlert: (state, action) => ({
       ...state,
       showShare: action.payload,
     }),
@@ -49,13 +59,14 @@ const showSlice = createSlice({
 
 export const {
   setShowShare,
+  setShowModalAlert,
   setShowMorePhoto,
   setShowAddNew,
   setPhoto,
   setShowModalReview,
   setShowModalUser,
   setShowFilter,
-  setShowContactGuide
+  setShowContactGuide,
 } = showSlice.actions;
 
 export default showSlice.reducer;

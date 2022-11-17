@@ -5,7 +5,7 @@ import CollapsibleDetail from "../../projectdetail/contentdetail/accordion/Colla
 const DescribeGuide = ({ guideName, className }) => {
   const { guide } = useSelector((state) => state.guide);
   return (
-    <div className={`${className}`}>
+    <div className={`${className} min-h-[50vh] h-full `}>
       <CollapsibleDetail
         header={`About ${guide?.name}`}
         content={guide?.summary}

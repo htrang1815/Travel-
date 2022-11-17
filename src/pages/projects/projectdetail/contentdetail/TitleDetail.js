@@ -6,6 +6,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Rating } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -20,17 +21,34 @@ const TitleDetail = () => {
       <div className="icon mb-[20px]">
         <div className="flex mb-[20px]">
           <div className="text-primary text-[14px] mr-[5px]">
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+          <Rating
+                className="text-primary text-[14px] mr-[5px]"
+                readOnly
+                icon={
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    color="#ffbc4a"
+                  ></FontAwesomeIcon>
+                }
+                emptyIcon={
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    color="#aaaaaa"
+                  ></FontAwesomeIcon>
+                }
+                style={{
+                  color: "#ffbc4a",
+                  fontSize: "20",
+                }}
+                defaultValue={project?.ratingAverage || 4.55}
+                precision={0.5}
+              ></Rating>
           </div>
           <span className="text-[14px] font-[600] text-[#aaa] mr-[5px]">
-            {project?.ratingAverage}
+            {project?.ratingAverage || 4.5}
           </span>
           <span className="text-[14px] text-[#aaa]">
-            ({project?.ratingsQuantity})
+            ({project?.ratingsQuantity || 0})
           </span>
         </div>
         <div className="flex items-center ">

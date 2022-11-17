@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useGetImageUrl from "../../hooks/useGetImageUrl";
 import { setShowModalReview } from "../../store/showModal/showSlice";
+import { setShowModalAlert } from "../../store/showModal/showSlice";
 import BasicRating from "../icon/ReviewStar";
 import Textarea from "../input/Textarea";
 import { useForm } from "react-hook-form";
@@ -17,9 +18,15 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import domain from "../../utils/common";
 import { setLoadingButtonReview } from "../../store/loading/loadingSlice";
+import {
+  setAlertContent,
+  setShowAlert,
+  setType,
+} from "../../store/alert/alertSlice";
 
 const ModalReview = () => {
   const { showModalReview } = useSelector((state) => state.show);
+  const { showAlert, alertContent, type } = useSelector((state) => state.alert);
   const { rating } = useSelector((state) => state.review);
   const { loadingButtonReview } = useSelector((state) => state.loading);
 
@@ -59,9 +66,18 @@ const ModalReview = () => {
             }
           );
           createReview(review.data.data);
+        } else {
+          dispatch(setShowAlert(true));
+          dispatch(setAlertContent("You must rating"));
+          dispatch(setType("fail"));
         }
       } catch (err) {
+        dispatch(setShowModalReview(false));
         console.log(err);
+        // console.log(showModalAlert);
+        dispatch(setShowAlert(true));
+        dispatch(setAlertContent("You reviewed"));
+        dispatch(setType("fail"));
       }
     }
   };

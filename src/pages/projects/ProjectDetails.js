@@ -16,6 +16,7 @@ import ModalReview from "../../components/modal/ModalReview";
 import { joinPlace } from "../../realtimeCommunication/socketConnection";
 import { getGuide } from "../../store/guide/slice";
 import { getGuideList } from "../../store/guideList/slice";
+import ModalAlert from "../../components/modal/ModalAlert";
 
 const ProjectDetails = () => {
   const currentURL = window.location.href;
@@ -59,6 +60,7 @@ const ProjectDetails = () => {
       <ModalShare currentURL={currentURL}></ModalShare>
       <ModalBox></ModalBox>
       <ModalReview></ModalReview>
+      <ModalAlert></ModalAlert>
     </>
   );
 };

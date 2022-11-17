@@ -4,8 +4,11 @@ import BlogItem from "../home/blog/BlogItem";
 import userblog1 from "../../assets/images/blogs/userblog1.jpeg";
 import userblog2 from "../../assets/images/blogs/userblog2.jpeg";
 import userblog3 from "../../assets/images/blogs/userblog3.jpeg";
+import { useSelector } from "react-redux";
 
 const ClientPick = () => {
+  const {blogList} = useSelector((state)  => state.blogList);
+  console.log(blogList);
   return (
     <div className="px-[9%] py-[30px]">
       <div className="">
@@ -14,12 +17,17 @@ const ClientPick = () => {
         </h2>
       </div>
       <div className="grid grid-cols-3 gap-6 mb-[20px]">
-        <BlogItem pic={userblog1} className=""></BlogItem>
-        <BlogItem pic={userblog2}></BlogItem>
+      {
+        blogList?.map((blog) => (
+        <BlogItem key={blog._id} blogData={blog}  className=""></BlogItem>
+
+        ))
+      }
+        {/* <BlogItem pic={userblog2}></BlogItem>
         <BlogItem pic={userblog3}></BlogItem>
         <BlogItem pic={userblog1}></BlogItem>
         <BlogItem pic={userblog2}></BlogItem>
-        <BlogItem pic={userblog3}></BlogItem>
+        <BlogItem pic={userblog3}></BlogItem> */}
       </div>
       <div className="text-center">
         <ButtonLoadMore
