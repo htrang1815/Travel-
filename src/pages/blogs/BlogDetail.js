@@ -5,6 +5,7 @@ import Footer from "../home/footer/Footer";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlog } from "../../store/blog/slice";
+
 // import { joinBlog } from "../../realtimeCommunication/socketConnection";
 
 const BlogDetail = () => {

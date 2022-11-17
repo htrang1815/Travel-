@@ -23,9 +23,27 @@ exports.getAllProjects = catchAsync(async (req, res) => {
     // Loại các thằng page, ... ra khỏi chuỗi truy vấn
     excludedFields.forEach((el) => delete queryObj[el]);
 
+    // A. Filter
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    const query = Project.find(JSON.parse(queryStr));
+    let query = Project.find(JSON.parse(queryStr));
+
+    // B. Sorting
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(",").join(" ");
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort("-createdAt");
+    }
+
+    // C. Fields
+
+    if (req.query.fields) {
+      const fields = req.query.fields.split(",").join(" ");
+      query = query.select(fields);
+    } else {
+      query = query.select("__v");
+    }
     const projects = await query;
     res.status(200).json({
       status: "success",
