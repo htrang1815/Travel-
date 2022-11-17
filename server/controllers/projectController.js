@@ -2,14 +2,15 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const Project = require("../models/projectModel");
 
-exports.getAllProjects = catchAsync(async (req, res) => {
+exports.getAllProjects = catchAsync(async (req, res, next) => {
   let queryObj = { ...req.query };
   const { name } = req.query;
 
-  if (name) {
+  if (name && name.length !== 0) {
     const projects = await Project.find({
       name: new RegExp(name, "i"),
     });
+
     res.status(200).json({
       status: "success",
       results: projects.length,
@@ -42,8 +43,22 @@ exports.getAllProjects = catchAsync(async (req, res) => {
       const fields = req.query.fields.split(",").join(" ");
       query = query.select(fields);
     } else {
-      query = query.select("__v");
+      query = query.select("-__v");
     }
+
+    // D. Pagination
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 3;
+    const skip = (page - 1) * limit;
+
+    if (req.query.page) {
+      query = query.skip(skip).limit(limit);
+      const numPlaces = await Project.countDocuments();
+      if (skip >= numPlaces) {
+        next(new AppError("This page does not exist", 404));
+      }
+    }
+
     const projects = await query;
     res.status(200).json({
       status: "success",

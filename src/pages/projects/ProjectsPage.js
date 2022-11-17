@@ -7,16 +7,17 @@ import Search from "./search/Search";
 import ProjectList from "./projectlist/ProjectList";
 import TourGuide from "./tourguide/TourGuide";
 import Footer from "../home/footer/Footer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProjectList } from "../../store/projectList/slice";
 import ModalFilter from "../../components/modal/modalFilter/ModalFilter";
 
 const ProjectsPage = () => {
   const dispatch = useDispatch();
+  const { projectPage } = useSelector((state) => state.projectList);
 
   useEffect(() => {
-    dispatch(getProjectList());
-  }, [dispatch]);
+    dispatch(getProjectList({ query: "", page: projectPage }));
+  }, [dispatch, projectPage]);
   // console.log("getprojectlist",getProjectList());
   return (
     <>
