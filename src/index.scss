@@ -573,62 +573,59 @@
 }
 //Guide-review
 //GuideDetail
-.guide-share{
-  .save{
+.guide-share {
+  .save {
     display: none;
   }
 }
-.contactguide{
-  .hover-social:hover{
+.contactguide {
+  .hover-social:hover {
     background-color: #ffbc4b;
-    .icon{
+    .icon {
       color: #111;
     }
   }
   .scrollcss ::-webkit-scrollbar {
     width: 5px;
   }
-  
+
   .scrollcss ::-webkit-scrollbar-track {
     background: #111;
   }
-  
+
   .scrollcss ::-webkit-scrollbar-thumb {
     background: #ffbc4b;
     border-radius: 5rem;
   }
 }
 //Project Detail
-.filter{
-  .hover-btn:hover{
+.filter {
+  .hover-btn:hover {
     background-color: #111;
     color: #ffbc4b;
   }
 }
-  .filter-lenght{
-    .MuiSlider-rail{
-      color: #111;
-      
+.filter-lenght {
+  .MuiSlider-rail {
+    color: #111;
+  }
+  .MuiSlider-track {
+    color: #111;
+  }
+  .MuiSlider-thumb {
+    color: #111;
+  }
+}
+.filterdeparture {
+  .MuiFormControl-root {
+    .css-14lo706 {
+      display: none;
     }
-    .MuiSlider-track{
-      color: #111;
-
-    }
-    .MuiSlider-thumb{
+    .MuiChip-label {
       color: #111;
     }
   }
-  .filterdeparture{
-    .MuiFormControl-root{
-      .css-14lo706{
-        display: none;
-      }
-      .MuiChip-label{
-        color:#111;
-      }
-
-    }
-  }
+}
 // Modal review
 .modal-review {
   .MuiBox-root {
@@ -728,6 +725,24 @@ html {
   box-sizing: inherit;
   &:before,
   &:after {
-      box-sizing: inherit;
+    box-sizing: inherit;
+  }
+}
+
+// Pagination
+.paginate > ul {
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  .selected {
+    color: #ffbc4a;
+  }
+  li {
+    font-size: 16px;
   }
 }
