@@ -5,6 +5,7 @@ import Footer from "../home/footer/Footer";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlog } from "../../store/blog/slice";
+
 // import { joinBlog } from "../../realtimeCommunication/socketConnection";
 
 const BlogDetail = () => {
@@ -20,7 +21,7 @@ const BlogDetail = () => {
   }, [dispatch, blogId]);
 
   const { blog } = useSelector((state) => state.blog);
-  console.log(blog);
+  console.log("blog" , blog);
   return (
     <div className="bg-[#111] ">
       {/* <Header></Header> */}
@@ -38,9 +39,9 @@ const BlogDetail = () => {
           {blog?.title}
         </h1>
         <span className="normal-case pb-[20px] italic mr-[12px]">
-          Puslished at - {blog?.publishedAt}{" "}
+          Puslished at - {blog?.publishAt}
         </span>
-        <span className="normal-case pb-[20px] italic">Create by - </span>
+        <span className="normal-case pb-[20px] italic">Create by - {blog?.user?.name}</span>
       </div>
       <div className="bg-[#111] w-full px-[7%] py-[20px]">
         <p className="w-full bg-[#fff] px-[2%] py-[10] text-[#111]">

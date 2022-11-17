@@ -43,7 +43,7 @@ const BlogItem = ({ blogData, className }) => {
               icon={faUser}
               className="pr-[5px] font-[900] text-primary"
             />{" "}
-            {blogData?.user.name}
+            {blogData?.user?.name}
           </div>
         </div>
       </div>
