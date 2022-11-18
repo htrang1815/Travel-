@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { setShowModalUser } from "../../../store/showModal/showSlice";
+import useAuthStateChanged from "../../../hooks/useAuthStateChange";
+import Moment from "react-moment";
 
 const ContentLeft = () => {
   const dispatch = useDispatch();
+  const { user } = useAuthStateChanged();
   return (
     <div className="content__left w-[25%] bg-[#222] pl-[40px] mr-[40px] min-h-[50vh] h-full rounded-lg">
       <div className="py-[20px] flex items-center justify-between">
@@ -15,7 +18,7 @@ const ContentLeft = () => {
         <FontAwesomeIcon
           icon={faPenToSquare}
           className="text-[18px] text-primary block pr-[20px] cursor-pointer"
-          onClick={()=>{
+          onClick={() => {
             dispatch(setShowModalUser(true));
           }}
         ></FontAwesomeIcon>
@@ -25,19 +28,21 @@ const ContentLeft = () => {
           <span className=" normal-case mb-[20px] w-[150px] text-primary mr-[10px]">
             Name :
           </span>
-          <span className=" normal-case mb-[20px]">Eleven Copper</span>
+          <span className=" normal-case mb-[20px]">{user?.name}</span>
         </div>
         <div className="mb-[20px]">
           <span className=" normal-case mb-[20px] w-[150px] text-primary mr-[10px]">
             Email :
           </span>
-          <span className=" normal-case mb-[20px]">Elcopper@gmail.com</span>
+          <span className=" normal-case mb-[20px]">{user?.email}</span>
         </div>
         <div className="mb-[20px]">
           <span className=" normal-case mb-[20px] w-[150px] text-primary mr-[10px]">
             Date of birth :
           </span>
-          <span className=" normal-case mb-[20px]">18/12/2001</span>
+          <span className=" normal-case mb-[20px]">
+            <Moment format="YYYY/MM/DD">{user?.dateOfBirth}</Moment>
+          </span>
         </div>
         <div className="mb-[20px]">
           <span className=" normal-case mb-[20px] w-[150px] text-primary mr-[10px]">

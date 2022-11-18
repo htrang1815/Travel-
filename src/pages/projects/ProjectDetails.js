@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ButtonBack from "../../components/button/ButtonBack";
 import ButtonBook from "../../components/button/ButtonBook";
@@ -17,13 +17,16 @@ import { joinPlace } from "../../realtimeCommunication/socketConnection";
 import { getGuide } from "../../store/guide/slice";
 import { getGuideList } from "../../store/guideList/slice";
 import ModalAlert from "../../components/modal/ModalAlert";
+import { setSaveFavourite } from "../../store/showModal/showSlice";
+import axios from "axios";
+import domain from "../../utils/common";
 
 const ProjectDetails = () => {
   const currentURL = window.location.href;
 
-  const { projectId } = useParams();
+  const { projectId, userId } = useParams();
   const dispatch = useDispatch();
-
+ 
   useEffect(() => {
     joinPlace(projectId);
   }, [projectId]);

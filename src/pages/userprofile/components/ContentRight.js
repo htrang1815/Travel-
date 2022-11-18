@@ -6,8 +6,12 @@ import GuideSaveItem from "./item/GuideSaveItem";
 import MyBlogItem from "./item/MyBlogItem";
 import MyReviewItem from "./item/MyReviewItem";
 import PlaceSaveItem from "./item/PlaceSaveItem";
+import { useSelector } from "react-redux";
+import useAuthStateChanged from "../../../hooks/useAuthStateChange";
 
 const ContentRight = () => {
+  const { user } = useAuthStateChanged();
+  // console.log(user.bookmark);
   return (
     <div className="content-right w-[75%] p-[40px] pt-0 bg-[#222] rounded-lg">
       <Tabs>
@@ -21,11 +25,16 @@ const ContentRight = () => {
         <TabPanel>
           <div>
             <div className="place-saving mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
+              {user?.bookmark.map((place) => (
+                <PlaceSaveItem
+                  key={user?.bookmark._id}
+                  data={place}
+                ></PlaceSaveItem>
+              ))}
+              {/* <PlaceSaveItem></PlaceSaveItem>
               <PlaceSaveItem></PlaceSaveItem>
               <PlaceSaveItem></PlaceSaveItem>
-              <PlaceSaveItem></PlaceSaveItem>
-              <PlaceSaveItem></PlaceSaveItem>
-              <PlaceSaveItem></PlaceSaveItem>
+              <PlaceSaveItem></PlaceSaveItem> */}
             </div>
             <div className="text-center">
               <ButtonLoadMore

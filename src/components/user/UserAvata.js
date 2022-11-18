@@ -1,8 +1,7 @@
 import React from "react";
-import avt1 from "../../assets/images/guides/pic-2.png";
 
-const UserAvata = ({ className, show, setShow = () => {}, avatar = "" }) => {
-  console.log(avatar);
+const UserAvata = ({ className, show, setShow = () => {}, avatarUrl }) => {
+  // console.log(avatar);
   return (
     <div
       onClick={() => {
@@ -11,7 +10,7 @@ const UserAvata = ({ className, show, setShow = () => {}, avatar = "" }) => {
       className="flex items-center justify-center"
     >
       <img
-        src={avatar}
+        src={avatarUrl}
         alt=""
         className={`${className} object-cover rounded-full w-[30px] h-[30px]`}
       />

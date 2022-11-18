@@ -11,8 +11,8 @@ const itemsPerPage = 1;
 // itemsPerPage: số lượng phần tử hiển thị
 const ProjectList = () => {
   const dispatch = useDispatch();
-  const { projectList } = useSelector((state) => state.projectList);
-  console.log("projectList : ", projectList);
+  // const { projectList } = useSelector((state) => state.projectList);
+  // console.log("projectList : ", projectList);
   const { projectList, projectPage } = useSelector(
     (state) => state.projectList
   );
@@ -34,7 +34,7 @@ const ProjectList = () => {
     dispatch(setProjectPage(event.selected + 1));
   };
 
-  const pageCount =  8;
+  // const pageCount =  8;
   // const pageCount = projectList?.length / 8;
   console.log(pageCount)
   return (

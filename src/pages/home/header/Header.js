@@ -96,7 +96,7 @@ const Header = () => {
                 className="ml-[10px]"
                 show={show}
                 setShow={setShow}
-                avatar={user?.avatarUrl}
+                avatarUrl={user?.avatarUrl}
               ></UserAvata>
               {show && <UserDropdown></UserDropdown>}
             </div>

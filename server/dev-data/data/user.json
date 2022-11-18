@@ -11,5 +11,7 @@
   "passwordConfirm": "12345678",
   "passwordChangedAt": "",
   "passwordResetToken": "",
-  "passwordResetExpires": ""
+  "passwordResetExpires": "",
+  "phone": "",
+  "country": "Viet Nam"
 }
