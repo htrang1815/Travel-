@@ -11,6 +11,8 @@ exports.getAllProjects = catchAsync(async (req, res, next) => {
       name: new RegExp(name, "i"),
     });
 
+    console.log("1", projects);
+
     res.status(200).json({
       status: "success",
       results: projects.length,
@@ -34,7 +36,7 @@ exports.getAllProjects = catchAsync(async (req, res, next) => {
       const sortBy = req.query.sort.split(",").join(" ");
       query = query.sort(sortBy);
     } else {
-      query = query.sort("-createdAt");
+      // query = query.sort("-createdAt");
     }
 
     // C. Fields
@@ -54,12 +56,19 @@ exports.getAllProjects = catchAsync(async (req, res, next) => {
     if (req.query.page) {
       query = query.skip(skip).limit(limit);
       const numPlaces = await Project.countDocuments();
+      console.log("numPlaces", numPlaces);
+      console.log("skip", skip);
       if (skip >= numPlaces) {
         next(new AppError("This page does not exist", 404));
       }
     }
 
+    console.log(query);
+
     const projects = await query;
+
+    console.log("2", projects);
+
     res.status(200).json({
       status: "success",
       results: projects.length,
