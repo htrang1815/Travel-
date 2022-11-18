@@ -7,13 +7,11 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import { setProjectPage } from "../../../store/projectList/slice";
 import ReactPaginate from "react-paginate";
 
-const itemsPerPage = 1;
+const itemsPerPage = 8;
 // itemsPerPage: số lượng phần tử hiển thị
 const ProjectList = () => {
   const dispatch = useDispatch();
-  const { projectList, projectPage } = useSelector(
-    (state) => state.projectList
-  );
+  const { projectList } = useSelector((state) => state.projectList);
   console.log("projectList : ", projectList);
 
   const [itemOffset, setItemOffset] = useState(0);
