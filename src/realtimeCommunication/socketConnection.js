@@ -1,4 +1,5 @@
 import io from "socket.io-client";
+import { setUser } from "../store/auth/slice";
 import { setReviewInfoInTour } from "../store/review/reviewSlice";
 
 let socket = null;
@@ -15,8 +16,13 @@ export const connectWithSocketServer = (user, dispatch) => {
   });
 
   socket.on("sendReviewToClient", (review) => {
-    console.log(review);
+    // console.log(review);
     dispatch(setReviewInfoInTour(review));
+  });
+
+  socket.on("sendRemoveFavouriteToClient", (bookmark) => {
+    // console.log(review);
+    dispatch(setUser(bookmark));
   });
 };
 
@@ -26,4 +32,17 @@ export const createReview = (data) => {
 
 export const joinPlace = (data) => {
   socket.emit("join-place", data);
+};
+
+export const joinGuide = (data) => {
+  socket.emit("join-guide", data);
+};
+
+export const joinUser = (data) => {
+  socket.emit("join-user", data);
+};
+
+export const removeFavourite = (data) => {
+  // console.log(data);
+  socket.emit("remove-favourite", data);
 };

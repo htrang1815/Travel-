@@ -4,9 +4,10 @@ import BlogItem from "../home/blog/BlogItem";
 import userblog1 from "../../assets/images/blogs/userblog1.jpeg";
 import userblog2 from "../../assets/images/blogs/userblog2.jpeg";
 import userblog3 from "../../assets/images/blogs/userblog3.jpeg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ClientPick = () => {
+  const dispatch = useDispatch();
   const {blogList} = useSelector((state)  => state.blogList);
   console.log(blogList);
   return (
@@ -20,7 +21,6 @@ const ClientPick = () => {
       {
         blogList?.map((blog) => (
         <BlogItem key={blog._id} blogData={blog}  className=""></BlogItem>
-
         ))
       }
         {/* <BlogItem pic={userblog2}></BlogItem>

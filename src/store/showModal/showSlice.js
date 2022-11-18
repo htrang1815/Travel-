@@ -15,9 +15,14 @@ const showSlice = createSlice({
       alertContent: "",
       alertType: "success",
     },
+    savefavourite : "false",
     photo: [],
   },
   reducers: {
+    setSaveFavourite : (state, action) => ({
+      ...state,
+      savefavourite : action.payload
+    }),
     setShowShare: (state, action) => ({
       ...state,
       showShare: action.payload,
@@ -67,6 +72,7 @@ export const {
   setShowModalUser,
   setShowFilter,
   setShowContactGuide,
+  setSaveFavourite
 } = showSlice.actions;
 
 export default showSlice.reducer;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ButtonLoadMore from "../../../components/button/ButtonLoadMore";
+// import ButtonLoadMore from "../../../components/button/ButtonLoadMore";
 import ProjectItem from "../../../components/projects/ProjectItem";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
@@ -11,7 +11,11 @@ const itemsPerPage = 8;
 // itemsPerPage: số lượng phần tử hiển thị
 const ProjectList = () => {
   const dispatch = useDispatch();
-  const { projectList } = useSelector((state) => state.projectList);
+  // const { projectList } = useSelector((state) => state.projectList);
+  // console.log("projectList : ", projectList);
+  const { projectList, projectPage } = useSelector(
+    (state) => state.projectList
+  );
   console.log("projectList : ", projectList);
 
   const [itemOffset, setItemOffset] = useState(0);
@@ -30,6 +34,9 @@ const ProjectList = () => {
     dispatch(setProjectPage(event.selected + 1));
   };
 
+  // const pageCount =  8;
+  // const pageCount = projectList?.length / 8;
+  console.log(pageCount);
   return (
     <div className="py-[30px] px-[9%]">
       <div className="w-full  grid grid-cols-4 grid-rows-2 gap-[15px] mb-[30px]">

@@ -63,7 +63,7 @@ const Router = () => {
             ></Route>
             <Route path="/admin/*" element={<AdminPage></AdminPage>}></Route>
             <Route
-              path="/userprofile"
+              path="/userprofile/:userId"
               element={<UserProfilePage></UserProfilePage>}
             ></Route>
             <Route

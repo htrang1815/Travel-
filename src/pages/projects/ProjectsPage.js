@@ -10,6 +10,7 @@ import Footer from "../home/footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectList } from "../../store/projectList/slice";
 import ModalFilter from "../../components/modal/modalFilter/ModalFilter";
+import { getGuideList } from "../../store/guideList/slice";
 
 const ProjectsPage = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,9 @@ const ProjectsPage = () => {
 
   useEffect(() => {
     dispatch(getProjectList({ query: "", page: projectPage }));
+    dispatch(getGuideList());
   }, [dispatch, projectPage]);
-  // console.log("getprojectlist",getProjectList());
+  console.log("getprojectlist", getProjectList());
   return (
     <>
       <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">

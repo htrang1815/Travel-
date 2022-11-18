@@ -13,12 +13,14 @@ import Header from "./header/Header";
 import PopularProject from "./popular-project/PopularProject";
 import Review from "./review/Review";
 import Slider from "./slider/Slider";
+import { getBlogList } from "../../store/blogList/slice";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProjectList());
-    dispatch(getGuideList())
+    dispatch(getGuideList());
+    dispatch(getBlogList())
   }, [dispatch]);
   return (
     <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">

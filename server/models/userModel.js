@@ -15,11 +15,29 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please enter your email"],
     unique: true,
     lowercase: true,
-
     validator: [validator.isEmail, "Please provide a valid email"],
+  },
+  phone: {
+    type: String,
+    unique: true,
+    lowercase: true,
+    isMobilePhone: {
+      options: { locale: "vi-VN" },
+      errorMessage: "Must provide a valid VN phone",
+    },
+  },
+  country: {
+    type: String,
   },
   dateOfBirth: { type: Date, default: Date.now },
 
+  bookmark: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Project",
+      default: [],
+    },
+  ],
   password: {
     type: String,
     required: [isUnRequired, "Please provide a password"],
@@ -58,6 +76,15 @@ const userSchema = new mongoose.Schema({
     default:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn9ZaICvJMOGSbKmoSCbt08xi2-o-sMqmFuEsqE2M&s",
   },
+});
+
+userSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "bookmark",
+    select:
+      "name images ratingAverage ratingsQuantity maxGroupSize startLocation price",
+  });
+  next();
 });
 
 // 0. Các thằng có typeAccount là facebook và google sẽ ko

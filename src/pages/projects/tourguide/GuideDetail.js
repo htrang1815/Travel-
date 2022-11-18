@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { joinPlace } from "../../../realtimeCommunication/socketConnection";
+import { joinGuide, joinPlace } from "../../../realtimeCommunication/socketConnection";
 import Footer from "../../home/footer/Footer";
 import Header from "../../home/header/Header";
 import { getGuide } from "../../../store/guide/slice";
@@ -16,13 +16,15 @@ import ModalShare from "../../../components/modal/ModalShare";
 import ModalError from "../../../components/modal/ModalError";
 import RecommendPlace from "./guidedetail/RecommendPlace";
 import { getProjectList } from "../../../store/projectList/slice";
+import ModalReview from "../../../components/modal/ModalReview";
+import ModalAlert from "../../../components/modal/ModalAlert";
 
 const GuideDetail = () => {
   const { guideId } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    joinPlace(guideId);
+    joinGuide(guideId);
   }, [guideId]);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const GuideDetail = () => {
         <ControlDetail></ControlDetail>
         <PosterDetail></PosterDetail>
         <ProfileGuide></ProfileGuide>
-        <div className="px-[9%] py-[30px] grid grid-flow-row grid-cols-3 gap-[30px] mb-[20px]">
+        <div className="px-[9%] py-[30px] mb-[20px]">
           <DescribeGuide className="col-span-2"></DescribeGuide>
           <ReviewGuide></ReviewGuide>
         </div>
@@ -46,6 +48,8 @@ const GuideDetail = () => {
       </div>
       <ModalContactGuide></ModalContactGuide>
       <ModalShare></ModalShare>
+      <ModalReview></ModalReview>
+      <ModalAlert></ModalAlert>
     </>
   );
 };

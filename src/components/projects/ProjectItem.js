@@ -7,11 +7,12 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Rating } from "@mui/material";
 
 const ProjectItem = ({ projectData, className }) => {
+  // console.log(projectData);
   return (
     <div
       className={`bg-[#222] rounded-[10px] overflow-hidden hover-item myplace ${className}`}
     >
-      <div className="w-full h-[200px] img">
+      <div className="w-full img">
         <img
           src={
             projectData?.images &&

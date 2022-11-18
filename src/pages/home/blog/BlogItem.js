@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import Moment from "react-moment";
 
 const BlogItem = ({ blogData, className }) => {
-  // console.log(blogData?.publishedAt);
+  console.log(blogData);
   const navigate = useNavigate();
   return (
     <div
@@ -36,7 +37,7 @@ const BlogItem = ({ blogData, className }) => {
               icon={faClock}
               className="pr-[5px] font-[900] text-primary"
             />{" "}
-            {blogData?.publishedAt}
+            <Moment format="YYYY/MM/DD">{blogData?.publishAt}</Moment>
           </div>
           <div className="text-[14px] text-[#aaa]">
             <FontAwesomeIcon
