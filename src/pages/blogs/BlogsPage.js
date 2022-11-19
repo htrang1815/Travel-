@@ -13,9 +13,9 @@ const BlogsPage = () => {
 
   useEffect(() => {
     dispatch(getBlogList());
-  },[dispatch])
-  console.log("getBlogList : ",getBlogList());
-  
+  }, [dispatch]);
+  console.log("getBlogList : ", getBlogList());
+
   return (
     <>
       <div className="bg-[#111] m-0 ">

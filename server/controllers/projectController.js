@@ -11,7 +11,7 @@ exports.getAllProjects = catchAsync(async (req, res, next) => {
       name: new RegExp(name, "i"),
     });
 
-    console.log("1", projects);
+    // console.log("1", projects);
 
     res.status(200).json({
       status: "success",
@@ -63,11 +63,11 @@ exports.getAllProjects = catchAsync(async (req, res, next) => {
       }
     }
 
-    console.log(query);
+    // console.log(query);
 
     const projects = await query;
 
-    console.log("2", projects);
+    // console.log("2", projects);
 
     res.status(200).json({
       status: "success",

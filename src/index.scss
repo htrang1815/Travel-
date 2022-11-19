@@ -745,5 +745,27 @@ html {
   }
   li {
     font-size: 16px;
+    @apply cursor-pointer text-[16px] leading-none border-[1px] border-solid border-primary inline-block px-5 py-3 rounded-lg text-primary;
+    transition: all linear 0.5s;
   }
+
+  li:hover {
+    background-color: #ffbc4a;
+    color: #000000;
+  }
+}
+
+// Blog Detail
+
+.imgBlog {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+.contentBlog {
+  color: #000000;
+  font-size: 14px;
 }

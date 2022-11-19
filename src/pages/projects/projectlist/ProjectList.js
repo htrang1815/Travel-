@@ -7,7 +7,7 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import { setProjectPage } from "../../../store/projectList/slice";
 import ReactPaginate from "react-paginate";
 
-const itemsPerPage = 1;
+const itemsPerPage = 8;
 // itemsPerPage: số lượng phần tử hiển thị
 const ProjectList = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const ProjectList = () => {
 
   // const pageCount =  8;
   // const pageCount = projectList?.length / 8;
-  console.log(pageCount)
+  console.log(pageCount);
   return (
     <div className="py-[30px] px-[9%]">
       <div className="w-full  grid grid-cols-4 grid-rows-2 gap-[15px] mb-[30px]">

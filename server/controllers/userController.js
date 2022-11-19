@@ -21,7 +21,7 @@ exports.removeFavouritePlace = async (req, res) => {
   const user = await User.findById(userId);
   user.bookmark = user.bookmark.filter((place) => place["id"] !== placeId);
   user.save({ validateBeforeSave: false });
-  console.log(user)
+  console.log(user);
   res.status(200).json({
     status: "success",
     isFavorite: false,

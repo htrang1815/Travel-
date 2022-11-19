@@ -4,7 +4,7 @@ import { storage } from "../firebase.config";
 import { useDispatch } from "react-redux";
 import { setLoadingButtonReview } from "../store/loading/loadingSlice";
 
-export default function useGetImageUrl() {
+export default function useGetImageUrl(func = () => {}) {
   const [imageCover, setImageCover] = useState("");
   const dispatch = useDispatch();
   const getImageUrl = (e) => {
@@ -31,6 +31,7 @@ export default function useGetImageUrl() {
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref)
           .then((url) => {
+            func(url);
             setImageCover(url);
             dispatch(setLoadingButtonReview(false));
           })
