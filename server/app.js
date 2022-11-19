@@ -3,6 +3,7 @@ const morgan = require("morgan");
 
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const fileupload = require("express-fileupload");
 
 const globalErrorHandler = require("./controllers/errorController");
 const AppError = require("./utils/appError");
@@ -37,7 +38,7 @@ app.use(
 // A. MIDDLEWARES
 app.use(morgan("dev"));
 
-// B. CookieParser => Để có quyền truy cập vào Cookie
+// B. CookieParser => Để có quyền truy cập vào Cookie⁄f
 app.use(cookieParser());
 
 // C. ROUTES
