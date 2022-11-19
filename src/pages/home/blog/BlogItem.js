@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
 
 const BlogItem = ({ blogData, className }) => {
-  console.log(blogData);
+  // console.log(blogData);
   const navigate = useNavigate();
   return (
     <div

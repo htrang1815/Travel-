@@ -17,4 +17,6 @@ router
   .patch(blogController.updateBlog)
   .delete(blogController.deleteBlog);
 
+router.post("/blog-in-user", blogController.getAllBlogInAUser);
+
 module.exports = router;

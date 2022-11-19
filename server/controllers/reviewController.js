@@ -1,4 +1,5 @@
 const Review = require("../models/reviewModel");
+
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
@@ -18,12 +19,44 @@ exports.getAllReviews = catchAsync(async (req, res) => {
   });
 });
 
-exports.createReview = catchAsync(async (req, res) => {
+exports.getAllReviewInAUser = catchAsync(async (req, res) => {
+  const { userId } = req.body;
+
+  const myreview = await Review.find({ user: userId });
+  res.status(200).json({
+    status: "success",
+    data: {
+      reviews: myreview,
+    },
+  });
+});
+
+exports.createReview = catchAsync(async (req, res, next) => {
   // Allow nested routes
 
   if (!req.body.place) req.body.place = req.params.placeId;
   if (!req.body.guide) req.body.guide = req.params.guideId;
   if (!req.body.user) req.body.user = req.user.id;
+
+  if (req.params.guideId) {
+    const reviewGuide = await Review.find({
+      guide: req.body.guide,
+      user: req.user.id,
+    });
+    if (reviewGuide) {
+      return next(new AppError("You reviewd this guide", 404));
+    }
+  }
+
+  if (req.params.placeId) {
+    const reviewPlace = await Review.findById({
+      place: req.body.place,
+      user: req.user.id,
+    });
+    if (reviewPlace) {
+      return next(new AppError("You reviewd this place", 404));
+    }
+  }
 
   const newReviews = await Review.create(req.body);
   res.status(201).json({

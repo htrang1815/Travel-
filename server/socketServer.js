@@ -28,12 +28,24 @@ const resgisterSocketServer = (server) => {
       socket.join(userId);
     });
 
-    socket.on("create-comment", async (review) => {
+    socket.on("join-guide", (guideId) => {
+      socket.join(guideId);
+    });
+
+    socket.on("create-comment-place", async (review) => {
       // console.log(review.reviews);
       const reviewList = await Review.find({ place: review.reviews.place });
 
       socket.to(review.reviews.place).emit("sendReviewToClient", reviewList);
     });
+
+    socket.on("create-comment-guide", async (review) => {
+      // console.log(review.reviews);
+      const reviewList = await Review.find({ guide: review.reviews.guide });
+
+      socket.to(review.reviews.guide).emit("sendReviewGuideToClient", reviewList);
+    });
+
     socket.on("remove-favourite", async (data) => {
       const { userId, placeId } = data;
       const user = await User.findById(userId);
@@ -41,6 +53,17 @@ const resgisterSocketServer = (server) => {
       user.save({ validateBeforeSave: false });
 
       socket.to(userId).emit("sendRemoveFavouriteToClient", user);
+    });
+
+    socket.on("remove-myreview", async (data) => {
+      const { userId, reviewId } = data;
+
+      await Review.findByIdAndDelete(reviewId);
+      const reviewUserAfterDelete = await Review.find({ user: userId });
+
+      socket
+        .to(userId)
+        .emit("sendRemoveMyReviewToClient", reviewUserAfterDelete);
     });
 
     socket.on("disconnect", () => {

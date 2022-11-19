@@ -9,6 +9,8 @@ import blogListSlice from "./blogList/slice";
 import loadingSlice from "./loading/loadingSlice";
 import guideSlice from "./guide/slice";
 import blogSlice from "./blog/slice";
+import myBlogSlice from "./myblog/slice";
+import myReviewSlice from "./myreview/slice";
 import reviewGuideSlice from "./reviewGuide/reviewSlice";
 import alertSlice from "./alert/alertSlice";
 
@@ -25,4 +27,6 @@ export const reducer = combineReducers({
   alert: alertSlice,
   blogList: blogListSlice,
   blog: blogSlice,
+  myblog: myBlogSlice,
+  myreview: myReviewSlice,
 });

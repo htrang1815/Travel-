@@ -13,6 +13,19 @@ exports.getAllBlogs = catchAsync(async (req, res) => {
   });
 });
 
+exports.getAllBlogInAUser = catchAsync(async (req, res) => {
+  const { userId } = req.body;
+  // console.log(userId);
+  const myblog = await Blog.find({ user: userId });
+  // console.log("myblog", myblog);
+  res.status(200).json({
+    status: "success",
+    data: {
+      blogs: myblog,
+    },
+  });
+});
+
 exports.createBlog = catchAsync(async (req, res) => {
   const newBlog = await Blog.create(req.body);
   res.status(201).json({
@@ -67,3 +80,4 @@ exports.deleteBlog = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+

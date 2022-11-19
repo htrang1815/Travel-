@@ -1,6 +1,9 @@
 import io from "socket.io-client";
 import { setUser } from "../store/auth/slice";
+import { setMyBlog } from "../store/myblog/slice";
+import { setMyReview } from "../store/myreview/slice";
 import { setReviewInfoInTour } from "../store/review/reviewSlice";
+import { setReviewInfoInGuide } from "../store/reviewGuide/reviewSlice";
 
 let socket = null;
 
@@ -18,16 +21,32 @@ export const connectWithSocketServer = (user, dispatch) => {
   socket.on("sendReviewToClient", (review) => {
     // console.log(review);
     dispatch(setReviewInfoInTour(review));
+    // dispatch(setReviewInfoInGuide(review));
+  });
+
+  socket.on("sendReviewGuideToClient", (review) => {
+    // console.log(review);
+    dispatch(setReviewInfoInGuide(review));
+    // dispatch(setReviewInfoInGuide(review));
   });
 
   socket.on("sendRemoveFavouriteToClient", (bookmark) => {
     // console.log(review);
     dispatch(setUser(bookmark));
   });
+
+  socket.on("sendRemoveMyReviewToClient", (review) => {
+    console.log(review);
+    dispatch(setMyReview(review));
+  });
 };
 
 export const createReview = (data) => {
-  socket.emit("create-comment", data);
+  socket.emit("create-comment-place", data);
+};
+
+export const createReviewGuide = (data) => {
+  socket.emit("create-comment-guide", data);
 };
 
 export const joinPlace = (data) => {
@@ -45,4 +64,9 @@ export const joinUser = (data) => {
 export const removeFavourite = (data) => {
   // console.log(data);
   socket.emit("remove-favourite", data);
+};
+
+export const removeMyReview = (data) => {
+  // console.log(data);
+  socket.emit("remove-myreview", data);
 };

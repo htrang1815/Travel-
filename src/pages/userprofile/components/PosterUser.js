@@ -4,7 +4,7 @@ import useAuthStateChanged from "../../../hooks/useAuthStateChange";
 
 const PosterUser = () => {
   const { user } = useAuthStateChanged();
-  console.log(user);
+  // console.log(user);
   return (
     <div className="poster-user relative mt-[68px] h-[50vh]">
       <div

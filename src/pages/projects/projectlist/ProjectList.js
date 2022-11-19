@@ -16,7 +16,7 @@ const ProjectList = () => {
   const { projectList, projectPage } = useSelector(
     (state) => state.projectList
   );
-  console.log("projectList : ", projectList);
+  // console.log("projectList : ", projectList);
 
   const [itemOffset, setItemOffset] = useState(0);
   // itemOffset là để hiển thị dấu ...

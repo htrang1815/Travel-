@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonLoadMore from "../../../components/button/ButtonLoadMore";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -6,12 +6,28 @@ import GuideSaveItem from "./item/GuideSaveItem";
 import MyBlogItem from "./item/MyBlogItem";
 import MyReviewItem from "./item/MyReviewItem";
 import PlaceSaveItem from "./item/PlaceSaveItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useAuthStateChanged from "../../../hooks/useAuthStateChange";
+import { getMyBlog } from "../../../store/myblog/slice";
+import { getMyReview } from "../../../store/myreview/slice";
+import { joinUser } from "../../../realtimeCommunication/socketConnection";
 
 const ContentRight = () => {
   const { user } = useAuthStateChanged();
   // console.log(user.bookmark);
+  const dispatch = useDispatch();
+  const { myblog } = useSelector((state) => state.myblog);
+  const { myreview } = useSelector((state) => state.myreview);
+
+  useEffect(() => {
+    joinUser(user._id);
+  }, [user._id]);
+
+  useEffect(() => {
+    dispatch(getMyBlog(user._id));
+    dispatch(getMyReview(user._id));
+  }, [dispatch, user._id]);
+  // console.log("myreview", myreview)
   return (
     <div className="content-right w-[75%] p-[40px] pt-0 bg-[#222] rounded-lg">
       <Tabs>
@@ -25,11 +41,8 @@ const ContentRight = () => {
         <TabPanel>
           <div>
             <div className="place-saving mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
-              {user?.bookmark.map((place) => (
-                <PlaceSaveItem
-                  key={user?.bookmark._id}
-                  data={place}
-                ></PlaceSaveItem>
+              {user?.bookmark.map((place, index) => (
+                <PlaceSaveItem key={index} data={place}></PlaceSaveItem>
               ))}
               {/* <PlaceSaveItem></PlaceSaveItem>
               <PlaceSaveItem></PlaceSaveItem>
@@ -48,7 +61,10 @@ const ContentRight = () => {
         <TabPanel>
           <div>
             <div className="myblog mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
-              <MyBlogItem></MyBlogItem>
+              {/* {myblog?.map((blog) => {
+              <MyBlogItem  key={blog?._id} data={blog}></MyBlogItem>
+
+            })} */}
               <MyBlogItem></MyBlogItem>
               <MyBlogItem></MyBlogItem>
               <MyBlogItem></MyBlogItem>
@@ -64,10 +80,9 @@ const ContentRight = () => {
         <TabPanel>
           <div>
             <div className="myblog mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
-              <MyBlogItem></MyBlogItem>
-              <MyBlogItem></MyBlogItem>
-              <MyBlogItem></MyBlogItem>
-              <MyBlogItem></MyBlogItem>
+              {myblog?.map((blog) => (
+                <MyBlogItem key={blog?._id} data={blog}></MyBlogItem>
+              ))}
             </div>
             <div className="text-center">
               <ButtonLoadMore
@@ -81,11 +96,14 @@ const ContentRight = () => {
         <TabPanel>
           <div>
             <div className="myreview mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
+              {myreview?.map((review) => (
+                <MyReviewItem key={review?._id} data={review}></MyReviewItem>
+              ))}
+              {/* <MyReviewItem></MyReviewItem>
               <MyReviewItem></MyReviewItem>
               <MyReviewItem></MyReviewItem>
               <MyReviewItem></MyReviewItem>
-              <MyReviewItem></MyReviewItem>
-              <MyReviewItem></MyReviewItem>
+              <MyReviewItem></MyReviewItem> */}
             </div>
             <div className="text-center">
               <ButtonLoadMore
@@ -96,26 +114,6 @@ const ContentRight = () => {
           </div>
         </TabPanel>
       </Tabs>
-
-      {/* <div className="content__header "> */}
-      {/* <div className="content__menu flex justify-around w-full py-8"> */}
-      {/* menu */}
-      {/* <a href="#">Place save</a>
-          <a href="#">Place save</a>
-          <a href="#">Booking</a>
-          <a href="#">Reviews</a>
-          <a href="#">Blogs</a> */}
-      {/* </div> */}
-      {/* </div> */}
-      {/* <div className="content__bottom">
-        <div className="place-saving grid grid-cols-3 grid-flow-row gap-8 ">
-          <ProjectItem></ProjectItem>
-          <ProjectItem></ProjectItem>
-          <ProjectItem></ProjectItem>
-          <ProjectItem></ProjectItem>
-          <ProjectItem></ProjectItem>
-        </div>
-      </div> */}
     </div>
   );
 };
