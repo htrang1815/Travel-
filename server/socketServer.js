@@ -28,6 +28,8 @@ const resgisterSocketServer = (server) => {
       socket.join(userId);
     });
 
+    socket.on("join-guide", (guideId) => {});
+
     socket.on("create-comment", async (review) => {
       // console.log(review.reviews);
       const reviewList = await Review.find({ place: review.reviews.place });

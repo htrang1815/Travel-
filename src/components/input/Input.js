@@ -1,7 +1,7 @@
 import React from "react";
 import { useController } from "react-hook-form";
 
-const Input = ({ label, type, placeholder,className, id, control = "" }) => {
+const Input = ({ label, type, placeholder, className, id, control = "" }) => {
   const { field } = useController({
     control,
     name: id,

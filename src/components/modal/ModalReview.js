@@ -77,7 +77,7 @@ const ModalReview = () => {
               }
             );
             createReview(review.data.data);
-          }        
+          }
         } else {
           dispatch(setShowAlert(true));
           dispatch(setAlertContent("You must rating"));
@@ -89,6 +89,7 @@ const ModalReview = () => {
         dispatch(setShowAlert(true));
         dispatch(setAlertContent("You reviewed"));
         dispatch(setType("fail"));
+        console.log(err);
       }
     }
   };
