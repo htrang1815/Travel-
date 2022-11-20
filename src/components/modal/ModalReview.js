@@ -12,7 +12,10 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { createReview } from "../../realtimeCommunication/socketConnection";
+import {
+  createReview,
+  createReviewGuide,
+} from "../../realtimeCommunication/socketConnection";
 
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -66,6 +69,7 @@ const ModalReview = () => {
                 image: imageCover || "",
               }
             );
+            dispatch(setShowModalReview(false));
             createReview(review.data.data);
           } else {
             const review = await axios.post(
@@ -76,7 +80,8 @@ const ModalReview = () => {
                 image: imageCover || "",
               }
             );
-            createReview(review.data.data);
+            dispatch(setShowModalReview(false));
+            createReviewGuide(review.data.data);
           }
         } else {
           dispatch(setShowAlert(true));

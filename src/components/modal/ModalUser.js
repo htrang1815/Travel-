@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 const ModalUser = ({ children }) => {
   const { showModalUser } = useSelector((state) => state.show);
-  console.log(showModalUser);
+  // console.log(showModalUser);
   const dispatch = useDispatch();
   return ReactDOM.createPortal(
     <div

@@ -22,13 +22,13 @@ const reviewSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Review must belong to a user"],
     },
-    place: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Project",
-    },
     guide: {
       type: mongoose.Schema.ObjectId,
       ref: "Guide",
+    },
+    place: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Project",
     },
     image: { type: String },
   },
@@ -123,13 +123,13 @@ reviewSchema.post("save", function () {
 
 reviewSchema.pre(/^findOneAnd/, async function (next) {
   this.r = await this.clone().findOne();
-  console.log(this.r);
+
   next();
 });
 
 reviewSchema.post(/^findOneAnd/, async function () {
-  await this.r.constructor.calcAverageRatings(this.r.place._id);
-  await this.r.constructor.calcAverageRatingsGuide(this.r.guide._id);
+  await this.r.constructor.calcAverageRatings(this.r.place?._id);
+  await this.r.constructor.calcAverageRatingsGuide(this.r.guide?._id);
 });
 
 const Review = mongoose.model("Review", reviewSchema);

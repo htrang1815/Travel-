@@ -21,6 +21,7 @@ import RecommendPlace from "./guidedetail/RecommendPlace";
 import { getProjectList } from "../../../store/projectList/slice";
 import ModalReview from "../../../components/modal/ModalReview";
 import ModalAlert from "../../../components/modal/ModalAlert";
+import { getReviewInAGuide } from "../../../store/reviewGuide/reviewSlice";
 
 const GuideDetail = () => {
   const { guideId } = useParams();

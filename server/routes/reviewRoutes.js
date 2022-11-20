@@ -17,4 +17,5 @@ router
   .patch(reviewController.updateReview)
   .delete(reviewController.deleteReview);
 
+  router.post("/review-in-user", reviewController.getAllReviewInAUser);
 module.exports = router;

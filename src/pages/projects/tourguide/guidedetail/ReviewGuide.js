@@ -14,6 +14,7 @@ const ReviewGuide = ({ guideName, className }) => {
   useEffect(() => {
     dispatch(getReviewInAGuide(guideId));
   }, [dispatch, guideId]);
+  // console.log(reviewInAGuide);
 
   return (
     <div
