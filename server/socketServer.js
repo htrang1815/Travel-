@@ -1,5 +1,6 @@
 const Review = require("./models/reviewModel");
 const User = require("./models/userModel");
+const Blog = require("./models/blogModel");
 const serverStore = require("./serverStore");
 const disconnectHandler = require("./socketHandlers/disconnectHandler");
 const newConnectionHandler = require("./socketHandlers/newConnectionHandler");
@@ -54,6 +55,15 @@ const resgisterSocketServer = (server) => {
 
       socket.to(userId).emit("sendRemoveFavouriteToClient", user);
     });
+
+    socket.on("remove-myblog", async (data) => {
+      const { userId, blogId } = data;
+      await Blog.findByIdAndDelete(blogId);
+
+      const blogUserAfterDelete = await Blog.find({user : userId})
+
+      socket.to(userId).emit("sendRemoveMyBlogToClient", blogUserAfterDelete)
+    })
 
     socket.on("remove-myreview", async (data) => {
       const { userId, reviewId } = data;

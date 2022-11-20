@@ -35,8 +35,13 @@ export const connectWithSocketServer = (user, dispatch) => {
     dispatch(setUser(bookmark));
   });
 
+  socket.on("sendRemoveMyBlogToClient", (blog) => {
+    // console.log(review);
+    dispatch(setMyBlog(blog));
+  });
+
   socket.on("sendRemoveMyReviewToClient", (review) => {
-    console.log(review);
+    // console.log(review);
     dispatch(setMyReview(review));
   });
 };
@@ -69,4 +74,9 @@ export const removeFavourite = (data) => {
 export const removeMyReview = (data) => {
   // console.log(data);
   socket.emit("remove-myreview", data);
+};
+
+export const removeMyBlog = (data) => {
+  // console.log(data);
+  socket.emit("remove-myblog", data);
 };

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeMyReview } from "../../../../realtimeCommunication/socketConnection";
+import { removeMyBlog, removeMyReview } from "../../../../realtimeCommunication/socketConnection";
 import domain from "../../../../utils/common";
 import BlogItem from "../../../home/blog/BlogItem";
 
@@ -14,9 +14,10 @@ const MyBlogItem = ({data}) => {
   // console.log(data);
   // console.log(blog);
   // const blogId = data._id;
+
   const handleDeleteMyBlog = async () => {
     const myblog = await axios.delete(`${domain}/api/v1/blogs/${data._id}`);
-    
+    removeMyBlog({userId: data.user._id, blogId: data._id})
     // console.log(data._id)
   }
   return (

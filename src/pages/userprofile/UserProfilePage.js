@@ -25,7 +25,7 @@ const UserProfilePage = () => {
         </div>
       </div>
       <ModalUser>
-        <FormInput inputs={userInputs}></FormInput>
+        <FormInput></FormInput>
       </ModalUser>
     </>
   );

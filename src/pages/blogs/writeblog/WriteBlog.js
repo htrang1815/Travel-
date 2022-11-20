@@ -57,6 +57,7 @@ const WriteBlog = () => {
         user: user._id,
         bannerImage: imageCover,
       });
+      console.log("hi");
 
       const blogId = blog.data.data.blogs;
       navigate(`/blog/${blogId._id}`);
