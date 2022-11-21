@@ -59,27 +59,26 @@ const ModalUpdateReview = () => {
   useEffect(() => {}, []);
 
   const handleUpdateReview = async (review) => {
-      try {
-        // if (rating && rating !== 0) {
-          console.log(imageCover,rating,reviewUpdateUser.review);
-          const updatereview = await axios.patch(
-            `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
-            {
-              review: review ,
-              rating: rating,
-              image: imageCover,
-            }
-          );
-          dispatch(setShowModalUpdateReview(false));
-          console.log(updatereview);
-        // } else {
-        //   dispatch(setShowAlert(true));
-        //   dispatch(setAlertContent("You must rating"));
-        //   dispatch(setType("fail"));
-        // }
-      } catch (err) {
-        console.log(err);
+    try {
+      if (rating && rating !== 0) {
+        const updatereview = await axios.patch(
+          `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
+          {
+            review: review.review,
+            rating: rating,
+            image: imageCover,
+          }
+        );
+        // dispatch(setShowModalUpdateReview(false));
+        console.log(updatereview);
+      } else {
+        // dispatch(setShowAlert(true));
+        // dispatch(setAlertContent("You must rating"));
+        // dispatch(setType("fail"));
       }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return ReactDOM.createPortal(
@@ -111,7 +110,9 @@ const ModalUpdateReview = () => {
               value={reviewUpdateUser?.review}
               control={control}
             ></Textarea>
-
+            <p className="text-[#f77171] font-semibold mb-[10px]">
+              {errors.review?.message}
+            </p>
             <img
               src={imageCover || reviewUpdateUser.image || imgdefault}
               alt=""
@@ -141,6 +142,7 @@ const ModalUpdateReview = () => {
             {errors.review?.message}
           </p> */}
           <button
+            type="submit"
             className="text-primary border border-solid border-primary  px-4 py-3 rounded-[10px] w-[30%] hover-button cursor-pointer"
             disabled={loadingButtonReview ? true : false}
           >
