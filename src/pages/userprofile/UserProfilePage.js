@@ -8,12 +8,16 @@ import FormInput from "./components/FormInput.js"
 import {userInputs} from "./inputdata.js"
 import { joinUser } from "../../realtimeCommunication/socketConnection";
 import { useParams } from "react-router-dom";
+import useAuthStateChanged from "../../hooks/useAuthStateChange";
+import ModalUpdateReview from "../../components/modal/ModalUpdateReview";
 
 const UserProfilePage = () => {
   const { userId } = useParams();
+  // const { user } = useAuthStateChanged();
   useEffect(() => {
     joinUser(userId);
   }, [userId]);
+  
   return (
     <>
       <div className="bg-[#111]">

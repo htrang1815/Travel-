@@ -18,6 +18,10 @@ export const connectWithSocketServer = (user, dispatch) => {
     // console.log(socket.id);
   });
 
+  socket.on('sendUpdateUser', (user) =>{
+    dispatch(setUser(user))
+  })
+
   socket.on("sendReviewToClient", (review) => {
     // console.log(review);
     dispatch(setReviewInfoInTour(review));
@@ -65,6 +69,10 @@ export const joinGuide = (data) => {
 export const joinUser = (data) => {
   socket.emit("join-user", data);
 };
+
+export const updateUser = (values, userId, imageCover,dateOfBirth) =>{
+  socket.emit('update-user', values, userId, imageCover,dateOfBirth)
+}
 
 export const removeFavourite = (data) => {
   // console.log(data);

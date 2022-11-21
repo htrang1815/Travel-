@@ -493,13 +493,17 @@
     }
   }
   .right {
-    flex: 2;
+    flex: 4;
     padding: 0px 20px;
 
+    .avatar {
+      height: auto;
+      width: 100%;
+    }
     form {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 20px;
       justify-content: space-between;
 
       .formInput {
@@ -509,6 +513,7 @@
           display: flex;
           align-items: center;
           gap: 10px;
+          color: #111;
 
           .icon {
             cursor: pointer;
@@ -518,7 +523,9 @@
           width: 100%;
           padding: 5px;
           border: none;
-          border-bottom: 1px solid gray;
+          border: 1px solid gray;
+          color: #111;
+          border-radius: 8px;
         }
       }
     }

@@ -56,6 +56,17 @@ const resgisterSocketServer = (server) => {
       socket.to(userId).emit("sendRemoveFavouriteToClient", user);
     });
 
+    socket.on('update-user',async (values, userId, imageCover,dateOfBirth ) => {
+      const user = await User.findByIdAndUpdate(userId, {
+        name: values.name,
+        avatarUrl: imageCover,
+        phone : values.phone,
+        dateOfBirth: new Date(dateOfBirth).toISOString(),
+        address: values.address,
+      });
+      socket.to(userId).emit("sendUpdateUser", user);
+    });
+
     socket.on("remove-myblog", async (data) => {
       const { userId, blogId } = data;
       await Blog.findByIdAndDelete(blogId);

@@ -27,7 +27,7 @@ const Textarea = ({
         name=""
         rows={rows}
         placeholder={placeholder}
-        className={`w-full hover-input rounded-[50px] border-[2px] border-solid border-[#ffbc4b] bg-none text-[14px] transform-none text-[#aaa] mb-[10px] p-3 normal-case resize-none ${className}`}
+        className={`w-full hover-input rounded-[50px] border-[2px] border-solid border-[#ffbc4b] bg-none text-[14px] transform-none text-[#111] mb-[10px] p-3 normal-case resize-none ${className}`}
         {...field}
       ></textarea>
     </div>

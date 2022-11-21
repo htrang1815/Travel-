@@ -38,26 +38,6 @@ exports.createReview = catchAsync(async (req, res, next) => {
   if (!req.body.guide) req.body.guide = req.params.guideId;
   if (!req.body.user) req.body.user = req.user.id;
 
-  if (req.params.guideId) {
-    const reviewGuide = await Review.find({
-      guide: req.body.guide,
-      user: req.user.id,
-    });
-    if (reviewGuide) {
-      return next(new AppError("You reviewd this guide", 404));
-    }
-  }
-
-  if (req.params.placeId) {
-    const reviewPlace = await Review.findById({
-      place: req.body.place,
-      user: req.user.id,
-    });
-    if (reviewPlace) {
-      return next(new AppError("You reviewd this place", 404));
-    }
-  }
-
   const newReviews = await Review.create(req.body);
   res.status(201).json({
     status: "success",
