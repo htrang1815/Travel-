@@ -26,8 +26,9 @@ import useGetImageUrl from "../../hooks/useGetImageUrl";
 import Textarea from "../input/Textarea";
 import BasicRating from "../icon/ReviewStar";
 
-const ModalUpdateReview = (review) => {
-  console.log("data modal",review);
+const ModalUpdateReview = () => {
+  const { reviewUpdateUser } = useSelector((state) => state.review);
+
   const { showModalUpdateReview } = useSelector((state) => state.show);
   // const { showAlert, alertContent, type } = useSelector((state) => state.alert);
   const { rating } = useSelector((state) => state.review);
@@ -56,11 +57,7 @@ const ModalUpdateReview = (review) => {
     mode: "onChange",
     //mode: onChange để sử dụng đc thằng isValid (ko nó sẽ mãi mãi là false)
   });
-  useEffect(() => {
-    reset({
-      review: review.review.review,
-    });
-  }, []);
+
   // console.log(review);
   // const handleReviewModel = async (values) => {
   //   if (isValid) {
@@ -126,15 +123,16 @@ const ModalUpdateReview = (review) => {
             <Textarea
               id="review"
               label="Your review"
-              type="text"
               rows="5"
               placeholder="Write your review"
               className="p-8 pr-[30%] w-full h-full"
               classNameLabel="text-[#111]"
+              value={reviewUpdateUser?.review}
               control={control}
             ></Textarea>
+
             <img
-              src={imageCover || review.image}
+              src={imageCover || reviewUpdateUser.image}
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />
