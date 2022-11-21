@@ -4,6 +4,7 @@ const reviewSlice = createSlice({
   initialState: {
     rating: 0,
     reviewInATour: [],
+    reviewUpdateInfo: {},
   },
   reducers: {
     setRating: (state, action) => ({

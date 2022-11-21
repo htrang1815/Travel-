@@ -6,7 +6,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ReviewItem = ({ children, review }) => {
-  // console.log(review);
+  console.log(review);
   return (
     <div className="mb-[20px]">
       <div className="w-full h-[1px] bg-primary mb-[20px]"></div>
@@ -21,7 +21,6 @@ const ReviewItem = ({ children, review }) => {
           color: "#ffbc4a",
           fontSize: "20px",
         }}
-        
         defaultValue={review?.rating}
         precision={0.5}
       ></Rating>

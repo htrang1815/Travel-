@@ -9,8 +9,11 @@ import pic1 from "../../../../assets/images/reviews/pic-1.png";
 import axios from "axios";
 import domain from "../../../../utils/common";
 import { removeMyReview } from "../../../../realtimeCommunication/socketConnection";
+import { useDispatch } from "react-redux";
 
 const MyReviewItem = ({ data }) => {
+  console.log("data", data);
+  const dispatch = useDispatch();
   const handleDeleteMyReview = async () => {
     // const myreview = await axios.delete(`${domain}/api/v1/reviews/${data._id}`);
     removeMyReview({ userId: data.user._id, reviewId: data._id });
@@ -23,7 +26,7 @@ const MyReviewItem = ({ data }) => {
           icon={faPenToSquare}
           className="text-[18px] text-primary block pr-[20px] cursor-pointer"
           onClick={() => {
-            console.log("Click");
+            console.log("datane", data);
           }}
         ></FontAwesomeIcon>
         <FontAwesomeIcon
