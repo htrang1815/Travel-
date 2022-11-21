@@ -56,11 +56,13 @@ const ModalUpdateReview = (review) => {
     mode: "onChange",
     //mode: onChange để sử dụng đc thằng isValid (ko nó sẽ mãi mãi là false)
   });
-  useEffect(() => {
-    reset({
-      review: review.review.review,
-    });
-  }, []);
+  
+  // useEffect(() => {
+  //   reset({
+  //     review: review.review.review,
+  //   });
+  // }, []);
+
   // console.log(review);
   // const handleReviewModel = async (values) => {
   //   if (isValid) {

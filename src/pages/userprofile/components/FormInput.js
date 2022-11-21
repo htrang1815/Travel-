@@ -59,7 +59,7 @@ const FormInput = () => {
           address: values.address,
         }
       );
-      // updateUser(values, imageCover, dateOfBirth);
+      updateUser(values, user._id, imageCover, dateOfBirth);
       // console.log("userupdate");
     } catch (err) {
       console.log(err);
