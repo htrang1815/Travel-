@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { joinGuide, joinPlace } from "../../../realtimeCommunication/socketConnection";
+import {
+  joinGuide,
+  joinPlace,
+} from "../../../realtimeCommunication/socketConnection";
 import Footer from "../../home/footer/Footer";
 import Header from "../../home/header/Header";
 import { getGuide } from "../../../store/guide/slice";
@@ -13,7 +16,7 @@ import ProfileGuide from "./guidedetail/ProfileGuide";
 import ReviewGuide from "./guidedetail/ReviewGuide";
 import ModalContactGuide from "../../../components/modal/ModalContactGuide";
 import ModalShare from "../../../components/modal/ModalShare";
-import ModalError from "../../../components/modal/ModalError";
+
 import RecommendPlace from "./guidedetail/RecommendPlace";
 import { getProjectList } from "../../../store/projectList/slice";
 import ModalReview from "../../../components/modal/ModalReview";

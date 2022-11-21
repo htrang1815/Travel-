@@ -6,7 +6,7 @@ import ProjectItem from "../../../../components/projects/ProjectItem";
 
 const RecommendPlace = ({ className }) => {
   const { projectList } = useSelector((state) => state.projectList);
-  console.log(projectList);
+
   return (
     <div className={`${className} recommend py-[30px] px-[9%]`}>
       <div className="text-left  mb-[20px]">

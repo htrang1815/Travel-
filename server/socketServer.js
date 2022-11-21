@@ -44,7 +44,9 @@ const resgisterSocketServer = (server) => {
       // console.log(review.reviews);
       const reviewList = await Review.find({ guide: review.reviews.guide });
 
-      socket.to(review.reviews.guide).emit("sendReviewGuideToClient", reviewList);
+      socket
+        .to(review.reviews.guide)
+        .emit("sendReviewGuideToClient", reviewList);
     });
 
     socket.on("remove-favourite", async (data) => {
@@ -71,10 +73,10 @@ const resgisterSocketServer = (server) => {
       const { userId, blogId } = data;
       await Blog.findByIdAndDelete(blogId);
 
-      const blogUserAfterDelete = await Blog.find({user : userId})
+      const blogUserAfterDelete = await Blog.find({ user: userId });
 
-      socket.to(userId).emit("sendRemoveMyBlogToClient", blogUserAfterDelete)
-    })
+      socket.to(userId).emit("sendRemoveMyBlogToClient", blogUserAfterDelete);
+    });
 
     socket.on("remove-myreview", async (data) => {
       const { userId, reviewId } = data;

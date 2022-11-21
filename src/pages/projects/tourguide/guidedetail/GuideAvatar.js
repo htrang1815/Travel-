@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const GuideAvatar = ({ className }) => {
   const { guide } = useSelector((state) => state.guide);
-  console.log(guide);
+
   return (
     <div className={`${className} flex items-end justify-between min-w-[20%]`}>
       <img
