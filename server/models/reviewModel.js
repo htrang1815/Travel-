@@ -30,7 +30,11 @@ const reviewSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Project",
     },
-    image: { type: String },
+    image: {
+      type: String,
+      default:
+        "https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg",
+    },
   },
   {
     toJSON: { virtuals: true },
