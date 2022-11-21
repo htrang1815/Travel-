@@ -18,7 +18,7 @@ const ContentRight = () => {
   const dispatch = useDispatch();
   const { myblog } = useSelector((state) => state.myblog);
   const { myreview } = useSelector((state) => state.myreview);
-  console.log("myreview", myreview);
+  // console.log("myreview", myreview);
 
   // useEffect(() => {
   //   joinUser(user._id);

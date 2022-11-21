@@ -9,9 +9,9 @@ export default function useGetImageUrl(func = () => {}) {
   const dispatch = useDispatch();
   const getImageUrl = (e) => {
     const file = e.target.files[0];
-
-    // Tạo tham chiếu đến nơi lưu trữ ảnh trên firebase-storage
     console.log(file);
+    // Tạo tham chiếu đến nơi lưu trữ ảnh trên firebase-storage
+    // console.log(file);
     const storageRef = ref(storage, file.name);
     // Upload ảnh lên firebase
     const uploadTask = uploadBytesResumable(storageRef, file);

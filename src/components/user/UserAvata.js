@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserAvata = ({ className, show, setShow = () => {}, avatarUrl }) => {
-  console.log(avatarUrl);
+  // console.log(avatarUrl);
   return (
     <div
       onClick={() => {

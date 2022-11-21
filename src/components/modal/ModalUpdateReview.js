@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactDOM from "react-dom";
@@ -8,11 +8,7 @@ import { setShowModalUpdateReview } from "../../store/showModal/showSlice";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {
-  createReview,
-  createReviewGuide,
-} from "../../realtimeCommunication/socketConnection";
-
+import imgdefault from "../../assets/images/reviews/imgdefault.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import domain from "../../utils/common";
@@ -25,17 +21,20 @@ import {
 import useGetImageUrl from "../../hooks/useGetImageUrl";
 import Textarea from "../input/Textarea";
 import BasicRating from "../icon/ReviewStar";
+import { setRating } from "../../store/review/reviewSlice";
 
 const ModalUpdateReview = () => {
+  const { imageCover, getImageUrl } = useGetImageUrl();
   const { reviewUpdateUser } = useSelector((state) => state.review);
-
   const { showModalUpdateReview } = useSelector((state) => state.show);
   // const { showAlert, alertContent, type } = useSelector((state) => state.alert);
   const { rating } = useSelector((state) => state.review);
-  const { loadingButtonReview } = useSelector((state) => state.loading);
 
-  // console.log("reviewmodal", review);
-  const { imageCover, getImageUrl } = useGetImageUrl();
+  const { loadingButtonReview } = useSelector((state) => state.loading);
+  console.log("modal", rating);
+  // console.log("reviewmodal", reviewUpdateUser);
+
+  // console.log("image update", imageCover);
   // const { projectId, guideId } = useParams();
 
   const dispatch = useDispatch();
@@ -51,61 +50,37 @@ const ModalUpdateReview = () => {
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
     control,
-    reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
     //mode: onChange để sử dụng đc thằng isValid (ko nó sẽ mãi mãi là false)
   });
-  
-  // useEffect(() => {
-  //   reset({
-  //     review: review.review.review,
-  //   });
-  // }, []);
 
-  // console.log(review);
-  // const handleReviewModel = async (values) => {
-  //   if (isValid) {
-  //     try {
-  //       if (rating && rating !== 0) {
-  //         if (projectId) {
-  //           const review = await axios.post(
-  //             `${domain}/api/v1/projects/${projectId}/reviews`,
-  //             {
-  //               review: values.review,
-  //               rating: 5,
-  //               image: imageCover || "",
-  //             }
-  //           );
-  //           dispatch(setShowModalUpdateReview(false));
-  //           createReview(review.data.data);
-  //         } else {
-  //           const review = await axios.post(
-  //             `${domain}/api/v1/guides/${guideId}/reviews`,
-  //             {
-  //               review: values.review,
-  //               rating: 5,
-  //               image: imageCover || "",
-  //             }
-  //           );
-  //           dispatch(setShowModalUpdateReview(false));
-  //           createReviewGuide(review.data.data);
-  //         }
-  //       } else {
-  //         dispatch(setShowAlert(true));
-  //         dispatch(setAlertContent("You must rating"));
-  //         dispatch(setType("fail"));
-  //       }
-  //     } catch (err) {
-  //       dispatch(setShowModalUpdateReview(false));
-  //       // console.log(err);
-  //       dispatch(setShowAlert(true));
-  //       dispatch(setAlertContent("You reviewed"));
-  //       dispatch(setType("fail"));
-  //     }
-  //   }
-  // };
+  useEffect(() => {}, []);
+
+  const handleUpdateReview = async (review) => {
+      try {
+        // if (rating && rating !== 0) {
+          console.log(imageCover,rating,reviewUpdateUser.review);
+          const updatereview = await axios.patch(
+            `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
+            {
+              review: review ,
+              rating: rating,
+              image: imageCover,
+            }
+          );
+          dispatch(setShowModalUpdateReview(false));
+          console.log(updatereview);
+        // } else {
+        //   dispatch(setShowAlert(true));
+        //   dispatch(setAlertContent("You must rating"));
+        //   dispatch(setType("fail"));
+        // }
+      } catch (err) {
+        console.log(err);
+      }
+  };
 
   return ReactDOM.createPortal(
     <div
@@ -114,7 +89,7 @@ const ModalUpdateReview = () => {
       } modal-review `}
     >
       <div
-        className="absolute w-full h-full bg-[rgba(0,0,0,0.68)] z-[499]"
+        className="absolute w-full h-full bg-[rgba(0,0,0,0.2)] z-[499]"
         onClick={() => {
           dispatch(setShowModalUpdateReview(false));
         }}
@@ -122,9 +97,9 @@ const ModalUpdateReview = () => {
       <div className=" bg-[#fff] w-[40%] m-h-[35%] z-[500]">
         <form
           className="py-[20px] px-[30px] flex flex-col items-center justify-center"
-          //   onSubmit={handleSubmit(handleReviewModel)}
+          onSubmit={handleSubmit(handleUpdateReview)}
         >
-          <BasicRating></BasicRating>
+          <BasicRating rating={reviewUpdateUser.rating}></BasicRating>
           <div className="w-full relative">
             <Textarea
               id="review"
@@ -138,7 +113,7 @@ const ModalUpdateReview = () => {
             ></Textarea>
 
             <img
-              src={imageCover || reviewUpdateUser.image}
+              src={imageCover || reviewUpdateUser.image || imgdefault}
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />
@@ -162,9 +137,9 @@ const ModalUpdateReview = () => {
               ></FontAwesomeIcon>
             </label>
           </div>
-          <p className="text-[#f15545] font-semibold mb-[10px]">
+          {/* <p className="text-[#f15545] font-semibold mb-[10px]">
             {errors.review?.message}
-          </p>
+          </p> */}
           <button
             className="text-primary border border-solid border-primary  px-4 py-3 rounded-[10px] w-[30%] hover-button cursor-pointer"
             disabled={loadingButtonReview ? true : false}

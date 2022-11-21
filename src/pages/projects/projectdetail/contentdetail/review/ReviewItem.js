@@ -8,7 +8,7 @@ import ModalUpdateReview from "../../../../../components/modal/ModalUpdateReview
 import { useSelector } from "react-redux";
 
 const ReviewItem = ({ children, review }) => {
-  console.log("dataItem", review);
+  // console.log("dataItem", review);
   const { reviewUpdateUser} = useSelector((state) => state.review)
   return (
     <>

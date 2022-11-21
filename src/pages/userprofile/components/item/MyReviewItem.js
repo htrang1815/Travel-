@@ -10,11 +10,11 @@ import pic1 from "../../../../assets/images/reviews/pic-1.png";
 import { removeMyReview } from "../../../../realtimeCommunication/socketConnection";
 import { setShowModalUpdateReview } from "../../../../store/showModal/showSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { setReviewUpdateUser } from "../../../../store/review/reviewSlice";
+import { setRating, setReviewUpdateUser } from "../../../../store/review/reviewSlice";
 
 const MyReviewItem = ({ data, index }) => {
   const dispatch = useDispatch();
-
+const {rating} = useSelector((state) => state.review);
   const handleDeleteMyReview = async () => {
     // const myreview = await axios.delete(`${domain}/api/v1/reviews/${data._id}`);
     removeMyReview({ userId: data.user._id, reviewId: data._id });
@@ -29,8 +29,8 @@ const MyReviewItem = ({ data, index }) => {
             className="text-[18px] text-primary block pr-[20px] cursor-pointer"
             onClick={() => {
               dispatch(setReviewUpdateUser(data));
-
               dispatch(setShowModalUpdateReview(true));
+              dispatch(setRating(data.rating))
             }}
           ></FontAwesomeIcon>
           <FontAwesomeIcon
