@@ -1,15 +1,11 @@
+import React, { useEffect } from "react";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { React } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
-import useGetImageUrl from "../../hooks/useGetImageUrl";
-import { setShowModalReview } from "../../store/showModal/showSlice";
-import { setShowModalAlert } from "../../store/showModal/showSlice";
-import BasicRating from "../icon/ReviewStar";
-import Textarea from "../input/Textarea";
+import { setShowModalUpdateReview } from "../../store/showModal/showSlice";
+// import { setShowModalAlert } from "../../store/showModal/showSlice";
 import { useForm } from "react-hook-form";
-
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
@@ -26,16 +22,20 @@ import {
   setShowAlert,
   setType,
 } from "../../store/alert/alertSlice";
+import useGetImageUrl from "../../hooks/useGetImageUrl";
+import Textarea from "../input/Textarea";
+import BasicRating from "../icon/ReviewStar";
 
-const ModalReview = () => {
-  const { showModalReview } = useSelector((state) => state.show);
-  const { showAlert, alertContent, type } = useSelector((state) => state.alert);
+const ModalUpdateReview = (review) => {
+  console.log("data modal",review);
+  const { showModalUpdateReview } = useSelector((state) => state.show);
+  // const { showAlert, alertContent, type } = useSelector((state) => state.alert);
   const { rating } = useSelector((state) => state.review);
   const { loadingButtonReview } = useSelector((state) => state.loading);
 
-  // console.log(loadingButtonReview);
+  // console.log("reviewmodal", review);
   const { imageCover, getImageUrl } = useGetImageUrl();
-  const { projectId, guideId } = useParams();
+  // const { projectId, guideId } = useParams();
 
   const dispatch = useDispatch();
 
@@ -50,71 +50,76 @@ const ModalReview = () => {
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
     control,
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
     //mode: onChange để sử dụng đc thằng isValid (ko nó sẽ mãi mãi là false)
   });
-
-  const handleReviewModel = async (values) => {
-    if (isValid) {
-      try {
-        if (rating && rating !== 0) {
-          if (projectId) {
-            const review = await axios.post(
-              `${domain}/api/v1/projects/${projectId}/reviews`,
-              {
-                review: values.review,
-                rating: rating,
-                image: imageCover || "",
-              }
-            );
-            dispatch(setShowModalReview(false));
-            createReview(review.data.data);
-          } else {
-            const review = await axios.post(
-              `${domain}/api/v1/guides/${guideId}/reviews`,
-              {
-                review: values.review,
-                rating: rating,
-                image: imageCover || "",
-              }
-            );
-            dispatch(setShowModalReview(false));
-            createReviewGuide(review.data.data);
-          }
-        } else {
-          dispatch(setShowAlert(true));
-          dispatch(setAlertContent("You must rating"));
-          dispatch(setType("fail"));
-        }
-      } catch (err) {
-        dispatch(setShowModalReview(false));
-        // console.log(err);
-        dispatch(setShowAlert(true));
-        dispatch(setAlertContent("You reviewed"));
-        dispatch(setType("fail"));
-        console.log(err);
-      }
-    }
-  };
+  useEffect(() => {
+    reset({
+      review: review.review.review,
+    });
+  }, []);
+  // console.log(review);
+  // const handleReviewModel = async (values) => {
+  //   if (isValid) {
+  //     try {
+  //       if (rating && rating !== 0) {
+  //         if (projectId) {
+  //           const review = await axios.post(
+  //             `${domain}/api/v1/projects/${projectId}/reviews`,
+  //             {
+  //               review: values.review,
+  //               rating: 5,
+  //               image: imageCover || "",
+  //             }
+  //           );
+  //           dispatch(setShowModalUpdateReview(false));
+  //           createReview(review.data.data);
+  //         } else {
+  //           const review = await axios.post(
+  //             `${domain}/api/v1/guides/${guideId}/reviews`,
+  //             {
+  //               review: values.review,
+  //               rating: 5,
+  //               image: imageCover || "",
+  //             }
+  //           );
+  //           dispatch(setShowModalUpdateReview(false));
+  //           createReviewGuide(review.data.data);
+  //         }
+  //       } else {
+  //         dispatch(setShowAlert(true));
+  //         dispatch(setAlertContent("You must rating"));
+  //         dispatch(setType("fail"));
+  //       }
+  //     } catch (err) {
+  //       dispatch(setShowModalUpdateReview(false));
+  //       // console.log(err);
+  //       dispatch(setShowAlert(true));
+  //       dispatch(setAlertContent("You reviewed"));
+  //       dispatch(setType("fail"));
+  //     }
+  //   }
+  // };
 
   return ReactDOM.createPortal(
     <div
       className={`fixed top-0 bottom-0 right-0 left-0 z-[1010] flex justify-center items-center visible opacity-100 transition ease-in duration-200 ${
-        showModalReview ? "" : "opacity-0 invisible"
+        showModalUpdateReview ? "" : "opacity-0 invisible"
       } modal-review `}
     >
       <div
         className="absolute w-full h-full bg-[rgba(0,0,0,0.68)] z-[499]"
         onClick={() => {
-          dispatch(setShowModalReview(false));
+          dispatch(setShowModalUpdateReview(false));
         }}
       ></div>
       <div className=" bg-[#fff] w-[40%] m-h-[35%] z-[500]">
         <form
           className="py-[20px] px-[30px] flex flex-col items-center justify-center"
-          onSubmit={handleSubmit(handleReviewModel)}
+          //   onSubmit={handleSubmit(handleReviewModel)}
         >
           <BasicRating></BasicRating>
           <div className="w-full relative">
@@ -128,12 +133,8 @@ const ModalReview = () => {
               classNameLabel="text-[#111]"
               control={control}
             ></Textarea>
-
             <img
-              src={
-                imageCover ||
-                "https://wegoboard.com/img/p/fr-default-large_default.jpg"
-              }
+              src={imageCover || review.image}
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />
@@ -167,7 +168,7 @@ const ModalReview = () => {
             {loadingButtonReview ? (
               <div className="w-10 h-10 rounded-full border-[#ffbc4a] border-solid border-t-[transparent] border-b-[transparent] animate-spin mx-auto loadingsend"></div>
             ) : (
-              "Send"
+              "Update"
             )}
           </button>
         </form>
@@ -177,4 +178,4 @@ const ModalReview = () => {
   );
 };
 
-export default ModalReview;
+export default ModalUpdateReview;

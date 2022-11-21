@@ -48,13 +48,13 @@ const ContentLeft = () => {
           <span className=" normal-case mb-[20px] w-[150px] text-primary mr-[10px]">
             Phone :
           </span>
-          <span className=" normal-case mb-[20px]">023 456 1147</span>
+          <span className=" normal-case mb-[20px]">{user?.phone}</span>
         </div>
         <div className="mb-[20px]">
           <span className=" normal-case mb-[20px] w-[150px] text-primary mr-[10px]">
-            Country :
+            Address :
           </span>
-          <span className=" normal-case mb-[20px]">Viet Nam</span>
+          <span className=" normal-case mb-[20px]">{user?.address}</span>
         </div>
       </div>
     </div>

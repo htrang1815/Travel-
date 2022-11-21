@@ -1,60 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import useAuthStateChanged from "../../../hooks/useAuthStateChange";
-import lodash from "lodash";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import Input from "../../../components/input/Input";
+import moment from "moment";
+import useGetImageUrl from "../../../hooks/useGetImageUrl";
+import domain from "../../../utils/common";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../../store/auth/slice";
+import { updateUser } from "../../../realtimeCommunication/socketConnection";
 
 const FormInput = () => {
   const { user } = useAuthStateChanged();
+  // const { user } = useSelector((state) => state.auth);
+  // const userId = user._id;
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(setUser());
+  // }, [dispatch]);
+  // console.log(user);
+  const schema = yup.object();
 
-  const schema = yup.object({
-    name: yup.string().required("Please enter your name"),
-    dateOfBirth: yup.date().min("1969-11-13", "Date is too early"),
-    phone: yup.string().min(10, "too short")
-    .max(10, "too long"),
-    address : yup.string()
+  const {
+    handleSubmit,
+    formState: { errors, isValid, isSubmitting },
+    control,
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    //mode: onChange để sử dụng đc thằng isValid (ko nó sẽ mãi mãi là false)
   });
+  useEffect(() => {
+    reset({
+      email: user.email,
+      name: user.name,
+      phone: user.phone,
+      address: user.address,
+    });
+  }, []);
+  const [dateOfBirth, setDateOfBirth] = useState(Date.now);
 
-  const [infoUser, setInfoUser] = useState({
-    name: `${user?.name}`,
-    dateOfBirth: `${user?.dateOfBirth}`,
-    phone: `${user?.phone || ""}`,
-  });
-  // console.log(infoUser);
+  const { imageCover, getImageUrl } = useGetImageUrl();
 
-  const inputs = [
-    {
-      id: "name",
-      label: "Name",
-      type: "text",
-      // placeholder: "John Doe",
-      value: `${user?.name}`,
-    },
-    {
-      id: "email",
-      label: "Email",
-      type: "email",
-      // placeholder: "john_doe@gmail.com",
-      // value : `${user?.email}`
-    },
-    {
-      id: "dateOfBirth",
-      label: "Date of birth",
-      type: "date",
-      // placeholder: "18/01/2001",
-      // value : `${user?.dateOfBirth}`
-    },
-    {
-      id: "phone",
-      label: "Phone",
-      type: "text",
-      // placeholder: "18/01/2001",
-      // value : `${user?.phone || ""}`
-    },
-  ];
-  const handelChange = lodash.debounce((e) => {});
-
+  // console.log(dateOfBirth);
+  const onSubmitHandler = async (values) => {
+    try {
+      const userupdate = await axios.patch(
+        `${domain}/api/v1/userprofile/${user._id}`,
+        {
+          name: values.name,
+          avatarUrl: imageCover || user.avatarUrl,
+          dateOfBirth: new Date(dateOfBirth).toISOString(),
+          phone: values.phone,
+          address: values.address,
+        }
+      );
+      // updateUser(values, imageCover, dateOfBirth);
+      // console.log("userupdate");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="text-primary min-h-[80vh] mb-[10px]">
       <div
@@ -65,107 +75,108 @@ const FormInput = () => {
         </div>
         <div className="bottom max-h-[60vh] h-full pb-[50px]">
           <div className="left">
-            <img
-              src={
-                "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
+            <img src={imageCover || user?.avatarUrl} alt="" />
           </div>
           <div className="right">
-            <form className=" h-full pr-[5px]">
-              <div className="formInput ">
+            <form
+              className=" h-full pr-[5px]"
+              onSubmit={handleSubmit(onSubmitHandler)}
+            >
+              <div className=" avatar cursor-pointer">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
                 <input
                   type="file"
                   id="file"
-                  onChange={(e) =>
-                    // setFile(e.target.files[0])
-                    {}
-                  }
+                  onChange={getImageUrl}
                   style={{ display: "none" }}
                 />
               </div>
+              <Input
+                label="email"
+                id="email"
+                type="email"
+                placeholder="Email"
+                control={control}
+                className="formInput"
+                disabled={true}
+              ></Input>
+              {/* <p className="text-[#f77171] font-semibold mb-[10px]">
+                {errors.email?.message}
+              </p> */}
+              <Input
+                label="name"
+                id="name"
+                type="text"
+                placeholder="Name"
+                control={control}
+                className="formInput"
+              ></Input>
+              {/* <p className="text-[#f77171] font-semibold mb-[10px]">
+                {errors.name?.message}
+              </p> */}
+              <div className="formInput">
+                <label htmlFor="dateOfBirth">Date of Birth</label>
+                <input
+                  type="date"
+                  // value = "2013-02-02"
+                  defaultValue={
+                    moment(user.dateOfBirth).format("YYYY-MM-DD") || dateOfBirth
+                  }
+                  name="dateOfBirth"
+                  id="dateOfBirth"
+                  placeholder="Date of birth"
+                  onChange={(e) => {
+                    setDateOfBirth(e.target.value);
+                  }}
+                ></input>
+              </div>
+              {/* <Input
+                label="Date of birth"
+                id="dateOfBirth"
+                // type="date"
+                placeholder="Date of birth"
+                control={control}
+                className="formInput"
+              ></Input> */}
 
-              <div className="formInput">
-                <label>Email</label>
-                <input
-                  type="text"
-                  id="email"
-                  value={user.email}
-                  disabled={true}
-                  className="normal-case text-[#a1a0a0]"
-                />
+              <Input
+                label="phone"
+                id="phone"
+                type="text"
+                placeholder="Phone"
+                control={control}
+                className="formInput"
+              ></Input>
+              {/* <p className="text-[#f77171] font-semibold mb-[10px]">
+                {errors.phone?.message}
+              </p> */}
+              <Input
+                label="address"
+                id="address"
+                type="text"
+                placeholder="Address"
+                control={control}
+                className="formInput"
+              ></Input>
+              {/* <p className="text-[#f77171] font-semibold mb-[10px]">
+                {errors.address?.message}
+              </p> */}
+              <div className="text-center w-[40%] ">
+                <button
+                  type="submit"
+                  className="text-primary border-primary hover-button"
+                >
+                  Save Changed
+                </button>
               </div>
-              <div className="formInput">
-                <label>Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  defaultValue={user.name}
-                  onChange={(e) => {
-                    setInfoUser({
-                      ...infoUser,
-                      name: e.target.value,
-                    });
-                    console.log(infoUser);
-                  }}
-                />
-              </div>
-              <div className="formInput">
-                <label>Phone</label>
-                <input
-                  type="text"
-                  id="name"
-                  // value={}
-                  onChange={(e) => {
-                    setInfoUser({
-                      ...infoUser,
-                      name: e.target.value,
-                    });
-                    console.log(infoUser);
-                  }}
-                />
-              </div>
-              <div className="formInput">
-                <label>Date of birth</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  // value={}
-                  onChange={(e) => {
-                    setInfoUser({
-                      ...infoUser,
-                      dateOfBirth: e.target.value,
-                    });
-                    console.log(infoUser);
-                  }}
-                />
-              </div>
-              <div className="formInput">
-                <label>Date of birth</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  // value={}
-                  onChange={(e) => {
-                    setInfoUser({
-                      ...infoUser,
-                      dateOfBirth: e.target.value,
-                    });
-                    console.log(infoUser);
-                  }}
-                />
-              </div>
-              <button
-                onClick={() => {}}
-                className="text-primary border-primary hover-button"
-              >
-                Send
-              </button>
             </form>
+            {/* <input
+              type='date'
+              value = "2013-02-02">
+
+              </input> */}
           </div>
         </div>
       </div>

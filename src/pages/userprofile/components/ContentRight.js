@@ -20,9 +20,9 @@ const ContentRight = () => {
   const { myreview } = useSelector((state) => state.myreview);
   console.log("myreview", myreview);
 
-  useEffect(() => {
-    joinUser(user._id);
-  }, [user._id]);
+  // useEffect(() => {
+  //   joinUser(user._id);
+  // }, [user._id]);
 
   useEffect(() => {
     dispatch(getMyBlog(user._id));
@@ -78,6 +78,7 @@ const ContentRight = () => {
             </div>
           </div>
         </TabPanel>
+
         <TabPanel>
           <div>
             <div className="myblog mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
@@ -97,16 +98,9 @@ const ContentRight = () => {
         <TabPanel>
           <div>
             <div className="myreview mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
-              {myreview?.map((review) => {
-                return (
-                  <MyReviewItem key={review?._id} data={review}></MyReviewItem>
-                );
-              })}
-              {/* <MyReviewItem></MyReviewItem>
-              <MyReviewItem></MyReviewItem>
-              <MyReviewItem></MyReviewItem>
-              <MyReviewItem></MyReviewItem>
-              <MyReviewItem></MyReviewItem> */}
+              {myreview?.map((review) => (
+                <MyReviewItem key={review?._id} data={review}></MyReviewItem>
+              ))}
             </div>
             <div className="text-center">
               <ButtonLoadMore

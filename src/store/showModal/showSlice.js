@@ -15,13 +15,14 @@ const showSlice = createSlice({
       alertContent: "",
       alertType: "success",
     },
-    savefavourite : "false",
+    showModalUpdateReview: "false",
+    savefavourite: "false",
     photo: [],
   },
   reducers: {
-    setSaveFavourite : (state, action) => ({
+    setSaveFavourite: (state, action) => ({
       ...state,
-      savefavourite : action.payload
+      savefavourite: action.payload,
     }),
     setShowShare: (state, action) => ({
       ...state,
@@ -38,6 +39,14 @@ const showSlice = createSlice({
     setShowAddNew: (state, action) => ({
       ...state,
       showAddNew: action.payload,
+    }),
+    setShowModalReview: (state, action) => ({
+      ...state,
+      showModalReview: action.payload,
+    }),
+    setShowModalUpdateReview: (state, action) => ({
+      ...state,
+      showModalUpdateReview: action.payload,
     }),
     setShowModalReview: (state, action) => ({
       ...state,
@@ -72,7 +81,8 @@ export const {
   setShowModalUser,
   setShowFilter,
   setShowContactGuide,
-  setSaveFavourite
+  setSaveFavourite,
+  setShowModalUpdateReview,
 } = showSlice.actions;
 
 export default showSlice.reducer;
