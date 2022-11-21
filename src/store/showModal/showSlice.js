@@ -15,8 +15,8 @@ const showSlice = createSlice({
       alertContent: "",
       alertType: "success",
     },
-    showModalUpdateReview: "false",
-    savefavourite: "false",
+    showModalUpdateReview: false,
+    savefavourite: false,
     photo: [],
   },
   reducers: {
