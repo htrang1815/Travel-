@@ -2,11 +2,7 @@ import moment from "moment";
 import React from "react";
 import { useController } from "react-hook-form";
 
-<<<<<<< HEAD
 const Input = ({ label, type, placeholder,className, id, control = "", disabled=false}) => {
-=======
-const Input = ({ label, type, placeholder, className, id, control = "" }) => {
->>>>>>> 2727dfbf3dd8f80b7767b8b683b102ff116ded21
   const { field } = useController({
     control,
     name: id,

@@ -13,7 +13,7 @@ const MapDetail = () => {
     map.current = new mapboxgl.Map({
       // Thẻ chứa map
       container: mapContainer.current,
-      style: "mapbox://styles/quangvu9501/cla2ozjnu001v14sgnvbllz72",
+      style: "mapbox://styles/htrang1801/claqak40l000714qf32ll6byt",
     });
 
     const bounds = new mapboxgl.LngLatBounds();

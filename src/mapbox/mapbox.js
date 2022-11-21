@@ -2,6 +2,6 @@
 import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoicXVhbmd2dTk1MDEiLCJhIjoiY2xhMm1pNGc5MGlsZjNwbWhrbTc3ZzdhaiJ9.vcFLlNY4ozb40IwQei3O1Q";
+  "pk.eyJ1IjoiaHRyYW5nMTgwMSIsImEiOiJjbGFxYTJidXoxZXNmM25xdHNnbHUzNzlyIn0.UZBQFE5_Toio5N_3GvuXZA";
 
 export default mapboxgl;

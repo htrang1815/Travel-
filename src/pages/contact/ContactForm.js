@@ -23,7 +23,7 @@ const ContactForm = () => {
     map.current = new mapboxgl.Map({
       // Thẻ chứa map
       container: mapContainer.current,
-      style: "mapbox://styles/quangvu9501/cla2ozjnu001v14sgnvbllz72",
+      style: "mapbox://styles/htrang1801/claqak40l000714qf32ll6byt",
       center: [106.3225388, 20.9430878],
       zoom: 12,
       interactive: false,
