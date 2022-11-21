@@ -18,6 +18,7 @@ const ContentRight = () => {
   const dispatch = useDispatch();
   const { myblog } = useSelector((state) => state.myblog);
   const { myreview } = useSelector((state) => state.myreview);
+  console.log("myreview", myreview);
 
   // useEffect(() => {
   //   joinUser(user._id);
@@ -97,8 +98,12 @@ const ContentRight = () => {
         <TabPanel>
           <div>
             <div className="myreview mt-[30px] grid grid-cols-1 grid-flow-row gap-8 ">
-              {myreview?.map((review) => (
-                <MyReviewItem key={review?._id} data={review}></MyReviewItem>
+              {myreview?.map((review, index) => (
+                <MyReviewItem
+                  key={review?._id}
+                  data={review}
+                  index={index}
+                ></MyReviewItem>
               ))}
             </div>
             <div className="text-center">

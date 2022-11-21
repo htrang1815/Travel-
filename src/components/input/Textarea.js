@@ -4,17 +4,18 @@ import { useController } from "react-hook-form";
 const Textarea = ({
   label,
   id,
-  type,
+
   placeholder,
   className,
   classNameLabel,
   rows,
+  value,
   control,
 }) => {
   const { field } = useController({
     control,
     name: id,
-    defaultValue: "",
+    // defaultValue: "",
   });
   return (
     <div className="w-full ">
@@ -23,12 +24,12 @@ const Textarea = ({
       </label>
       <textarea
         id={id}
-        type={type}
-        name=""
+        name={id}
         rows={rows}
         placeholder={placeholder}
         className={`w-full hover-input rounded-[50px] border-[2px] border-solid border-[#ffbc4b] bg-none text-[14px] transform-none text-[#111] mb-[10px] p-3 normal-case resize-none ${className}`}
         {...field}
+        defaultValue={value}
       ></textarea>
     </div>
   );

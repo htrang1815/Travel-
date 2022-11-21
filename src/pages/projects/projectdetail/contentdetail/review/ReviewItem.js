@@ -48,7 +48,7 @@ const ReviewItem = ({ children, review }) => {
         </div>
         <UserInfo userInfo={review?.user}></UserInfo>
       </div>
-      <ModalUpdateReview review={reviewUpdateUser}></ModalUpdateReview>
+      <ModalUpdateReview></ModalUpdateReview>
     </>
   );
 };
