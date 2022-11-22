@@ -34,7 +34,7 @@ const ModalUpdateReview = () => {
   console.log("modal", rating);
   // console.log("reviewmodal", reviewUpdateUser);
 
-  // console.log("image update", imageCover);
+  console.log("image update", imageCover);
   // const { projectId, guideId } = useParams();
 
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const ModalUpdateReview = () => {
   const schema = yup.object({
     review: yup
       .string()
-      .required("Please enter your review")
+      // .required("Please enter your review")
       .min(30, "Your review must have at least 30 characters."),
   });
 
