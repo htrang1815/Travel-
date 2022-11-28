@@ -73,14 +73,17 @@ const resgisterSocketServer = (server) => {
     );
 
     socket.on("update-review", async (data) => {
-      const { values, reviewId, rating, userId } = data;
-      await Review.findByIdAndUpdate(reviewId, {
-        name: values.review,
-        rating: rating,
+      const { _id, review, rating, user } = data;
+
+      const userId = user._id;
+      await Review.findByIdAndUpdate(_id, {
+        review,
+        rating,
       });
-      const review = Review.find({ user: userId });
-      // console.log(review);
-      socket.to(userId).emit("sendUpdateReview", review);
+
+      const reviewUpdate = await Review.find({ user: userId });
+
+      socket.to(userId).emit("sendUpdateReview", reviewUpdate);
     });
 
     socket.on("remove-myblog", async (data) => {

@@ -21,8 +21,9 @@ import useGetImageUrl from "../../hooks/useGetImageUrl";
 import Textarea from "../input/Textarea";
 import BasicRating from "../icon/ReviewStar";
 import { setRating } from "../../store/review/reviewSlice";
-import { updateReview } from "../../realtimeCommunication/socketConnection";
+
 import useAuthStateChanged from "../../hooks/useAuthStateChange";
+import { updateReview } from "../../realtimeCommunication/socketConnection";
 
 const ModalUpdateReview = () => {
   const { user } = useAuthStateChanged();
@@ -71,7 +72,7 @@ const ModalUpdateReview = () => {
     console.log("asdasdasd", imageCover);
     try {
       if (rating && rating !== 0) {
-        const updatereview = await axios.patch(
+        const response = await axios.patch(
           `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
           {
             review: review.review,
@@ -79,8 +80,10 @@ const ModalUpdateReview = () => {
             image: imageCover,
           }
         );
+
+        const { review: reviewsUpdate } = response.data.data;
+        updateReview(reviewsUpdate);
         dispatch(setShowModalUpdateReview(false));
-        console.log(updatereview);
       } else {
         dispatch(setShowAlert(true));
         dispatch(setAlertContent("You must rating"));
@@ -124,8 +127,7 @@ const ModalUpdateReview = () => {
               {errors.review?.message}
             </p>
             <img
-              // src={imageCover || reviewUpdateUser?.image || imgdefault}
-              src={imageCover}
+              src={imageCover || reviewUpdateUser?.image || imgdefault}
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />
