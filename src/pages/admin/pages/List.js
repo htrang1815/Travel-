@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
+// import { getAllReview } from "../../../store/allreview/slice";
 import { getUserProfile } from "../../../store/userProfile/slice";
 import Datatable from "../components/Datatable";
 import Navbar from "../components/Navbar";
@@ -19,10 +20,12 @@ import { userInputs } from "../formSource";
 
 const List = () => {
   const { userProfile } = useSelector((state) => state.userProfile);
+  const { reviewList } = useSelector((state) => state.reviewList);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserProfile());
+    // dispatch(getAllReview());
   }, [dispatch]);
 
   const userRows = userProfile?.map((el) => {
@@ -38,7 +41,18 @@ const List = () => {
       role: el.role,
     };
   });
-
+    console.log(reviewList);
+  // const reviewRows = allreview?.map((el) => {
+  //   return {
+  //     id: el._id,
+  //     review: el.review,
+  //     rating: el.rating,
+  //     user: el.user,
+  //     guide: el.guide,
+  //     place: el.place,
+  //     createdAt: moment(el.createdAt).format("DD/MM/YYYY"),
+  //   };
+  // });
 
 
   return (
@@ -57,8 +71,7 @@ const List = () => {
                 rows={userRows}
                 title="user"
                 inputs={userInputs}
-              >
-              </Datatable>
+              ></Datatable>
             }
           ></Route>
           {/* <Route

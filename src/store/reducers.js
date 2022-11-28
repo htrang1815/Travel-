@@ -14,6 +14,7 @@ import myReviewSlice from "./myreview/slice";
 import reviewGuideSlice from "./reviewGuide/reviewSlice";
 import alertSlice from "./alert/alertSlice";
 import userProfileSlice from "./userProfile/slice";
+import reviewListSlice from "./reviewList/slice";
 
 export const reducer = combineReducers({
   auth: authSlice,
@@ -31,4 +32,5 @@ export const reducer = combineReducers({
   myblog: myBlogSlice,
   myreview: myReviewSlice,
   userProfile: userProfileSlice,
+  reviewList: reviewListSlice,
 });

@@ -11,6 +11,8 @@ import blogSaga from "./blog/saga";
 import myBlogSaga from "./myblog/saga";
 import myReviewSaga from "./myreview/saga";
 import userProfileSaga from "./userProfile/saga";
+import reviewListSaga from "./reviewList/saga";
+
 
 export default function* rootSaga() {
   yield all([
@@ -26,5 +28,6 @@ export default function* rootSaga() {
     fork(myBlogSaga),
     fork(myReviewSaga),
     fork(userProfileSaga),
+    fork(reviewListSaga)
   ]);
 }
