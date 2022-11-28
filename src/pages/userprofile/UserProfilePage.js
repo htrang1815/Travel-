@@ -4,8 +4,8 @@ import ContentLeft from "./components/ContentLeft";
 import ContentRight from "./components/ContentRight";
 import PosterUser from "./components/PosterUser";
 import ModalUser from "../../components/modal/ModalUser.js";
-import FormInput from "./components/FormInput.js"
-import {userInputs} from "./inputdata.js"
+import FormInput from "./components/FormInput.js";
+import { userInputs } from "./inputdata.js";
 import { joinUser } from "../../realtimeCommunication/socketConnection";
 import { useParams } from "react-router-dom";
 import useAuthStateChanged from "../../hooks/useAuthStateChange";
@@ -17,7 +17,7 @@ const UserProfilePage = () => {
   useEffect(() => {
     joinUser(userId);
   }, [userId]);
-  
+
   return (
     <>
       <div className="bg-[#111]">

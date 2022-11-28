@@ -41,30 +41,18 @@ const ModalUpdateReview = () => {
 
   const dispatch = useDispatch();
 
-<<<<<<< HEAD
-  const schema = yup
-    .object
-    //   {
-    //   review: yup
-    //     .string()
-    //     .required("Please enter your review")
-    //     .min(30, "Your review must have at least 30 characters."),
-    // }
-    ();
-=======
   const schema = yup.object({
     review: yup
       .string()
       // .required("Please enter your review")
       .min(30, "Your review must have at least 30 characters."),
   });
->>>>>>> 181f816ae139f8f19a437e3c655455932e6626b3
 
   const {
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
     control,
-    reset,
+    // reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -79,54 +67,25 @@ const ModalUpdateReview = () => {
   // console.log(review)
   // }, []);
 
-<<<<<<< HEAD
-  const handleUpdateReview = async (values) => {
-    try {
-      if (isValid) {
-        // console.log(values, rating, reviewUpdateUser.review);
-        const updatereview = await axios.patch(
-          `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
-          {
-            review: values.review || reviewUpdateUser.review,
-=======
   const handleUpdateReview = async (review) => {
+    console.log("asdasdasd", imageCover);
     try {
       if (rating && rating !== 0) {
         const updatereview = await axios.patch(
           `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
           {
             review: review.review,
->>>>>>> 181f816ae139f8f19a437e3c655455932e6626b3
             rating: rating,
             image: imageCover,
           }
         );
-<<<<<<< HEAD
         dispatch(setShowModalUpdateReview(false));
-        const data = {
-          values: values,
-          reviewId: reviewUpdateUser._id,
-          rating: rating,
-          userId: user._id,
-        };
-        // updateReview(data);
-        // console.log(updatereview);
-      }
-      // if (rating && rating !== 0) {
-      // } else {
-      //   dispatch(setShowAlert(true));
-      //   dispatch(setAlertContent("You must rating"));
-      //   dispatch(setType("fail"));
-      // }
-=======
-        // dispatch(setShowModalUpdateReview(false));
         console.log(updatereview);
       } else {
-        // dispatch(setShowAlert(true));
-        // dispatch(setAlertContent("You must rating"));
-        // dispatch(setType("fail"));
+        dispatch(setShowAlert(true));
+        dispatch(setAlertContent("You must rating"));
+        dispatch(setType("fail"));
       }
->>>>>>> 181f816ae139f8f19a437e3c655455932e6626b3
     } catch (err) {
       console.log(err);
     }
@@ -161,15 +120,12 @@ const ModalUpdateReview = () => {
               value={reviewUpdateUser?.review}
               control={control}
             ></Textarea>
-<<<<<<< HEAD
-            <p className="text-[#f15545] font-semibold mb-[10px]">
-=======
             <p className="text-[#f77171] font-semibold mb-[10px]">
->>>>>>> 181f816ae139f8f19a437e3c655455932e6626b3
               {errors.review?.message}
             </p>
             <img
-              src={imageCover || reviewUpdateUser.image || imgdefault}
+              // src={imageCover || reviewUpdateUser?.image || imgdefault}
+              src={imageCover}
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />
@@ -198,7 +154,6 @@ const ModalUpdateReview = () => {
             type="submit"
             className="text-primary border border-solid border-primary  px-4 py-3 rounded-[10px] w-[30%] hover-button cursor-pointer"
             disabled={loadingButtonReview ? true : false}
-            type="submit"
           >
             {loadingButtonReview ? (
               <div className="w-10 h-10 rounded-full border-[#ffbc4a] border-solid border-t-[transparent] border-b-[transparent] animate-spin mx-auto loadingsend"></div>
