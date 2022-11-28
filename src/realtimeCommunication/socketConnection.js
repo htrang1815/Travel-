@@ -4,11 +4,12 @@ import { setMyBlog } from "../store/myblog/slice";
 import { setMyReview } from "../store/myreview/slice";
 import { setReviewInfoInTour } from "../store/review/reviewSlice";
 import { setReviewInfoInGuide } from "../store/reviewGuide/reviewSlice";
+import domain from "../utils/common";
 
 let socket = null;
 
 export const connectWithSocketServer = (user, dispatch) => {
-  socket = io(`http://localhost:3002`, {
+  socket = io(`${domain}`, {
     // Truyền dữ liệu ng dùng sang backend
     auth: { user },
   });
