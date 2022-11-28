@@ -22,13 +22,13 @@ import { getIsLogin } from "./store/auth/slice";
 const Router = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLogin } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(getIsLogin());
-    // if(!isLogin){
-    //   navigate("/home")
+    // if (!isLogin) {
+    //   navigate("/home");
     // }
-  }, [dispatch]);
-  const { isLogin } = useSelector((state) => state.auth);
+  }, [dispatch, navigate, isLogin]);
   return (
     <div>
       <Routes>

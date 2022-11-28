@@ -10,16 +10,18 @@ import { getBlog } from "../../store/blog/slice";
 const BlogDetail = () => {
   const { blogId } = useParams();
   const dispatch = useDispatch();
-  const articleRef = useRef();
-  const { blog } = useSelector((state) => state.blog);
+  const articleRef = useRef({});
+
   useEffect(() => {
     dispatch(getBlog(blogId));
+  }, [dispatch, blogId]);
+
+  const { blog } = useSelector((state) => state.blog);
+
+  useEffect(() => {
     articleRef.current.innerHTML = "";
     handleArticle(blog.article);
   }, [blog.article]);
-
-  // console.log(blog);
-
   const handleArticle = (data) => {
     data = data?.split("\n");
 
@@ -34,7 +36,6 @@ const BlogDetail = () => {
         )}<h1>`;
       } else if (item.slice(0, 4) === "img(") {
         let src = item.replace("img(", "").replace(")", "");
-        console.log(src);
         articleRef.current.innerHTML += `<img src="${src}" alt="image${i}" class="imgBlog"/>`;
       } else {
         articleRef.current.innerHTML += `<p class="contentBlog">${item}</p>`;
