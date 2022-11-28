@@ -75,10 +75,10 @@ const Sidebar = () => {
               <span>Blogs</span>
             </li>
           </Link>
-          <Link to="/admin/comments" style={{ textDecoration: "none" }}>
+          <Link to="/admin/reviews" style={{ textDecoration: "none" }}>
             <li>
               <FontAwesomeIcon icon={faComment} className="icon" />
-              <span>Comments</span>
+              <span>Reviews</span>
             </li>
           </Link>
           <p className="title">USER</p>

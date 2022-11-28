@@ -1,3 +1,3 @@
-const domain = "http://localhost:3002";
+const domain = "https://backend.travelbooking.homes/";
 
 export default domain;

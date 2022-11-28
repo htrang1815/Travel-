@@ -3,16 +3,15 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
+import { getReviewList } from "../../../store/reviewList/slice";
 // import { getAllReview } from "../../../store/allreview/slice";
 import { getUserProfile } from "../../../store/userProfile/slice";
 import Datatable from "../components/Datatable";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import {
-  commentColumns,
-  commentRows,
+  reviewColumns,
   placeColumns,
-  placeRows,
   userColumns,
   userRows,
 } from "../datatablesources";
@@ -25,7 +24,7 @@ const List = () => {
 
   useEffect(() => {
     dispatch(getUserProfile());
-    // dispatch(getAllReview());
+    dispatch(getReviewList());
   }, [dispatch]);
 
   const userRows = userProfile?.map((el) => {
@@ -41,18 +40,18 @@ const List = () => {
       role: el.role,
     };
   });
-    console.log(reviewList);
-  // const reviewRows = allreview?.map((el) => {
-  //   return {
-  //     id: el._id,
-  //     review: el.review,
-  //     rating: el.rating,
-  //     user: el.user,
-  //     guide: el.guide,
-  //     place: el.place,
-  //     createdAt: moment(el.createdAt).format("DD/MM/YYYY"),
-  //   };
-  // });
+  // console.log(reviewList);
+  const reviewRows = reviewList?.map((el) => {
+    return {
+      id: el._id,
+      review: el.review,
+      rating: el.rating,
+      user: el.user._id,
+      guide: el.guide._id,
+      place: el.place._id,
+      createdAt: moment(el.createdAt).format("DD/MM/YYYY"),
+    };
+  });
 
 
   return (
@@ -71,6 +70,17 @@ const List = () => {
                 rows={userRows}
                 title="user"
                 inputs={userInputs}
+              ></Datatable>
+            }
+          ></Route>
+          <Route
+            path="/reviews"
+            element={
+              <Datatable
+                columns={reviewColumns}
+                rows={reviewRows}
+                inputs={userInputs}
+                title="reviews"
               ></Datatable>
             }
           ></Route>
@@ -98,17 +108,6 @@ const List = () => {
           <Route
             path="/blogs"
             element={<Datatable >guides</Datatable>}
-          ></Route> */}
-          {/* <Route
-            path="/comments"
-            element={
-              <Datatable
-                columns={commentColumns}
-                rows={commentRows}
-                inputs={placeInputs}
-                title="places"
-              ></Datatable>
-            }
           ></Route> */}
         </Routes>
       </div>

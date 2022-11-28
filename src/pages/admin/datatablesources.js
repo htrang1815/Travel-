@@ -85,13 +85,13 @@ export const userColumns = [
 //   },
 // ];
 
-export const commentColumns = [
+export const reviewColumns = [
   { field: "id", width: 50 },
-  { field: "date", width: 150 },
-  { field: "user", width: 200 },
-  { field: "raiting", width: 150 },
-  { field: "content", width: 300, paddingLeft: 10 },
-  { field: "status", width: 200 },
+  { field: "review", width: 150 },
+  { field: "rating", width: 200 },
+  { field: "user", width: 150 },
+  { field: "guide", width: 300, paddingLeft: 10 },
+  { field: "place", width: 200 },
   {
     field: "action",
     headerName: "Action",

@@ -7,7 +7,7 @@ export default function* handleGetReviewList(actions) {
   try {
     // Gọi đến hàm call API, tham số thứ hai là prop truyền vào API
     const response = yield call(requestGetReviewList, actions.payload);
-    // console.log(response)
+
     // Lấy dữ liệu  cần
     const { reviews } = response.data.data;
 
