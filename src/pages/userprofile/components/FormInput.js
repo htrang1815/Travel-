@@ -12,9 +12,13 @@ import domain from "../../../utils/common";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../store/auth/slice";
 import { updateUser } from "../../../realtimeCommunication/socketConnection";
+import { setShowModalUser } from "../../../store/showModal/showSlice";
 
 const FormInput = () => {
   const { user } = useAuthStateChanged();
+  const { showModalUser } = useSelector((state) => state.show);
+  const dispatch = useDispatch();
+
   // const { user } = useSelector((state) => state.auth);
   // const userId = user._id;
   // const dispatch = useDispatch();
@@ -60,7 +64,10 @@ const FormInput = () => {
         }
       );
       updateUser(values, user._id, imageCover, dateOfBirth);
+      dispatch(setShowModalUser(false));
+
       // console.log("userupdate");
+      
     } catch (err) {
       console.log(err);
     }

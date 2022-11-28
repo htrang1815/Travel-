@@ -13,6 +13,7 @@ import axios from "axios";
 import domain from "../../../utils/common";
 import useAuthStateChanged from "../../../hooks/useAuthStateChange";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 const WriteBlog = () => {
   const [images, setImages] = useState([]);
@@ -57,68 +58,14 @@ const WriteBlog = () => {
         user: user._id,
         bannerImage: imageCover,
       });
-      console.log("hi");
+      // console.log("blog");
 
       const blogId = blog.data.data.blogs;
       navigate(`/blog/${blogId._id}`);
     }
   };
+  console.log(Date.now)
 
-  // useEffect(() => {
-  //   if (images.length > 0) {
-  //     handleMultyImage.current();
-  //   }
-  // }, [images.length]);
-
-  // const getImagePath = (e) => {
-  //   setUrls([]);
-  //   for (let i = 0; i < e.target.files.length; i++) {
-  //     const newImage = e.target.files[i];
-  //     newImage["id"] = Math.random();
-  //     setImages((prevState) => {
-  //       return [...prevState, newImage];
-  //     });
-  //   }
-  // };
-
-  // handleMultyImage.current = () => {
-  //   const promises = [];
-  //   images?.map((image) => {
-  //     const storageRef = ref(storage, `blogs/${image?.name}`);
-  //     const uploadTask = uploadBytesResumable(storageRef, image);
-  //     promises.push(uploadTask);
-  //     uploadTask.on(
-  //       "state_changed",
-  //       (snapshot) => {
-  //         const progress = Math.round(
-  //           snapshot.bytesTransferred / snapshot.totalBytes
-  //         );
-  //         setProgress(progress);
-  //       },
-  //       (error) => {
-  //         // Handle unsuccessful uploads
-  //         console.log(error.message);
-  //       },
-  //       async () => {
-  //         // Handle successful uploads on complete
-  //         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-  //         await getDownloadURL(uploadTask.snapshot.ref)
-  //           .then((urls) => {
-  //             addImage(urls);
-  //             setUrls((prevState) => {
-  //               return [...prevState, urls];
-  //             });
-  //           })
-  //           .catch((err) => {
-  //             console.log(err.message);
-  //           });
-  //       }
-  //     );
-  //   });
-  //   Promise.all(promises)
-  //     .then(() => console.log("All images upload"))
-  //     .catch((err) => console.log(err));
-  // };
   return (
     <div className="bg-[#111] ">
       <Header></Header>
@@ -152,10 +99,12 @@ const WriteBlog = () => {
         <input
           type="text"
           placeholder="Blog title ... "
-          className="block w-full min-h-[100px] h-auto outline-none text-[50px] font-[600] resize-none border-none pb-[10px] rounded-[10px] bg-[#111] hover:text-primary normal-case mt-[20px] snap-none scroll-textarea"
+          className="block w-full min-h-[100px] h-auto outline-none text-[50px] font-[600] resize-none border-none pb-[10px] rounded-[10px] bg-[#111] text-primary hover:text-primary normal-case mt-[20px] snap-none scroll-textarea"
           onChange={handleTitle}
         ></input>
-        <span className="normal-case pb-[20px] italic">Puslished at - </span>
+        <span className="normal-case pb-[20px] italic">
+          Puslished at - {" "}
+        </span>
         <textarea
           type="text"
           placeholder="Start writing here ... "

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -9,8 +9,9 @@ import Moment from "react-moment";
 const ContentLeft = () => {
   const dispatch = useDispatch();
   const { user } = useAuthStateChanged();
+
   return (
-    <div className="content__left w-[25%] bg-[#222] pl-[40px] mr-[40px] min-h-[50vh] h-full rounded-lg">
+    <div className="content__left w-[25%] bg-[#222] pl-[40px] mr-[40px] min-h-[50vh] h-full rounded-lg pr-[20px]">
       <div className="py-[20px] flex items-center justify-between">
         <h1 className="text-[18px] block font-[600] text-primary">
           My profile

@@ -7,12 +7,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Rating } from "@mui/material";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import UserInfo from "../../../../components/user/UserInfo";
+import { getGuide } from "../../../../store/guide/slice";
 
 const TitleDetail = () => {
   const { project } = useSelector((state) => state.project);
-
+  // console.log(project);
+  const navigate = useNavigate();
   return (
     <div className="mb-[30px]">
       <div className="title">
@@ -21,28 +25,28 @@ const TitleDetail = () => {
       <div className="icon mb-[20px]">
         <div className="flex mb-[20px]">
           <div className="text-primary text-[14px] mr-[5px]">
-          <Rating
-                className="text-primary text-[14px] mr-[5px]"
-                readOnly
-                icon={
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    color="#ffbc4a"
-                  ></FontAwesomeIcon>
-                }
-                emptyIcon={
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    color="#aaaaaa"
-                  ></FontAwesomeIcon>
-                }
-                style={{
-                  color: "#ffbc4a",
-                  fontSize: "20",
-                }}
-                defaultValue={project?.ratingAverage || 4.55}
-                precision={0.5}
-              ></Rating>
+            <Rating
+              className="text-primary text-[14px] mr-[5px]"
+              readOnly
+              icon={
+                <FontAwesomeIcon
+                  icon={faStar}
+                  color="#ffbc4a"
+                ></FontAwesomeIcon>
+              }
+              emptyIcon={
+                <FontAwesomeIcon
+                  icon={faStar}
+                  color="#aaaaaa"
+                ></FontAwesomeIcon>
+              }
+              style={{
+                color: "#ffbc4a",
+                fontSize: "20",
+              }}
+              defaultValue={project?.ratingAverage || 4.55}
+              precision={0.5}
+            ></Rating>
           </div>
           <span className="text-[14px] font-[600] text-[#aaa] mr-[5px]">
             {project?.ratingAverage || 4.5}
@@ -86,6 +90,15 @@ const TitleDetail = () => {
             ></FontAwesomeIcon>
             <span className="text-[14px] text-[#aaa]">20 December, 2022</span>
           </div>
+        </div>
+        <div
+          className="mt-[20px] cursor-pointer"
+          onClick={() => {
+            window.scrollTo(10, 0);
+            navigate(`/guide/${project?.guides._id}`);
+          }}
+        >
+          <UserInfo userInfo={project?.guides}></UserInfo>
         </div>
       </div>
     </div>

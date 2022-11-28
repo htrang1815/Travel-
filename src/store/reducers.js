@@ -13,6 +13,7 @@ import myBlogSlice from "./myblog/slice";
 import myReviewSlice from "./myreview/slice";
 import reviewGuideSlice from "./reviewGuide/reviewSlice";
 import alertSlice from "./alert/alertSlice";
+import userProfileSlice from "./userProfile/slice";
 
 export const reducer = combineReducers({
   auth: authSlice,
@@ -29,4 +30,5 @@ export const reducer = combineReducers({
   blog: blogSlice,
   myblog: myBlogSlice,
   myreview: myReviewSlice,
+  userProfile: userProfileSlice,
 });

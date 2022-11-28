@@ -30,7 +30,7 @@ const HomePage = () => {
       <PopularProject></PopularProject>
       <OurGuide></OurGuide>
       <Blog></Blog>
-      <Advance></Advance>
+      {/* <Advance></Advance> */}
       <Review></Review>
       <Gallery></Gallery>
       <Banner></Banner>

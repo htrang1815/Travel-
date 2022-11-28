@@ -192,7 +192,7 @@ const SignupContent = () => {
           className="cursor-pointer font-bold text-primary"
           onClick={() => navigate("/login")}
         >
-          Sign up
+          Login
         </span>
       </p>
     </div>

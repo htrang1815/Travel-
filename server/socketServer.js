@@ -58,24 +58,36 @@ const resgisterSocketServer = (server) => {
       socket.to(userId).emit("sendRemoveFavouriteToClient", user);
     });
 
-    socket.on('update-user',async (values, userId, imageCover,dateOfBirth ) => {
-      const user = await User.findByIdAndUpdate(userId, {
-        name: values.name,
-        avatarUrl: imageCover,
-        phone : values.phone,
-        dateOfBirth: new Date(dateOfBirth).toISOString(),
-        address: values.address,
+    socket.on(
+      "update-user",
+      async (values, userId, imageCover, dateOfBirth) => {
+        const user = await User.findByIdAndUpdate(userId, {
+          name: values.name,
+          avatarUrl: imageCover,
+          phone: values.phone,
+          dateOfBirth: new Date(dateOfBirth).toISOString(),
+          address: values.address,
+        });
+        socket.to(userId).emit("sendUpdateUser", user);
+      }
+    );
+
+    socket.on("update-review", async (data) => {
+      const { values, reviewId, rating, userId } = data;
+      await Review.findByIdAndUpdate(reviewId, {
+        name: values.review,
+        rating: rating,
       });
-      socket.to(userId).emit("sendUpdateUser", user);
+      const review = Review.find({ user: userId });
+      // console.log(review);
+      socket.to(userId).emit("sendUpdateReview", review);
     });
 
     socket.on("remove-myblog", async (data) => {
-      const { userId, blogId } = data;
-      await Blog.findByIdAndDelete(blogId);
-
-      const blogUserAfterDelete = await Blog.find({ user: userId });
-
-      socket.to(userId).emit("sendRemoveMyBlogToClient", blogUserAfterDelete);
+      // const { userId, blogId } = data;
+      // await Blog.findByIdAndDelete(blogId);
+      // const blogUserAfterDelete = await Blog.find({ user: userId });
+      // socket.to(userId).emit("sendRemoveMyBlogToClient", blogUserAfterDelete);
     });
 
     socket.on("remove-myreview", async (data) => {

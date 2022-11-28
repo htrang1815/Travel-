@@ -90,12 +90,11 @@ const projectSchema = new mongoose.Schema(
         day: Number,
       },
     ],
-    guides: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "Guide",
-      },
-    ],
+    guides: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Guide",
+      required: [true, "A project must have a guide"],
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -121,7 +120,7 @@ projectSchema.pre("save", function (next) {
 projectSchema.pre(/^find/, function (next) {
   this.populate({
     path: "guides",
-    select: "-__v -passwordChangedAt",
+    select: "name avatarUrl",
   });
   next();
 });

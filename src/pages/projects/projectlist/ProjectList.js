@@ -7,40 +7,32 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import { setProjectPage } from "../../../store/projectList/slice";
 import ReactPaginate from "react-paginate";
 
-const itemsPerPage = 8;
-// itemsPerPage: số lượng phần tử hiển thị
 const ProjectList = () => {
   const dispatch = useDispatch();
   // const { projectList } = useSelector((state) => state.projectList);
-  // console.log("projectList : ", projectList);
+
   const { projectList, projectPage } = useSelector(
     (state) => state.projectList
   );
-  // console.log("projectList : ", projectList);
-
+  const data = projectList;
+  const itemsPerPage = 8;
   const [itemOffset, setItemOffset] = useState(0);
-  // itemOffset là để hiển thị dấu ...
-
-  const pageCount = Math.ceil(projectList.length / itemsPerPage);
-
-  // Invoke when user click to request another page.
+  const endOffset = itemOffset + itemsPerPage;
+  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  const currentItems = data.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(data.length / itemsPerPage);
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % projectList.length;
-    // event.selected: số mà ta chọn
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
+    const newOffset = (event.selected * itemsPerPage) % data.length;
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // );
     setItemOffset(newOffset);
-    dispatch(setProjectPage(event.selected + 1));
   };
 
-  // const pageCount =  8;
-  // const pageCount = projectList?.length / 8;
-  console.log(pageCount);
   return (
     <div className="py-[30px] px-[9%]">
-      <div className="w-full  grid grid-cols-4 grid-rows-2 gap-[15px] mb-[30px]">
-        {projectList?.map((project) => (
+      <div className="w-full  grid grid-cols-4 gap-[15px] mb-[30px]">
+        {currentItems?.map((project) => (
           <ProjectItem key={project._id} projectData={project}></ProjectItem>
         ))}
       </div>

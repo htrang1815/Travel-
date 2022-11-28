@@ -1,5 +1,9 @@
-import React from "react";
+import moment from "moment";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
+import { getUserProfile } from "../../../store/userProfile/slice";
 import Datatable from "../components/Datatable";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
@@ -11,9 +15,32 @@ import {
   userColumns,
   userRows,
 } from "../datatablesources";
-import { userInputs, placeInputs, hotelInputs } from "../formSource";
+import { userInputs } from "../formSource";
 
 const List = () => {
+  const { userProfile } = useSelector((state) => state.userProfile);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserProfile());
+  }, [dispatch]);
+
+  const userRows = userProfile?.map((el) => {
+    return {
+      id: el._id,
+      name: el.name,
+      email: el.email,
+      typeAccount: el.typeAccount,
+      avatarUrl: el.avatarUrl,
+      address: el.address,
+      dateOfBirth: moment(el.dateOfBirth).format("DD/MM/YYYY"),
+      phone: el.phone,
+      role: el.role,
+    };
+  });
+
+
+
   return (
     <div className="list flex w-full ">
       {/* <Router></Router> */}
@@ -28,14 +55,13 @@ const List = () => {
               <Datatable
                 columns={userColumns}
                 rows={userRows}
-                inputs={userInputs}
                 title="user"
+                inputs={userInputs}
               >
-                Hello
               </Datatable>
             }
           ></Route>
-          <Route
+          {/* <Route
             path="/places"
             element={
               <Datatable
@@ -47,7 +73,7 @@ const List = () => {
                 Hello
               </Datatable>
             }
-          ></Route>
+          ></Route> */}
           {/*<Route
             path="/guides"
             element={<Datatable >blogs</Datatable>}
@@ -60,7 +86,7 @@ const List = () => {
             path="/blogs"
             element={<Datatable >guides</Datatable>}
           ></Route> */}
-          <Route
+          {/* <Route
             path="/comments"
             element={
               <Datatable
@@ -70,7 +96,7 @@ const List = () => {
                 title="places"
               ></Datatable>
             }
-          ></Route>
+          ></Route> */}
         </Routes>
       </div>
     </div>

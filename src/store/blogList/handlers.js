@@ -7,7 +7,7 @@ export default function* handleGetBlogList(actions) {
  try {
    // Gọi đến hàm call API, tham số thứ hai là prop truyền vào API
    const response = yield call(requestGetBlogList, actions.payload);
-  console.log(response)
+  // console.log(response)
    // Lấy dữ liệu  cần
    const { blogs } = response.data.data;
  

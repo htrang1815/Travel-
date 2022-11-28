@@ -11,25 +11,24 @@ const BlogDetail = () => {
   const { blogId } = useParams();
   const dispatch = useDispatch();
   const articleRef = useRef();
-
+  const { blog } = useSelector((state) => state.blog);
   useEffect(() => {
     dispatch(getBlog(blogId));
-  }, [dispatch, blogId]);
-
-  const { blog } = useSelector((state) => state.blog);
-  console.log(blog);
-
-  useEffect(() => {
+    articleRef.current.innerHTML = "";
     handleArticle(blog.article);
-  });
+  }, [blog.article]);
+
+  // console.log(blog);
+
   const handleArticle = (data) => {
     data = data?.split("\n");
 
     data?.forEach((item, i) => {
+      // console.log(item);
       if (item[0] === "#") {
         item = item.replace("#", "");
         let hCount = 0;
-        articleRef.current.innerHTML = `<h1 class="text-[24px] font-bold mb-[20px]"}>${item.slice(
+        articleRef.current.innerHTML += `<h1 class="text-[24px] font-bold mb-[20px]"}>${item.slice(
           hCount,
           item.length
         )}<h1>`;
@@ -60,7 +59,7 @@ const BlogDetail = () => {
           {blog?.title}
         </h1>
         <span className="normal-case pb-[20px] italic mr-[12px]">
-          Puslished at -<Moment format="YYYY/MM/DD">{blog?.publishAt}</Moment>
+          Puslished at - <Moment format="YYYY/MM/DD">{blog?.publishAt}</Moment>
         </span>
         <span className="normal-case pb-[20px] italic">
           Create by - {blog?.user?.name}

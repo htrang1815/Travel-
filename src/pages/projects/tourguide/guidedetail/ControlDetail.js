@@ -12,7 +12,7 @@ const ControlDetail = () => {
         <div className="mt-[110px]">
           <div className="flex items-center justify-between mb-[20px]">
             <ButtonBack
-              text="back to home"
+              text="back to page"
               className="rounded-[12px] px-[10px] py-[5px] items-center "
               classNamediv="mb-0"
             ></ButtonBack>

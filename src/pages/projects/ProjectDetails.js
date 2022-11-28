@@ -44,7 +44,7 @@ const ProjectDetails = () => {
           <div className="mt-[90px]">
             <div className="flex items-center justify-between">
               <ButtonBack
-                text="back to home"
+                text="back to page"
                 className="rounded-[12px] "
               ></ButtonBack>
               <ButtonBook

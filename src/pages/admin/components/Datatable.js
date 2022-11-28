@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setShowAddNew } from "../../../store/showModal/showSlice";
 import ModalNewUser from "./modal/ModalNewUser";
+import useFetch from "../../../hooks/useFetch";
+import { getUserProfile } from "../../../store/userProfile/slice";
+import moment from "moment";
 
 const Datatable = ({ columns, rows, inputs, title }) => {
+  // const [list, setList] = useState();
+  // const { data, loading, error } = useFetch(``);
   const dispatch = useDispatch();
-  // const rows =rowsdata;
-  // const columns = columnsdata;
+  
+
+  // console.log(row);
   return (
     <>
       <div className={`datatable `}>

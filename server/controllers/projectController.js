@@ -49,19 +49,19 @@ exports.getAllProjects = catchAsync(async (req, res, next) => {
     }
 
     // D. Pagination
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 8;
-    const skip = (page - 1) * limit;
+    // const page = req.query.page * 1 || 1;
+    // const limit = req.query.limit * 1 || 4;
+    // const skip = (page - 1) * limit;
 
-    if (req.query.page) {
-      query = query.skip(skip).limit(limit);
-      const numPlaces = await Project.countDocuments();
-      console.log("numPlaces", numPlaces);
-      console.log("skip", skip);
-      if (skip >= numPlaces) {
-        next(new AppError("This page does not exist", 404));
-      }
-    }
+    // if (req.query.page) {
+    //   query = query.skip(skip).limit(limit);
+    //   const numPlaces = await Project.countDocuments();
+    //   console.log("numPlaces", numPlaces);
+    //   console.log("skip", skip);
+    //   if (skip >= numPlaces) {
+    //     next(new AppError("This page does not exist", 404));
+    //   }
+    // }
 
     // console.log(query);
 

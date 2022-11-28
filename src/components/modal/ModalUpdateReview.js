@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactDOM from "react-dom";
@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import imgdefault from "../../assets/images/reviews/imgdefault.jpg";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import domain from "../../utils/common";
 import { setLoadingButtonReview } from "../../store/loading/loadingSlice";
@@ -22,8 +21,11 @@ import useGetImageUrl from "../../hooks/useGetImageUrl";
 import Textarea from "../input/Textarea";
 import BasicRating from "../icon/ReviewStar";
 import { setRating } from "../../store/review/reviewSlice";
+import { updateReview } from "../../realtimeCommunication/socketConnection";
+import useAuthStateChanged from "../../hooks/useAuthStateChange";
 
 const ModalUpdateReview = () => {
+  const { user } = useAuthStateChanged();
   const { imageCover, getImageUrl } = useGetImageUrl();
   const { reviewUpdateUser } = useSelector((state) => state.review);
   const { showModalUpdateReview } = useSelector((state) => state.show);
@@ -31,7 +33,7 @@ const ModalUpdateReview = () => {
   const { rating } = useSelector((state) => state.review);
 
   const { loadingButtonReview } = useSelector((state) => state.loading);
-  console.log("modal", rating);
+  // console.log("modal", rating);
   // console.log("reviewmodal", reviewUpdateUser);
 
   // console.log("image update", imageCover);
@@ -39,47 +41,66 @@ const ModalUpdateReview = () => {
 
   const dispatch = useDispatch();
 
-  const schema = yup.object({
-    review: yup
-      .string()
-      .required("Please enter your review")
-      .min(30, "Your review must have at least 30 characters."),
-  });
+  const schema = yup
+    .object
+    //   {
+    //   review: yup
+    //     .string()
+    //     .required("Please enter your review")
+    //     .min(30, "Your review must have at least 30 characters."),
+    // }
+    ();
 
   const {
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
     control,
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
     //mode: onChange để sử dụng đc thằng isValid (ko nó sẽ mãi mãi là false)
   });
 
-  useEffect(() => {}, []);
+  // useEffect(() => {
+  // console.log(reviewUpdateUser.review)
+  // reset({
+  //   review: reviewUpdateUser.review,
+  // })
+  // console.log(review)
+  // }, []);
 
-  const handleUpdateReview = async (review) => {
-      try {
-        // if (rating && rating !== 0) {
-          console.log(imageCover,rating,reviewUpdateUser.review);
-          const updatereview = await axios.patch(
-            `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
-            {
-              review: review ,
-              rating: rating,
-              image: imageCover,
-            }
-          );
-          dispatch(setShowModalUpdateReview(false));
-          console.log(updatereview);
-        // } else {
-        //   dispatch(setShowAlert(true));
-        //   dispatch(setAlertContent("You must rating"));
-        //   dispatch(setType("fail"));
-        // }
-      } catch (err) {
-        console.log(err);
+  const handleUpdateReview = async (values) => {
+    try {
+      if (isValid) {
+        // console.log(values, rating, reviewUpdateUser.review);
+        const updatereview = await axios.patch(
+          `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
+          {
+            review: values.review || reviewUpdateUser.review,
+            rating: rating,
+            image: imageCover,
+          }
+        );
+        dispatch(setShowModalUpdateReview(false));
+        const data = {
+          values: values,
+          reviewId: reviewUpdateUser._id,
+          rating: rating,
+          userId: user._id,
+        };
+        // updateReview(data);
+        // console.log(updatereview);
       }
+      // if (rating && rating !== 0) {
+      // } else {
+      //   dispatch(setShowAlert(true));
+      //   dispatch(setAlertContent("You must rating"));
+      //   dispatch(setType("fail"));
+      // }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return ReactDOM.createPortal(
@@ -111,7 +132,9 @@ const ModalUpdateReview = () => {
               value={reviewUpdateUser?.review}
               control={control}
             ></Textarea>
-
+            <p className="text-[#f15545] font-semibold mb-[10px]">
+              {errors.review?.message}
+            </p>
             <img
               src={imageCover || reviewUpdateUser.image || imgdefault}
               alt=""
@@ -137,12 +160,11 @@ const ModalUpdateReview = () => {
               ></FontAwesomeIcon>
             </label>
           </div>
-          {/* <p className="text-[#f15545] font-semibold mb-[10px]">
-            {errors.review?.message}
-          </p> */}
+
           <button
             className="text-primary border border-solid border-primary  px-4 py-3 rounded-[10px] w-[30%] hover-button cursor-pointer"
             disabled={loadingButtonReview ? true : false}
+            type="submit"
           >
             {loadingButtonReview ? (
               <div className="w-10 h-10 rounded-full border-[#ffbc4a] border-solid border-t-[transparent] border-b-[transparent] animate-spin mx-auto loadingsend"></div>

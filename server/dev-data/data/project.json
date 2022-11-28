@@ -5,6 +5,7 @@
     "price": 2210,
     "ratingsAverage": 4.8,
     "ratingsQuantity": 6,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": [
       "tour-1-1.jpeg",
       "tour-1-2.jpeg",
@@ -59,6 +60,7 @@
     "price": 2779,
     "ratingsAverage": 4.8,
     "ratingsQuantity": 3,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": [
       "tour-2-1.jpeg",
       "tour-2-2.jpeg",
@@ -112,6 +114,7 @@
     "price": 688,
     "ratingsAverage": 4.5,
     "ratingsQuantity": 10,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": [
       "tour-3-1.jpeg",
       "tour-3-2.jpeg",
@@ -160,6 +163,7 @@
     "price": 688,
     "ratingsAverage": 4.0,
     "ratingsQuantity": 2,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": [
       "tour-4-1.jpeg",
       "tour-4-2.jpeg",
@@ -207,6 +211,7 @@
     "price": 800,
     "ratingsAverage": 4.1,
     "ratingsQuantity": 3,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": [
       "tour-5-1.jpeg",
       "tour-5-2.jpeg",
@@ -253,6 +258,7 @@
     "price": 984,
     "ratingsAverage": 4.6,
     "ratingsQuantity": 3,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": ["tour-6-1.jpg", "tour-6-2.jpg", "tour-6-3.jpg", "tour-6-4.jpg"],
     "maxGroupSize": 20,
     "summary": "Start in Hanoi and end in Ho Chi Minh City! With the Explorer tour Ultimate Vietnam, you have a 14 days tour package taking you through Hanoi, Vietnam and 6 other destinations in Vietnam. Ultimate Vietnam includes accommodationin a hoteland hostel as well as flights, an expert guide, meals, transport and more.",
@@ -294,6 +300,7 @@
     "price": 984,
     "ratingsAverage": 4.7,
     "ratingsQuantity": 3,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": ["tour-7-1.jpg", "tour-7-2.jpg", "tour-7-3.jpg", "tour-7-4.jpg"],
     "maxGroupSize": 16,
     "summary": "Start in Hanoi and end in Ho Chi Minh City! With the Explorer tour Ultimate Vietnam, you have a 14 days tour package taking you through Hanoi, Vietnam and 6 other destinations in Vietnam. Ultimate Vietnam includes accommodationin a hoteland hostel as well as flights, an expert guide, meals, transport and more.",
@@ -335,6 +342,7 @@
     "price": 984,
     "ratingsAverage": 4.7,
     "ratingsQuantity": 3,
+    "guides": "637c555e54a49e18d04b78aa",
     "images": ["tour-8-1.jpg", "tour-8-2.jpg", "tour-8-3.jpg", "tour-8-4.jpg"],
     "maxGroupSize": 16,
     "summary": "Start in Hanoi and end in Ho Chi Minh City! With the Explorer tour Ultimate Vietnam, you have a 14 days tour package taking you through Hanoi, Vietnam and 6 other destinations in Vietnam. Ultimate Vietnam includes accommodationin a hoteland hostel as well as flights, an expert guide, meals, transport and more.",

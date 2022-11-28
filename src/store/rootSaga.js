@@ -10,6 +10,7 @@ import blogListSaga from "./blogList/saga";
 import blogSaga from "./blog/saga";
 import myBlogSaga from "./myblog/saga";
 import myReviewSaga from "./myreview/saga";
+import userProfileSaga from "./userProfile/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -24,6 +25,6 @@ export default function* rootSaga() {
     fork(blogSaga),
     fork(myBlogSaga),
     fork(myReviewSaga),
-
+    fork(userProfileSaga),
   ]);
 }

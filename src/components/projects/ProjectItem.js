@@ -5,12 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Rating } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const ProjectItem = ({ projectData, className }) => {
   // console.log(projectData);
+  const navigate = useNavigate();
   return (
     <div
       className={`bg-[#222] rounded-[10px] overflow-hidden hover-item myplace ${className}`}
+      onClick={() => {
+        window.scrollTo(10, 0);
+        navigate(`/project/${projectData._id}`);
+      }}
     >
       <div className="w-full img">
         <img

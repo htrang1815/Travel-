@@ -750,13 +750,13 @@ html {
   .selected {
     color: #ffbc4a;
   }
-  li {
+  a {
     font-size: 16px;
     @apply cursor-pointer text-[16px] leading-none border-[1px] border-solid border-primary inline-block px-5 py-3 rounded-lg text-primary;
     transition: all linear 0.5s;
   }
 
-  li:hover {
+  a:hover {
     background-color: #ffbc4a;
     color: #000000;
   }

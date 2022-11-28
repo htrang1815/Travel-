@@ -1,20 +1,23 @@
 import { Link } from "@mui/material";
 
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "ID", width: 150 },
   {
-    field: "user",
-    headerName: "User",
+    field: "name",
+    headerName: "Name",
     width: 230,
     renderCell: (params) => {
+      // console.log(params);
       return (
         <div className="cellWithImg">
           <img
             className="cellImg"
-            src={params.row.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
+            src={
+              params.row.avatarUrl || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
+            }
             alt="avatar"
           />
-          {params.row.username}
+          {params.row.name}
         </div>
       );
     },
@@ -25,19 +28,29 @@ export const userColumns = [
     width: 200,
   },
   {
-    field: "country",
-    headerName: "Country",
+    field: "typeAccount",
+    headerName: "Type Account",
     width: 150,
   },
   {
-    field: "city",
-    headerName: "City",
+    field: "address",
+    headerName: "Address",
+    width: 150,
+  },
+  {
+    field: "dateOfBirth",
+    headerName: "Date Of Birth",
     width: 150,
   },
   {
     field: "phone",
     headerName: "Phone",
-    width: 200,
+    width: 150,
+  },
+  {
+    field: "role",
+    headerName: "Role",
+    width: 90,
   },
   {
     field: "action",
@@ -60,17 +73,17 @@ export const userColumns = [
     },
   },
 ];
-export const userRows = [
-  {
-    id: 1,
-    username: "Leon William",
-    img: "",
-    email: "leonwi15@gmail.com",
-    country: "American",
-    city: "New York",
-    phone: "015 458 9463",
-  },
-];
+// export const userRows = [
+//   {
+//     id: 1,
+//     username: "Leon William",
+//     img: "",
+//     email: "leonwi15@gmail.com",
+//     country: "American",
+//     city: "New York",
+//     phone: "015 458 9463",
+//   },
+// ];
 
 export const commentColumns = [
   { field: "id", width: 50 },

@@ -4,13 +4,13 @@ import { useController } from "react-hook-form";
 const Textarea = ({
   label,
   id,
-
+  type,
   placeholder,
   className,
   classNameLabel,
   rows,
-  value,
   control,
+  value,
 }) => {
   const { field } = useController({
     control,
@@ -24,7 +24,8 @@ const Textarea = ({
       </label>
       <textarea
         id={id}
-        name={id}
+        type={type}
+        name=""
         rows={rows}
         placeholder={placeholder}
         className={`w-full hover-input rounded-[50px] border-[2px] border-solid border-[#ffbc4b] bg-none text-[14px] transform-none text-[#111] mb-[10px] p-3 normal-case resize-none ${className}`}

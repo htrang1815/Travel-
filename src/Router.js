@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import AboutUs from "./pages/aboutus/AboutUs";
 import AdminPage from "./pages/admin/AdminPage";
 import LoginPage from "./pages/auth/LoginPage";
@@ -21,8 +21,12 @@ import { getIsLogin } from "./store/auth/slice";
 
 const Router = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getIsLogin());
+    // if(!isLogin){
+    //   navigate("/home")
+    // }
   }, [dispatch]);
   const { isLogin } = useSelector((state) => state.auth);
   return (
