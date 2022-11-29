@@ -1,18 +1,16 @@
-import React from "react";
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import React from 'react';
 import ReactDOM from "react-dom";
-import { useDispatch, useSelector } from "react-redux";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { setShowAddNew } from "../../../../store/showModal/showSlice";
-import useGetImageUrl from "../../../../hooks/useGetImageUrl";
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import useGetImageUrl from '../../../../hooks/useGetImageUrl';
+import domain from '../../../../utils/common';
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import Input from "../../../../components/input/Input";
-import axios from "axios";
-import domain from "../../../../utils/common";
+import Input from '../../../../components/input/Input';
 
-const ModalNewUser = ({ inputs, title, path }) => {
-  const dispatch = useDispatch();
+const ModalNewPlaces = ({path, title, inputs}) => {
+    const dispatch = useDispatch();
   const { showAddNew } = useSelector((state) => state.show);
   const { imageCover, getImageUrl } = useGetImageUrl();
   const schema = yup.object({
@@ -58,7 +56,7 @@ const ModalNewUser = ({ inputs, title, path }) => {
         role: values.role,
       });
       // updateUser(values, user._id, imageCover, dateOfBirth);
-      dispatch(setShowAddNew(false));
+    //   dispatch(setShowAddNew(false));
       // console.log("adduser");
     } catch (err) {
       console.log(err);
@@ -74,7 +72,7 @@ const ModalNewUser = ({ inputs, title, path }) => {
       <div
         className="absolute w-full h-full top-0 right-0 left-0 bg-[rgba(0,0,0,0.68)] z-[1010]"
         onClick={(e) => {
-          dispatch(setShowAddNew(false));
+        //   dispatch(setShowAddNew(false));
           // console.log(e.target);
         }}
       ></div>
@@ -103,19 +101,6 @@ const ModalNewUser = ({ inputs, title, path }) => {
                 className=" h-full pr-[5px]"
                 onSubmit={handleSubmit(onSubmitHandler)}
               >
-                {path === "userprofile" && (
-                  <div className=" avatar cursor-pointer">
-                    <label htmlFor="file">
-                      Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                    </label>
-                    <input
-                      type="file"
-                      id="file"
-                      onChange={getImageUrl}
-                      style={{ display: "none" }}
-                    />
-                  </div>
-                )}
 
                 {inputs.map((input) => (
                   <>
@@ -154,4 +139,4 @@ const ModalNewUser = ({ inputs, title, path }) => {
   );
 };
 
-export default ModalNewUser;
+export default ModalNewPlaces;

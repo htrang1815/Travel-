@@ -1,4 +1,6 @@
-import { Link } from "@mui/material";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, Rating } from "@mui/material";
 
 export const userColumns = [
   { field: "id", headerName: "ID", width: 150 },
@@ -28,6 +30,11 @@ export const userColumns = [
     width: 200,
   },
   {
+    field: "status",
+    headerName: "Status",
+    width: 100,
+  },
+  {
     field: "typeAccount",
     headerName: "Type Account",
     width: 150,
@@ -52,90 +59,126 @@ export const userColumns = [
     headerName: "Role",
     width: 90,
   },
+  // {
+  //   field: "action",
+  //   headerName: "Action",
+  //   width: 200,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className="cellAction">
+  //         <Link to="/users/test" style={{ textDecoration: "none" }}>
+  //           <div className="viewButton">View</div>
+  //         </Link>
+  //         <div
+  //           className="deleteButton"
+  //           // onClick={() => handleDelete(params.row._id)}
+  //         >
+  //           Delete
+  //         </div>
+  //       </div>
+  //     );
+  //   },
+  // },
+];
+export const guideColumns = [
+  { field: "id", headerName: "ID", width: 150 },
   {
-    field: "action",
-    headerName: "Action",
-    width: 200,
+    field: "name",
+    headerName: "Name",
+    width: 230,
     renderCell: (params) => {
+      // console.log(params);
       return (
-        <div className="cellAction">
-          <Link to="/users/test" style={{ textDecoration: "none" }}>
-            <div className="viewButton">View</div>
-          </Link>
-          <div
-            className="deleteButton"
-            // onClick={() => handleDelete(params.row._id)}
-          >
-            Delete
-          </div>
+        <div className="cellWithImg">
+          <img
+            className="cellImg"
+            src={
+              params.row.avatarUrl || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
+            }
+            alt="avatar"
+          />
+          {params.row.name}
         </div>
       );
     },
   },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 200,
+  },
+  {
+    field: "phone",
+    headerName: "Phone",
+    width: 200,
+  },
+  {
+    field: "address",
+    headerName: "Address",
+    width: 150,
+  },
+  {
+    field: "experience",
+    headerName: "Experience",
+    width: 150,
+  },
+  {
+    field: "place",
+    headerName: "Place",
+    width: 150,
+  },
+  {
+    field: "language",
+    headerName: "language",
+    width: 150,
+  },
 ];
-// export const userRows = [
-//   {
-//     id: 1,
-//     username: "Leon William",
-//     img: "",
-//     email: "leonwi15@gmail.com",
-//     country: "American",
-//     city: "New York",
-//     phone: "015 458 9463",
-//   },
-// ];
 
 export const reviewColumns = [
-  { field: "id", width: 50 },
-  { field: "review", width: 150 },
-  { field: "rating", width: 200 },
-  { field: "user", width: 150 },
-  { field: "guide", width: 300, paddingLeft: 10 },
-  { field: "place", width: 200 },
+  { field: "id", width: 150 },
+  { field: "review", width: 200 },
   {
-    field: "action",
-    headerName: "Action",
-    width: 200,
+    field: "rating",
+    width: 150,
     renderCell: (params) => {
+      // console.log(params.row.rating);
       return (
-        <div className="cellAction">
-          <Link to="/users/test" style={{ textDecoration: "none" }}>
-            <div className="viewButton">View</div>
-          </Link>
-          <div
-            className="deleteButton"
-            // onClick={() => handleDelete(params.row._id)}
-          >
-            Delete
-          </div>
-        </div>
+        <Rating
+          className="text-primary text-[14px] mr-[5px]"
+          readOnly
+          icon={
+            <FontAwesomeIcon icon={faStar} color="#ffbc4a"></FontAwesomeIcon>
+          }
+          // emptyIcon={
+          //   <FontAwesomeIcon icon={faStar} color="#aaaaaa"></FontAwesomeIcon>
+          // }
+          style={{
+            color: "#ffbc4a",
+            fontSize: "20",
+          }}
+          defaultValue={params.row?.rating || 4.5}
+          precision={0.5}
+        ></Rating>
       );
     },
   },
+
+  { field: "user", width: 150 },
+  { field: "guide", width: 150, paddingLeft: 10 },
+  { field: "place", width: 150 },
 ];
-export const commentRows = [
-  {
-    id: 1,
-    date: "7/11/2022",
-    user: "Murray Howel",
-    raiting: "start",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe culpa delectus quaerat eius, quod aspernatur dolorum ipsum dolor vero, veritatis alias soluta sapiente magnam aut temporibus. Sapiente quisquam iusto nulla.",
-    status: "accept",
-  },
-  {
-    id: 2,
-    date: "7/11/2022",
-    user: "Murray Howel",
-    raiting: "start",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe culpa delectus quaerat eius, quod aspernatur dolorum ipsum dolor vero, veritatis alias soluta sapiente magnam aut temporibus. Sapiente quisquam iusto nulla.",
-    status: "accept",
-  },
+
+export const blogColumns = [
+  { field: "id", width: 200 },
+  { field: "title", width: 200 },
+  { field: "article", width: 250 },
+  { field: "user", width: 200 },
+  { field: "publishedAt", width: 150, paddingLeft: 10 },
+  // { field: "place", width: 150},
 ];
 
 export const placeColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "ID", width: 150 },
   {
     field: "name",
     headerName: "Name",
@@ -155,6 +198,27 @@ export const placeColumns = [
     field: "ratingsAverage",
     headerName: "Ratings Average",
     width: 150,
+    renderCell: (params) => {
+      // console.log(params.row.rating);
+      return (
+        <Rating
+          className="text-primary text-[14px] mr-[5px]"
+          readOnly
+          icon={
+            <FontAwesomeIcon icon={faStar} color="#ffbc4a"></FontAwesomeIcon>
+          }
+          // emptyIcon={
+          //   <FontAwesomeIcon icon={faStar} color="#aaaaaa"></FontAwesomeIcon>
+          // }
+          style={{
+            color: "#ffbc4a",
+            fontSize: "20",
+          }}
+          defaultValue={params.row?.ratingsAverage || 4.5}
+          precision={0.5}
+        ></Rating>
+      );
+    },
   },
   {
     field: "ratingsQuantity",
@@ -234,86 +298,6 @@ export const placeColumns = [
       {
         field: "day",
         headerName: "Day",
-      },
-    ],
-  },
-  {
-    field: "action",
-    headerName: "Action",
-    width: 200,
-    renderCell: (params) => {
-      return (
-        <div className="cellAction">
-          <Link to="/users/test" style={{ textDecoration: "none" }}>
-            <div className="viewButton">View</div>
-          </Link>
-          <div
-            className="deleteButton"
-            // onClick={() => handleDelete(params.row._id)}
-          >
-            Delete
-          </div>
-        </div>
-      );
-    },
-  },
-];
-
-export const placeRows = [
-  {
-    id: 1,
-    name: "Greek Island Hopping",
-    duration: 4,
-    price: 2210,
-    ratingsAverage: 4.8,
-    ratingsQuantity: 6,
-    images: [
-      "tour-1-1.jpeg",
-      "tour-1-2.jpeg",
-      "tour-1-3.jpeg",
-      "tour-1-4.jpeg",
-      "tour-1-5.jpeg",
-      "tour-1-6.jpeg",
-    ],
-    maxGroupSize: 50,
-    summary:
-      "Start and end in Athens! With the Island Hopping tour Greek Island Hopping (Standard, 11 Days), you have a 11 days tour package taking you through Athens, Greece and 4 other destinations in Greece. Greek Island Hopping (Standard, 11 Days) includes accommodation in a hotel as well as an expert guide, meals, transport and more.",
-    experience:
-      "You'll be living your best Greek island life on this sun, sea & culture-rich trip in Mykonos, Paros, Santorini, Ios & Athens. Stopping in at each of Greece's most popular islands, the perfect spot for buzzing party nights and lazy sun-soaked days, you'll have plenty of time to explore charming villages, local shops, volcanoes, natural coves & sun-soaked beaches, with plenty of time for sunbathing, swimming & nightlife as well as a bit of ancient history in between.",
-    include: {
-      accomodation: "4 nights in Hotel, 2 nights in Contiki Special Stay",
-      meals: "8 Meal: 4 Breakfasts and 3 Dinners",
-      transport: "All transfers between hotels & ferry ports during the trip",
-    },
-    startLocation: {
-      description: "Athen",
-      type: "Point",
-      coordinates: [37.9839412, 23.7283052],
-    },
-    locations: [
-      {
-        description: "Athen",
-        type: "Point",
-        coordinates: [37.9839412, 23.7283052],
-        day: 1,
-      },
-      {
-        description: "Mykonos",
-        type: "Point",
-        coordinates: [37.451434500000005, 25.392337493319413],
-        day: 2,
-      },
-      {
-        description: "Santorini",
-        type: "Point",
-        coordinates: [36.4044251, 25.3958561],
-        day: 3,
-      },
-      {
-        description: "Ios",
-        type: "Point",
-        coordinates: [36.7173281, 25.33311211846154],
-        day: 4,
       },
     ],
   },

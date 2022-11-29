@@ -99,3 +99,8 @@ export const removeMyBlog = (data) => {
   // console.log(data);
   socket.emit("remove-myblog", data);
 };
+
+export const deleteAd = (data) => {
+  // console.log(data);
+  socket.emit("delete-adpage", data);
+};

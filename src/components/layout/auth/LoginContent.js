@@ -49,6 +49,7 @@ const LoginContent = () => {
   });
 
   const onSubmitHandler = async (values) => {
+    console.log(values);
     if (isValid) {
       try {
         const user = await axios.post(`${domain}/api/v1/users/login`, {

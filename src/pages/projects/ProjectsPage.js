@@ -15,12 +15,13 @@ import { getGuideList } from "../../store/guideList/slice";
 const ProjectsPage = () => {
   const dispatch = useDispatch();
   const { projectPage } = useSelector((state) => state.projectList);
+  
 
   useEffect(() => {
     dispatch(getProjectList({ query: "", page: projectPage }));
     dispatch(getGuideList());
   }, [dispatch, projectPage]);
-  console.log("getprojectlist", getProjectList());
+  // console.log("getprojectlist", getProjectList());
   return (
     <>
       <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">

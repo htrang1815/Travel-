@@ -6,12 +6,6 @@ export const userInputs = [
     placeholder: "john_doe",
   },
   {
-    id: "name",
-    label: "Name",
-    type: "text",
-    placeholder: "John Doe",
-  },
-  {
     id: "email",
     label: "Email",
     type: "email",
@@ -26,6 +20,11 @@ export const userInputs = [
   {
     id: "password",
     label: "Password",
+    type: "password",
+  },
+  {
+    id: "passwordConfirm",
+    label: "Password Confirm",
     type: "password",
   },
   {
@@ -48,6 +47,12 @@ export const placeInputs = [
     label: "Name",
     type: "text",
     placeholder: "Greek Island Hopping",
+  },
+  {
+    id: "guide",
+    label: "Guide",
+    type: "text",
+    placeholder: "Id Guide",
   },
   {
     id: "duration",
@@ -76,7 +81,7 @@ export const placeInputs = [
   {
     id: "images",
     label: "Images",
-    type: "text",
+    type: "file",
     placeholder: "tour-1-1.jpeg",
   },
   {
@@ -111,12 +116,6 @@ export const placeInputs = [
   },
   {
     id: "transport",
-    label: "Transport",
-    type: "text",
-    placeholder: "All transfers between hotels",
-  },
-  {
-    id: "startLocation",
     label: "Transport",
     type: "text",
     placeholder: "All transfers between hotels",

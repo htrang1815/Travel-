@@ -30,7 +30,7 @@ const ProjectList = () => {
     //   `User requested page number ${event.selected}, which is offset ${newOffset}`
     // );
     setItemOffset(newOffset);
-    dispatch(setProjectPage(event.selected + 1));
+    // dispatch(setProjectPage(event.selected + 1));
   };
 
   // const pageCount =  8;

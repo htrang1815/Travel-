@@ -463,6 +463,14 @@
       border: 1px dotted rgba(186, 70, 93, 0.6);
       cursor: pointer;
     }
+
+    .blockButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: goldenrod;
+      border: 1px dotted goldenrod;
+      cursor: pointer;
+    }
   }
 }
 // Modal-new
@@ -503,7 +511,7 @@
     form {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 10px;
       justify-content: space-between;
 
       .formInput {

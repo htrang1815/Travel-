@@ -44,7 +44,7 @@ const TitleDetail = () => {
                 color: "#ffbc4a",
                 fontSize: "20",
               }}
-              defaultValue={project?.ratingAverage || 4.55}
+              defaultValue={project?.ratingAverage || 4.5}
               precision={0.5}
             ></Rating>
           </div>

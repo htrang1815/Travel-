@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFilter } from "../../../store/showModal/showSlice";
 import FilterLenght from "./filter/FilterLenght";
 import FilterPrice from "./filter/FilterPrice";
 import FilterDeparture from "./filter/FilterDepartureDate";
+import {
+  getDateFilter,
+  getLenght,
+  getPrice,
+} from "../../../store/filterSearch/filterSearch";
 
 const ModalFilter = () => {
   const { showFilter } = useSelector((state) => state.show);
+  const { lenght, price, date } = useSelector((state) => state.filterSearch);
   const dispatch = useDispatch();
+  console.log(lenght, price, date);
+
+  useEffect(() => {
+    dispatch(getLenght());
+    dispatch(getPrice());
+    dispatch(getDateFilter());
+  }, [dispatch]);
 
   return ReactDOM.createPortal(
     <div

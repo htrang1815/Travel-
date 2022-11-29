@@ -10,12 +10,14 @@ const Input = ({
   id,
   control = "",
   disabled = false,
+  errors
 }) => {
   const { field } = useController({
     control,
     name: id,
     defaultValue: "",
   });
+  // console.log(errors); 
   return (
     <div className={`w-full  ${className}`}>
       <label htmlFor={id} className="block pb-2 text-[#fff]">
@@ -32,6 +34,9 @@ const Input = ({
         {...field}
         autoCapitalize="none"
       ></input>
+      <p className="text-[#f77171] font-semibold mb-[10px]" >
+                      {errors}
+                    </p>
     </div>
   );
 };
