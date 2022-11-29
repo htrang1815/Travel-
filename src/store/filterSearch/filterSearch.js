@@ -24,5 +24,12 @@ const filterSearchSlice = createSlice({
     getDateFilter() {},
   },
 });
-export const { setLenght, setPrice, setDateFilter , getLenght, getPrice, getDateFilter} = filterSearchSlice.actions;
+export const {
+  setLenght,
+  setPrice,
+  setDateFilter,
+  getLenght,
+  getPrice,
+  getDateFilter,
+} = filterSearchSlice.actions;
 export default filterSearchSlice.reducer;

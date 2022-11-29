@@ -15,7 +15,7 @@ const ModalFilter = () => {
   const { showFilter } = useSelector((state) => state.show);
   const { lenght, price, date } = useSelector((state) => state.filterSearch);
   const dispatch = useDispatch();
-  console.log(lenght, price, date);
+  console.log({ lenght, price, date });
 
   useEffect(() => {
     dispatch(getLenght());
