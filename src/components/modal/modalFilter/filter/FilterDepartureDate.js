@@ -30,13 +30,8 @@ export default function BasicSelect() {
   // }, [dispatch]);
 
   const handleChange = (event) => {
-<<<<<<< HEAD
-    // setDate((departure) => {departure = event.target.value;
-    // return departure});
-=======
     // setDate();
 
->>>>>>> 602d550fb26e1bd754209b6823437a649ff523b1
     dispatch(setDateFilter(event.target.value));
   };
 
