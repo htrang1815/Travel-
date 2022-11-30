@@ -8,17 +8,21 @@ import axios from "axios";
 import domain from "../../../utils/common";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectList } from "../../../store/projectList/slice";
+import { setName } from "../../../store/filterSearch/filterSearch";
 // import Filter from './Filter';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const { projectPage } = useSelector((state) => state.projectList);
+  // const { projectPage } = useSelector((state) => state.projectList);
+  const { lenght, price, date, name } = useSelector(
+    (state) => state.filterSearch
+  );
 
   const handleSearch = lodash.debounce(async (e) => {
     e.preventDefault();
-
+    dispatch(setName(e.target.value));
     console.log(e.target.value);
-    dispatch(getProjectList({ query: e.target.value, page: projectPage }));
+    dispatch(getProjectList({ query: e.target.value }));
   }, 500);
   return (
     <div className="w-full py-[30px] px-[9%]  rounded-[10px] ">

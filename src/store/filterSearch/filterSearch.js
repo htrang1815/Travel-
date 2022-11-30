@@ -5,6 +5,7 @@ const filterSearchSlice = createSlice({
     lenght: [2, 10],
     price: [150, 250],
     date: "",
+    name: "", 
   },
   reducers: {
     setLenght: (state, action) => ({
@@ -19,10 +20,14 @@ const filterSearchSlice = createSlice({
       ...state,
       date: action.payload,
     }),
+    setName: (state, action) => ({
+      ...state,
+      name: action.payload,
+    }),
     getLenght() {},
     getPrice() {},
     getDateFilter() {},
   },
 });
-export const { setLenght, setPrice, setDateFilter , getLenght, getPrice, getDateFilter} = filterSearchSlice.actions;
+export const { setLenght, setPrice, setDateFilter, setName , getLenght, getPrice, getDateFilter} = filterSearchSlice.actions;
 export default filterSearchSlice.reducer;
