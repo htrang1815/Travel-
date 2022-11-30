@@ -14,7 +14,7 @@ import {
 export default function BasicSelect() {
   const dispatch = useDispatch();
   const { lenght, price, date } = useSelector((state) => state.filterSearch);
-  const [departure, setDate] = React.useState("");
+  // const [departure, setDate] = React.useState("");
   const departureDate = [
     "November 2022",
     "December 2022",
@@ -30,8 +30,13 @@ export default function BasicSelect() {
   // }, [dispatch]);
 
   const handleChange = (event) => {
+<<<<<<< HEAD
     // setDate((departure) => {departure = event.target.value;
     // return departure});
+=======
+    // setDate();
+
+>>>>>>> 602d550fb26e1bd754209b6823437a649ff523b1
     dispatch(setDateFilter(event.target.value));
   };
 

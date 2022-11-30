@@ -29,5 +29,16 @@ const filterSearchSlice = createSlice({
     getDateFilter() {},
   },
 });
+<<<<<<< HEAD
 export const { setLenght, setPrice, setDateFilter, setName , getLenght, getPrice, getDateFilter} = filterSearchSlice.actions;
+=======
+export const {
+  setLenght,
+  setPrice,
+  setDateFilter,
+  getLenght,
+  getPrice,
+  getDateFilter,
+} = filterSearchSlice.actions;
+>>>>>>> 602d550fb26e1bd754209b6823437a649ff523b1
 export default filterSearchSlice.reducer;
