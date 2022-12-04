@@ -20,7 +20,7 @@ const UserDropdown = () => {
     try {
       const res = await axios.get(`${domain}/api/v1/users/logout`);
       console.log(res);
-      navigate(0);
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }

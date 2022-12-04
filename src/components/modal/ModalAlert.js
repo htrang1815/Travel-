@@ -9,7 +9,7 @@ import { setShowAlert } from "../../store/alert/alertSlice";
 
 const ModalAlert = () => {
   const { showAlert, alertContent, type } = useSelector((state) => state.alert);
-//   console.log(showModalAlert);
+  //   console.log(showModalAlert);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return ReactDOM.createPortal(
@@ -21,7 +21,7 @@ const ModalAlert = () => {
         className="absolute w-full h-full bg-[rgba(0,0,0,0.68)] z-[500]"
         onClick={() => {
           dispatch(setShowAlert(false));
-          console.log("click");
+          // console.log("click");
         }}
       ></div>
       <div className="absolute max-w-[40%] w-full h-[50vh] bg-[#111] bg-opacity-95 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] rounded-lg p-10 pt-12 gap-8 flex flex-col items-center justify-center z-[500]">
@@ -36,10 +36,10 @@ const ModalAlert = () => {
         <button
           className="block mb-5 p-4 rounded-lg text-[#111] bg-primary w-full text-[16px] font-[500]"
           onClick={() => {
-            navigate("/home");
+            dispatch(setShowAlert(false));
           }}
         >
-          Back to home
+          Cancel
         </button>
       </div>
     </div>,

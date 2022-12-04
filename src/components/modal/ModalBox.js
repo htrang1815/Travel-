@@ -34,7 +34,7 @@ const ModalBox = () => {
             {photo.map((img) => (
               <SwiperSlide key={img._id}>
                 <img
-                  src={img && require(`../../assets/tour/${img}`)}
+                  src={img && img}
                   alt=""
                   className="h-[600px] object-cover rounded-xl"
                 />

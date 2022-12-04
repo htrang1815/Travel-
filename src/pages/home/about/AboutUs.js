@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ButtonAbout from "../../../components/button/ButtonAbout";
-import videoblog from "../../../assets/videos/Sea - 6399.mp4";
-import videoblog1 from "../../../assets/videos/about-vid-2.mp4";
-import videoblog2 from "../../../assets/videos/about-vid-3.mp4";
+import videoblog from "../../../assets/videos/video-1.mp4";
+import videoblog1 from "../../../assets/videos/video-2.mp4";
+import videoblog2 from "../../../assets/videos/video-3.mp4";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 

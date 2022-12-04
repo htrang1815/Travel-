@@ -9,8 +9,11 @@ const GuideList = () => {
 
   const itemsPerPage = 8;
   const { guideList } = useSelector((state) => state.guideList);
+  const data = guideList;
   // console.log("guideList",guideList);
   const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = data.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(guideList.length / itemsPerPage);
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % guideList.length;
@@ -21,12 +24,11 @@ const GuideList = () => {
     // dispatch(setProjectPage(event.selected + 1));
   };
 
-
   return (
     <div className="py-[30px] px-[9%]">
-      <div className="w-full py-[30px] grid grid-cols-4 grid-rows-2 gap-[15px]  mb-[30px]">
-      {guideList?.map((guide) => (
-          <GuideItem  key={guide._id} guideData={guide}></GuideItem>
+      <div className="w-full py-[30px] grid grid-cols-4  gap-[15px]  mb-[30px]">
+        {currentItems?.map((guide) => (
+          <GuideItem key={guide._id} guideData={guide}></GuideItem>
         ))}
       </div>
       {/* <div className="text-center">

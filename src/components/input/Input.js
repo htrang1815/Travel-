@@ -10,14 +10,14 @@ const Input = ({
   id,
   control = "",
   disabled = false,
-  errors
+  errors,
 }) => {
   const { field } = useController({
     control,
     name: id,
     defaultValue: "",
   });
-  // console.log(errors); 
+  // console.log(control);
   return (
     <div className={`w-full  ${className}`}>
       <label htmlFor={id} className="block pb-2 text-[#fff]">
@@ -30,13 +30,11 @@ const Input = ({
         name=""
         placeholder={placeholder}
         disabled={disabled}
-        className={`w-full hover-input rounded-[50px] border-[2px] border-solid border-[#ffbc4b] bg-none text-[14px] transform-none text-[#aaa] mb-[10px] p-3 normal-case ${className}`}
+        className={`w-full hover-input rounded-[50px] border-[2px] border-solid border-[#ffbc4b] bg-none text-[14px] transform-none text-[#111] mb-[10px] p-3 normal-case ${className}`}
         {...field}
         autoCapitalize="none"
       ></input>
-      <p className="text-[#f77171] font-semibold mb-[10px]" >
-                      {errors}
-                    </p>
+      <p className="text-[#f77171] font-semibold mb-[10px]">{errors}</p>
     </div>
   );
 };

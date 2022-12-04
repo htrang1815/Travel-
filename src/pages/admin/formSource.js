@@ -122,54 +122,60 @@ export const placeInputs = [
   },
 ];
 
-export const hotelInputs = [
+export const guideInputs = [
   {
     id: "name",
     label: "Name",
     type: "text",
-    placeholder: "My Hotel",
+    placeholder: "Harry Potter",
   },
   {
-    id: "type",
-    label: "Type",
+    id: "email",
+    label: "Email",
     type: "text",
-    placeholder: "hotel",
+    placeholder: "john@gmail.com",
   },
   {
-    id: "city",
-    label: "City",
+    id: "phone",
+    label: "Phone",
     type: "text",
-    placeholder: "New York",
+    placeholder: "0375216588",
   },
   {
     id: "address",
     label: "Address",
     type: "text",
-    placeholder: "elton st, 216",
+    placeholder: "Hai Ba Trung, Ha Noi",
   },
   {
-    id: "distance",
-    label: "Distance from City Center",
+    id: "experience",
+    label: "Experience",
     type: "text",
-    placeholder: "500",
+    placeholder: "Lorem Ipsum Is ...",
   },
   {
-    id: "title",
-    label: "Title",
+    id: "summary",
+    label: "Summary",
     type: "text",
-    placeholder: "The best Hotel",
+    placeholder: "Lorem Ipsum Is ...",
   },
   {
-    id: "desc",
-    label: "Description",
+    id: "language",
+    label: "Language",
     type: "text",
-    placeholder: "description",
+    placeholder: "English, Korean",
   },
   {
-    id: "cheapestPrice",
-    label: "Price",
+    id: "facebook",
+    label: "Facebook",
     type: "text",
-    placeholder: "100",
+    placeholder: "https://www.facebook.com/soobin.109",
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    type: "text",
+    placeholder: "https://www.instagram.com/soobin.hoangson/",
   },
 ];
 

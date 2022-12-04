@@ -24,11 +24,11 @@ const BlogItem = ({ blogData, className }) => {
           className="h-[250px] w-full object-cover bg-center"
         />
       </div>
-      <div className="p-[20px] blog-content">
-        <a href="#" className="text-[20px] text-[#fff]">
+      <div className="p-[20px] blog-content flex flex-col">
+        <a href="#" className="text-[20px] text-[#fff] h-[61px] block">
           {blogData?.title}
         </a>
-        <p className="py-[10px] text-[14px] text-[#aaa] leading-[28px] text-wrap ">
+        <p className="py-[10px] text-[14px] text-[#aaa] leading-[28px] text-wrap blog grow block">
           {blogData?.article}
         </p>
         <div className="pt-[10px] flex items-center justify-between ">

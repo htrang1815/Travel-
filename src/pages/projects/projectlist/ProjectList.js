@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ProjectItem from "../../../components/projects/ProjectItem";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-import { setProjectPage } from "../../../store/projectList/slice";
+import {
+  getProjectList,
+  setProjectPage,
+} from "../../../store/projectList/slice";
 import ReactPaginate from "react-paginate";
 
 const itemsPerPage = 8;
@@ -16,10 +19,19 @@ const ProjectList = () => {
   const { projectList, projectPage } = useSelector(
     (state) => state.projectList
   );
+  // useEffect(() => {
+  //   dispatch(getProjectList());
+  //   dispatch(getGuideList());
+  // }, [dispatch]);
+  // ;
+  const data = projectList;
+
   // console.log("projectList : ", projectList);
 
   const [itemOffset, setItemOffset] = useState(0);
   // itemOffset là để hiển thị dấu ...
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = data.slice(itemOffset, endOffset);
 
   const pageCount = Math.ceil(projectList.length / itemsPerPage);
 
@@ -35,11 +47,11 @@ const ProjectList = () => {
 
   // const pageCount =  8;
   // const pageCount = projectList?.length / 8;
-  console.log(pageCount);
+  console.log(currentItems);
   return (
     <div className="py-[30px] px-[9%]">
-      <div className="w-full  grid grid-cols-4 grid-rows-2 gap-[15px] mb-[30px]">
-        {projectList?.map((project) => (
+      <div className="w-full  grid grid-cols-4 gap-[15px] mb-[30px]">
+        {currentItems?.map((project) => (
           <ProjectItem key={project._id} projectData={project}></ProjectItem>
         ))}
       </div>

@@ -49,8 +49,7 @@ const WriteBlog = () => {
   }, 500);
 
   const publishBlog = async () => {
-    console.log("hello");
-
+    // console.log("hello");
     if (title.length > 0 && article.length > 0 && imageCover.length > 0) {
       const blog = await axios.post(`${domain}/api/v1/blogs`, {
         title,
@@ -58,13 +57,12 @@ const WriteBlog = () => {
         user: user._id,
         bannerImage: imageCover,
       });
-      // console.log("blog");
-
+      console.log("blog");
       const blogId = blog.data.data.blogs;
       navigate(`/blog/${blogId._id}`);
     }
   };
-  console.log(Date.now)
+  console.log(Date.now);
 
   return (
     <div className="bg-[#111] ">
@@ -102,9 +100,7 @@ const WriteBlog = () => {
           className="block w-full min-h-[100px] h-auto outline-none text-[50px] font-[600] resize-none border-none pb-[10px] rounded-[10px] bg-[#111] text-primary hover:text-primary normal-case mt-[20px] snap-none scroll-textarea"
           onChange={handleTitle}
         ></input>
-        <span className="normal-case pb-[20px] italic">
-          Puslished at - {" "}
-        </span>
+        <span className="normal-case pb-[20px] italic">Puslished at - </span>
         <textarea
           type="text"
           placeholder="Start writing here ... "

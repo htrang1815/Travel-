@@ -2,12 +2,12 @@ import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import useFetch from "../../../hooks/useFetch";
+import useAuthStateChanged from "../../../hooks/useAuthStateChange";
+import { joinUser } from "../../../realtimeCommunication/socketConnection";
 import { getBlogList } from "../../../store/blogList/slice";
 import { getGuideList } from "../../../store/guideList/slice";
 import { getProjectList } from "../../../store/projectList/slice";
 import { getReviewList } from "../../../store/reviewList/slice";
-// import { getAllReview } from "../../../store/allreview/slice";
 import { getUserProfile } from "../../../store/userProfile/slice";
 import Datatable from "../components/Datatable";
 import Navbar from "../components/Navbar";
@@ -19,7 +19,7 @@ import {
   blogColumns,
   placeColumns,
 } from "../datatablesources";
-import { userInputs, placeInputs } from "../formSource";
+import { userInputs, placeInputs, guideInputs } from "../formSource";
 
 const List = () => {
   const { userProfile } = useSelector((state) => state.userProfile);
@@ -27,6 +27,12 @@ const List = () => {
   const { blogList } = useSelector((state) => state.blogList);
   const { guideList } = useSelector((state) => state.guideList);
   const { projectList } = useSelector((state) => state.projectList);
+  const { user } = useAuthStateChanged();
+  const userId = user._id;
+
+  useEffect(() => {
+    joinUser(userId);
+  }, [userId]);
 
   const dispatch = useDispatch();
 
@@ -38,7 +44,7 @@ const List = () => {
     dispatch(getProjectList());
   }, [dispatch]);
 
-  // console.log(reviewList);
+  // console.log(guideList);
 
   const userRows = userProfile?.map((el) => {
     return {
@@ -62,8 +68,11 @@ const List = () => {
       experience: el.experience,
       phone: el.contact.phone,
       email: el.contact.email,
+      facebook: el.contact.facebook,
+      instagram: el.contact.instagram,
       avatarUrl: el.avatarUrl,
       language: el.language,
+      summary : el.summary,
       //     dateOfBirth: moment(el.dateOfBirth).format("DD/MM/YYYY"),
       place: el.place,
       address: el.address,
@@ -96,7 +105,7 @@ const List = () => {
       id: el._id,
       review: el.review,
       rating: el.rating,
-      user: el.user._id,
+      user: el?.user?._id,
       guide: el.guide?._id,
       place: el.place?._id,
       createdAt: moment(el.createdAt).format("DD/MM/YYYY"),
@@ -165,7 +174,7 @@ const List = () => {
               <Datatable
                 columns={guideColumns}
                 rows={guideRows}
-                inputs={userInputs}
+                inputs={guideInputs}
                 title="guides"
                 path="guides"
               >

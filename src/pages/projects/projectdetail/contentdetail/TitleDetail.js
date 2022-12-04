@@ -19,8 +19,9 @@ const TitleDetail = () => {
   const navigate = useNavigate();
   return (
     <div className="mb-[30px]">
-      <div className="title">
+      <div className="title flex justify-between">
         <h2 className="text-[#fff] text-[26px] font-[700]">{project?.name}</h2>
+        <span className="text-primary text-[24px] font-[600]"> ${project?.price} </span>
       </div>
       <div className="icon mb-[20px]">
         <div className="flex mb-[20px]">

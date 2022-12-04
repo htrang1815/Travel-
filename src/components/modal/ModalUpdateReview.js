@@ -20,13 +20,15 @@ import {
 import useGetImageUrl from "../../hooks/useGetImageUrl";
 import Textarea from "../input/Textarea";
 import BasicRating from "../icon/ReviewStar";
-import { setRating } from "../../store/review/reviewSlice";
+// import { setRating } from "../../store/review/reviewSlice";
 
 import useAuthStateChanged from "../../hooks/useAuthStateChange";
+import { setMyReview } from "../../store/myreview/slice";
 import { updateReview } from "../../realtimeCommunication/socketConnection";
+// import { updateReview } from "../../realtimeCommunication/socketConnection";
 
 const ModalUpdateReview = () => {
-  const { user } = useAuthStateChanged();
+  // const { user } = useAuthStateChanged();
   const { imageCover, getImageUrl } = useGetImageUrl();
   const { reviewUpdateUser } = useSelector((state) => state.review);
   const { showModalUpdateReview } = useSelector((state) => state.show);
@@ -37,7 +39,7 @@ const ModalUpdateReview = () => {
   // console.log("modal", rating);
   // console.log("reviewmodal", reviewUpdateUser);
 
-  console.log("image update", imageCover);
+  // console.log("image update", imageCover);
   // const { projectId, guideId } = useParams();
 
   const dispatch = useDispatch();
@@ -61,7 +63,7 @@ const ModalUpdateReview = () => {
   });
 
   // useEffect(() => {
-  // console.log(reviewUpdateUser.review)
+
   // reset({
   //   review: reviewUpdateUser.review,
   // })
@@ -69,20 +71,23 @@ const ModalUpdateReview = () => {
   // }, []);
 
   const handleUpdateReview = async (review) => {
-    console.log("asdasdasd", imageCover);
+    // console.log("asdasdasd", imageCover);
+    // console.log(reviewUpdateUser);
     try {
       if (rating && rating !== 0) {
         const response = await axios.patch(
           `${domain}/api/v1/reviews/${reviewUpdateUser._id}`,
           {
-            review: review.review,
-            rating: rating,
-            image: imageCover,
+            review: review.review || reviewUpdateUser.review,
+            rating: rating || reviewUpdateUser.rating,
+            image: imageCover || reviewUpdateUser.image,
           }
         );
 
-        const { review: reviewsUpdate } = response.data.data;
-        updateReview(reviewsUpdate);
+        const { review: reviewUpdate } = response.data.data;
+        console.log(response.data.data);
+        updateReview(reviewUpdate);
+        // dispatch(setMyReview(reviewUpdate));
         dispatch(setShowModalUpdateReview(false));
       } else {
         dispatch(setShowAlert(true));
@@ -93,6 +98,7 @@ const ModalUpdateReview = () => {
       console.log(err);
     }
   };
+  console.log(imageCover);
 
   return ReactDOM.createPortal(
     <div
@@ -127,7 +133,7 @@ const ModalUpdateReview = () => {
               {errors.review?.message}
             </p>
             <img
-              src={imageCover || reviewUpdateUser?.image || imgdefault}
+              src={imageCover || reviewUpdateUser?.image || imgdefault || imageCover}
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />

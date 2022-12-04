@@ -26,8 +26,8 @@ const UserProfilePage = () => {
         <div className="main px-[9%] py-[30px] flex">
           <ContentLeft></ContentLeft>
           <ContentRight></ContentRight>
-        </div>
       </div>
+        </div>
       <ModalUser>
         <FormInput></FormInput>
       </ModalUser>

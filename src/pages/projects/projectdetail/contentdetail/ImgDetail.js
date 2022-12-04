@@ -14,26 +14,17 @@ const ImgDetail = () => {
     <div className="w-full grid  grid-detail grid-flow-col gap-y-[10px] gap-x-[20px] mb-[30px]">
       <img
         className="object-cover w-full h-full rounded-lg col-span-2 row-start-1 row-end-7 "
-        src={
-          project?.images &&
-          require(`../../../../assets/tour/${project?.images[0]}`)
-        }
+        src={project?.images && project?.images[0]}
         alt=""
       />
       <img
         className="object-cover w-full h-full rounded-lg row-start-1 row-end-4"
-        src={
-          project?.images &&
-          require(`../../../../assets/tour/${project?.images[1]}`)
-        }
+        src={project?.images && project?.images[1]}
         alt=""
       />
       <img
         className="object-cover w-full h-full rounded-lg row-start-4 row-end-6"
-        src={
-          project?.images &&
-          require(`../../../../assets/tour/${project?.images[2]}`)
-        }
+        src={project?.images && project?.images[2]}
         alt=""
       />
       <button

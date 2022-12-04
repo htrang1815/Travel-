@@ -21,11 +21,20 @@ import {
   FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "../../../firebase.config";
+import {
+  setAlertContent,
+  setShowAlert,
+  setType,
+} from "../../../store/alert/alertSlice";
+import { useDispatch, useSelector } from "react-redux";
+import ModalAlert from "../../modal/ModalAlert";
 
 const LoginContent = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const { showAlert } = useSelector((state) => state.alert);
   // B2
+  console.log(showAlert);
   const schema = yup.object({
     email: yup
       .string()
@@ -49,7 +58,7 @@ const LoginContent = () => {
   });
 
   const onSubmitHandler = async (values) => {
-    console.log(values);
+    // console.log(values);
     if (isValid) {
       try {
         const user = await axios.post(`${domain}/api/v1/users/login`, {
@@ -57,10 +66,25 @@ const LoginContent = () => {
           password: values.password,
         });
 
-        console.log(user);
+        // console.log("user", user);
 
-        if (user) {
+        if (
+          user &&
+          user.data.data.user.role === "user" &&
+          user.data.data.user.status === "active"
+        ) {
           navigate("/home");
+        } else if (
+          user &&
+          user.data.data.user.role === "admin" &&
+          user.data.data.user.status === "active"
+        ) {
+          navigate("/admin");
+        } else {
+          dispatch(setShowAlert(true));
+          dispatch(setAlertContent("Your account is block"));
+          dispatch(setType("fail"));
+          console.log(showAlert);
         }
       } catch (err) {
         console.log(err);
@@ -105,72 +129,82 @@ const LoginContent = () => {
   };
 
   return (
-    <div className="w-full pr-[25%]">
-      <h1 className="font-bold text-[28px] mb-5  text-primary">Welcome</h1>
-      <p className="mb-5 text-[#fff]">Please login your account to continue!</p>
-      <div className="">
-        <ButtonSocial
-          text="Continue with Google"
-          className="w-full block"
-          handleSignIn={signInWithGoogle}
-        >
-          <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
-        </ButtonSocial>
-        <ButtonSocial
-          text="Continue with Facebook"
-          className="w-full block"
-          handleSignIn={signInWithFacebook}
-        >
-          <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
-        </ButtonSocial>
-      </div>
-      <form className="w-full" onSubmit={handleSubmit(onSubmitHandler)}>
-        <p className="item-center text-center text-[#fff]">
-          Or Login with Email
+    <>
+      <div className="w-full pr-[25%]">
+        <h1 className="font-bold text-[28px] mb-5  text-primary">Welcome</h1>
+        <p className="mb-5 text-[#fff]">
+          Please login your account to continue!
         </p>
-        <Input
-          label="Email"
-          id="email"
-          type="email"
-          placeholder="Please enter your email..."
-          control={control}
-        ></Input>
-        <p className="text-[#f77171] font-semibold mb-[10px]">
-          {errors.email?.message}
-        </p>
-        <Input
-          label="Password"
-          id="password"
-          type="password"
-          placeholder="Please enter your password..."
-          control={control}
-        ></Input>
-        <p className="text-[#f77171] font-semibold mb-[10px]">
-          {errors.password?.message}
-        </p>
-        <p className="text-right block cursor-pointer mb-4 text-[#fff]">
-          Forget password ?{" "}
-        </p>
-        <div className="text-center">
-          <ButtonSubmit>
-            {isSubmitting ? (
-              <div className="w-10 h-10 rounded-full border-[#ffffff] border-solid border-t-[transparent] border-b-[transparent] animate-spin mx-auto"></div>
-            ) : (
-              "Login"
-            )}
-          </ButtonSubmit>
+        <div className="">
+          <ButtonSocial
+            text="Continue with Google"
+            className="w-full block"
+            handleSignIn={signInWithGoogle}
+          >
+            <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
+          </ButtonSocial>
+          <ButtonSocial
+            text="Continue with Facebook"
+            className="w-full block"
+            handleSignIn={signInWithFacebook}
+          >
+            <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
+          </ButtonSocial>
         </div>
-      </form>
-      <p className="text-center block cursor-pointer mt-4 text-[#fff]">
-        Don't have account?{" "}
-        <span
-          className="cursor-pointer font-bold text-primary "
-          onClick={() => navigate("/signup")}
-        >
-          Sign up
-        </span>
-      </p>
-    </div>
+        <form className="w-full" onSubmit={handleSubmit(onSubmitHandler)}>
+          <p className="item-center text-center text-[#fff]">
+            Or Login with Email
+          </p>
+          <Input
+            label="Email"
+            id="email"
+            type="email"
+            placeholder="Please enter your email..."
+            control={control}
+          ></Input>
+          <p className="text-[#f77171] font-semibold mb-[10px]">
+            {errors.email?.message}
+          </p>
+          <Input
+            label="Password"
+            id="password"
+            type="password"
+            placeholder="Please enter your password..."
+            control={control}
+          ></Input>
+          <p className="text-[#f77171] font-semibold mb-[10px]">
+            {errors.password?.message}
+          </p>
+          <p
+            className="text-right block cursor-pointer mb-4 text-[#fff]"
+            onClick={() => {
+              navigate("/forgotpass");
+            }}
+          >
+            Forget password ?{" "}
+          </p>
+          <div className="text-center">
+            <ButtonSubmit>
+              {isSubmitting ? (
+                <div className="w-10 h-10 rounded-full border-[#ffffff] border-solid border-t-[transparent] border-b-[transparent] animate-spin mx-auto"></div>
+              ) : (
+                "Login"
+              )}
+            </ButtonSubmit>
+          </div>
+        </form>
+        <p className="text-center block cursor-pointer mt-4 text-[#fff]">
+          Don't have account?{" "}
+          <span
+            className="cursor-pointer font-bold text-primary "
+            onClick={() => navigate("/signup")}
+          >
+            Sign up
+          </span>
+        </p>
+      </div>
+      {/* <ModalAlert></ModalAlert> */}
+    </>
   );
 };
 

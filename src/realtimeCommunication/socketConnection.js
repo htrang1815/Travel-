@@ -1,12 +1,21 @@
 import io from "socket.io-client";
 import { setUser } from "../store/auth/slice";
+import { setBlogList } from "../store/blogList/slice";
+import { setGuideList } from "../store/guideList/slice";
+// import { setBlogList } from "../store/blogList/slice";
+// import { setGuideList } from "../store/guideList/slice";
 import { setMyBlog } from "../store/myblog/slice";
 import { setMyReview } from "../store/myreview/slice";
+import { setProjectList } from "../store/projectList/slice";
+// import { setProjectList } from "../store/projectList/slice";
 import { setReviewInfoInTour } from "../store/review/reviewSlice";
 import { setReviewInfoInGuide } from "../store/reviewGuide/reviewSlice";
+import { setReviewList } from "../store/reviewList/slice";
+// import { setReviewList } from "../store/reviewList/slice";
+import { setUserProfile } from "../store/userProfile/slice";
 import domain from "../utils/common";
 
-let socket = null;
+let socket = io(`${domain}`);
 
 export const connectWithSocketServer = (user, dispatch) => {
   socket = io(`${domain}`, {
@@ -23,8 +32,23 @@ export const connectWithSocketServer = (user, dispatch) => {
     dispatch(setUser(user));
   });
 
+  socket.on("sendAdminDeleteToClient", (data) => {
+    console.log(data);
+    // if (path === "userprofile") {
+    //   dispatch(setUserProfile(res));
+    // } else if (path === "guides") {
+    //   dispatch(setGuideList(res));
+    // } else if (path === "blogs") {
+    //   dispatch(setBlogList(res));
+    // } else if (path === "reviews") {
+    //   dispatch(setReviewList(res));
+    // } else if (path === "projects") {
+    //   dispatch(setProjectList(res));
+    // }
+  });
+
   socket.on("sendUpdateReview", (review) => {
-    console.log(review);
+    // console.log(review);
     dispatch(setMyReview(review));
   });
 
@@ -41,7 +65,7 @@ export const connectWithSocketServer = (user, dispatch) => {
   });
 
   socket.on("sendRemoveFavouriteToClient", (bookmark) => {
-    // console.log(review);
+    console.log(bookmark);
     dispatch(setUser(bookmark));
   });
 
@@ -73,8 +97,15 @@ export const joinGuide = (data) => {
 };
 
 export const joinUser = (data) => {
-  socket.emit("join-user", data);
+  // console.log(data);
+  socket?.emit("join-user", data);
+  // console.log(data);
+};
+
+export const adminDelete = (data) => {
   console.log(data);
+  console.log(socket);
+  socket.emit("admindelete", data);
 };
 
 export const updateUser = (values, userId, imageCover, dateOfBirth) => {

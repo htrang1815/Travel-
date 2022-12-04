@@ -8,7 +8,7 @@ import { Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const ProjectItem = ({ projectData, className }) => {
-  // console.log(projectData);
+  // console.log(projectData?.images);
   const navigate = useNavigate();
   return (
     <div
@@ -20,10 +20,7 @@ const ProjectItem = ({ projectData, className }) => {
     >
       <div className="w-full img">
         <img
-          src={
-            projectData?.images &&
-            require(`../../assets/tour/${projectData?.images[0]}`)
-          }
+          src={projectData?.images && projectData?.images[0]}
           alt=""
           className="object-cover w-full h-full cursor-pointer"
         />

@@ -11,10 +11,23 @@ import {
   faFileInvoiceDollar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import domain from "../../../utils/common";
 
 const Sidebar = () => {
+  let navigate = useNavigate();
+  // const { user } = useAuthStateChanged();
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get(`${domain}/api/v1/users/logout`);
+      console.log(res);
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="flex-1 border-0 border-r-[0.5px] border-solid border-primary min-h-[100vh] bg-[#111]">
       <div className="top h-[50px] flex items-center justify-center">
@@ -86,7 +99,7 @@ const Sidebar = () => {
             <FontAwesomeIcon icon={faAddressCard} className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={handleLogout}>
             <FontAwesomeIcon icon={faRightFromBracket} className="icon" />
             <span>Logout</span>
           </li>

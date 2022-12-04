@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import GuideItem from "../../../components/guides/GuideItem"
+import GuideItem from "../../../components/guides/GuideItem";
 
 const OurGuide = () => {
   const { guideList } = useSelector((state) => state.guideList);
-  console.log(guideList);
+  // console.log(guideList);
+  const data = guideList;
+  const currentItems = data.slice(0, 8);
   return (
     <div className="py-[30px] px-[9%] ">
       <div className="text-center mb-[20px]">
@@ -14,9 +16,9 @@ const OurGuide = () => {
         </h1>
       </div>
       <div className="grid grid-cols-4 gap-[15px]">
-      {guideList?.map((guide) => (
-          <GuideItem  key={guide._id} guideData={guide}></GuideItem>
-        ))}     
+        {currentItems?.map((guide) => (
+          <GuideItem key={guide._id} guideData={guide}></GuideItem>
+        ))}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -14,17 +15,17 @@ import TourGuide from "./tourguide/TourGuide";
 import Reviews from "./projectdetail/contentdetail/Reviews";
 import ModalReview from "../../components/modal/ModalReview";
 import { joinPlace } from "../../realtimeCommunication/socketConnection";
-import { getGuide } from "../../store/guide/slice";
 import { getGuideList } from "../../store/guideList/slice";
 import ModalAlert from "../../components/modal/ModalAlert";
-import { setSaveFavourite } from "../../store/showModal/showSlice";
-import axios from "axios";
-import domain from "../../utils/common";
+// import { getGuide } from "../../store/guide/slice";
+// import { setSaveFavourite } from "../../store/showModal/showSlice";
+// import axios from "axios";
+// import domain from "../../utils/common";
 
 const ProjectDetails = () => {
   const currentURL = window.location.href;
 
-  const { projectId, userId } = useParams();
+  const { projectId } = useParams();
   const dispatch = useDispatch();
  
   useEffect(() => {

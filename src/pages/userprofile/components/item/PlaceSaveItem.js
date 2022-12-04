@@ -12,6 +12,7 @@ import { removeFavourite } from "../../../../realtimeCommunication/socketConnect
 const PlaceSaveItem = ({ data }) => {
   const dispatch = useDispatch();
   const { user } = useAuthStateChange();
+  // console.log(user);
   const handleRemoveFavourite = async () => {
     const isFavorite = await axios.post(
       `${domain}/api/v1/users/remove-favourite`,
@@ -20,8 +21,7 @@ const PlaceSaveItem = ({ data }) => {
         placeId: data._id,
       }
     );
-    removeFavourite({userId: user._id,
-      placeId: data._id,})
+    removeFavourite({ userId: user._id, placeId: data._id });
   };
 
   return (

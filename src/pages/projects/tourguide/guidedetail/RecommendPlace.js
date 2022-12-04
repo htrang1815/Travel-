@@ -6,7 +6,8 @@ import ProjectItem from "../../../../components/projects/ProjectItem";
 
 const RecommendPlace = ({ className }) => {
   const { projectList } = useSelector((state) => state.projectList);
-
+  const data = projectList;
+  const currentItems = data.slice(0, 8);
   return (
     <div className={`${className} recommend py-[30px] px-[9%]`}>
       <div className="text-left  mb-[20px]">
@@ -29,60 +30,12 @@ const RecommendPlace = ({ className }) => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-          {projectList?.map((project) => (
+          {currentItems?.map((project) => (
             <SwiperSlide key={project._id}>
               {" "}
               <ProjectItem projectData={project}></ProjectItem>
             </SwiperSlide>
           ))}
-          {/* <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <GuideItem></GuideItem>
-          </SwiperSlide> */}
         </Swiper>
       </>
     </div>

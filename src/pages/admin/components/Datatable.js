@@ -1,25 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setShowAddNew } from "../../../store/showModal/showSlice";
 import ModalNewUser from "./modal/ModalNewUser";
-import useFetch from "../../../hooks/useFetch";
-import { getUserProfile } from "../../../store/userProfile/slice";
-import moment from "moment";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import domain from "../../../utils/common";
+import ModalNewGuide from "./modal/ModalNewGuide";
+import { adminDelete } from "../../../realtimeCommunication/socketConnection";
+import useAuthStateChanged from "../../../hooks/useAuthStateChange";
 
 const Datatable = ({ columns, rows, inputs, title, path }) => {
-  // const [list, setList] = useState();
-  // const { data, loading, error } = useFetch(``);
+  // const { userProfile } = useSelector((state) => state.userProfile);
+  // const { loadingButtonReview } = useSelector((state) => state.loading);
+  // const { reviewList } = useSelector((state) => state.reviewList);
+  // const { blogList } = useSelector((state) => state.blogList);
+  // const { guideList } = useSelector((state) => state.guideList);
+  // const { projectList } = useSelector((state) => state.projectList);
+
   const dispatch = useDispatch();
+  const { user } = useAuthStateChanged();
+  // console.log(user);
+
+  const userId = user._id;
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${domain}/api/v1/${path}/${id}`);
+      // dispatch(setLoadingButtonReview(true));
+      // await axios.delete(`${domain}/api/v1/${path}/${id}`);
+      // const res = await axios.get(`${domain}/api/v1/${path}`);
+      // console.log(res);
+      // if (path === "userprofile") {
+      //   setUserProfile(res.data.data);
+      // }
+      const data = {
+        userId: userId,
+        path: path,
+        id: id,
+      };
+      adminDelete(data);
       // setList(list.filter((item) => item._id !== id));
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleBlock = async (id) => {
     try {
@@ -53,7 +76,10 @@ const Datatable = ({ columns, rows, inputs, title, path }) => {
             <div
               className="deleteButton"
               onClick={
-                () => handleDelete(params.row.id)
+                () => {
+                  handleDelete(params.row.id);
+                }
+
                 // console.log("click delete", params.row.id)
               }
             >
@@ -64,20 +90,23 @@ const Datatable = ({ columns, rows, inputs, title, path }) => {
       },
     },
   ];
-  // console.log(row);
+  // console.log(path);
+  const arrpath = ["userprofile", "guides", "projects"];
   return (
     <>
       <div className={`datatable `}>
-        <div className="datatableTitle ">
-          <button
-            className="link"
-            onClick={() => {
-              dispatch(setShowAddNew(true));
-            }}
-          >
-            Add New
-          </button>
-        </div>
+        {arrpath.includes(path) && (
+          <div className="datatableTitle ">
+            <button
+              className="link"
+              onClick={() => {
+                dispatch(setShowAddNew(true));
+              }}
+            >
+              Add New
+            </button>
+          </div>
+        )}
         <div className="h-[500px] w-full ">
           <DataGrid
             className="datagrid"
@@ -96,7 +125,20 @@ const Datatable = ({ columns, rows, inputs, title, path }) => {
             }}
           />
         </div>
-        <ModalNewUser inputs={inputs} title={title} path={path}></ModalNewUser>
+        {path === "userprofile" && (
+          <ModalNewUser
+            inputs={inputs}
+            title={title}
+            path={path}
+          ></ModalNewUser>
+        )}
+        {path === "guides" && (
+          <ModalNewGuide
+            inputs={inputs}
+            title={title}
+            path={path}
+          ></ModalNewGuide>
+        )}
       </div>
     </>
   );

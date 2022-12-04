@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 
 const TourGuide = ({ className }) => {
   const { guideList } = useSelector((state) => state.guideList);
+  const data = guideList;
+  const currentItems = data.slice(0, 8);
   return (
     <div className={`${className} recommend py-[30px] px-[9%]`}>
       <div className="text-left  mb-[20px]">
@@ -28,12 +30,12 @@ const TourGuide = ({ className }) => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-        {guideList?.map((guide) => (
-          <SwiperSlide key={guide._id}>
-            {" "}
-            <GuideItem   guideData={guide}></GuideItem>
-          </SwiperSlide>
-        ))}  
+          {currentItems?.map((guide) => (
+            <SwiperSlide key={guide._id}>
+              {" "}
+              <GuideItem guideData={guide}></GuideItem>
+            </SwiperSlide>
+          ))}
           {/* <SwiperSlide>
             {" "}
             <GuideItem></GuideItem>

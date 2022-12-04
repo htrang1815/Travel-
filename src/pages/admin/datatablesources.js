@@ -113,6 +113,16 @@ export const guideColumns = [
     width: 200,
   },
   {
+    field: "facebook",
+    headerName: "Facebook",
+    width: 200,
+  },
+  {
+    field: "instagram",
+    headerName: "Instagram",
+    width: 200,
+  },
+  {
     field: "address",
     headerName: "Address",
     width: 150,
@@ -120,6 +130,11 @@ export const guideColumns = [
   {
     field: "experience",
     headerName: "Experience",
+    width: 150,
+  },
+  {
+    field: "summary",
+    headerName: "Summary",
     width: 150,
   },
   {

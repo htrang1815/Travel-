@@ -14,13 +14,12 @@ import { getGuideList } from "../../store/guideList/slice";
 
 const ProjectsPage = () => {
   const dispatch = useDispatch();
-  const { projectPage } = useSelector((state) => state.projectList);
-  
+  // const { projectPage } = useSelector((state) => state.projectList);
 
   useEffect(() => {
-    dispatch(getProjectList({ query: "", page: projectPage }));
+    dispatch(getProjectList({ query: "" }));
     dispatch(getGuideList());
-  }, [dispatch, projectPage]);
+  }, [dispatch]);
   // console.log("getprojectlist", getProjectList());
   return (
     <>

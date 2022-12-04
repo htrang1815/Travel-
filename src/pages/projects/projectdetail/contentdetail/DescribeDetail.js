@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const DescribeDetail = () => {
   const { project } = useSelector((state) => state.project);
-  console.log(project);
+  // console.log(project);
   return (
     <div className="describe">
       <CollapsibleDetail

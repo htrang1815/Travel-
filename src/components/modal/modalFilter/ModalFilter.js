@@ -24,42 +24,41 @@ const ModalFilter = () => {
   );
   // const { projectList } = useSelector((state) => state.projectList);
   const dispatch = useDispatch();
-<<<<<<< HEAD
   // console.log(lenght, price, date);
-=======
-  console.log({ lenght, price, date });
->>>>>>> 602d550fb26e1bd754209b6823437a649ff523b1
 
-  useEffect(() => {
-    dispatch(getLenght());
-    dispatch(getPrice());
-    dispatch(getDateFilter());
-    // dispatch(getProjectList());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getLenght());
+  //   dispatch(getPrice());
+  //   dispatch(setProjectList());
+  //   dispatch(setShowFilter());
+  // }, [dispatch]);
 
   const handleFilter = async () => {
-    console.log({
-      price: price,
-      lenght: lenght,
-      name: name,
-      date: date,
-    });
+    // console.log({
+    //   price: price,
+    //   lenght: lenght,
+    //   name: name,
+    //   date: date,
+    // });
     try {
-      const res = await axios.get(`${domain}/api/v1/projects/filter`, {
+      const res = await axios.post(`${domain}/api/v1/projects/filter`, {
         price: price,
         lenght: lenght,
         name: name,
         date: date,
       });
 
-      console.log(res.data.data.projects);
+      // console.log(res.data.data.projects);
+      // console.log(price, name, lenght, date);
 
-      // dispatch(setProjectList(res));
-      // dispatch(setShowFilter(false));
+      setShowFilter(false);
+      dispatch(setProjectList(res.data.data.projects));
     } catch (error) {
       console.log(error);
     }
   };
+  // console.log(lenght, price, date, name);
+
   return ReactDOM.createPortal(
     <div
       className={`fixed top-0 bottom-0 right-0 left-0 z-[1010] flex justify-center items-center visible opacity-100 transition ease-in duration-200 ${
@@ -94,7 +93,7 @@ const ModalFilter = () => {
         <div className="text-center mt-[15px]">
           <button
             className="text-[16px] px-[30px] py-[8px] text-[#111] border border-solid border-[#111] rounded-md hover-btn"
-            onClick={handleFilter()}
+            onClick={handleFilter}
           >
             Result
           </button>

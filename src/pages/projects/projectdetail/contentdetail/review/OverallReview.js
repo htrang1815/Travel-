@@ -52,14 +52,14 @@ const OverallReview = () => {
           </div>
           <InputRiews></InputRiews>
         </div>
-        <div>
+        {/* <div>
           <button className="p-3 text-primary border border-solid border-primary mr-[12px] rounded-[12px]">
             Oldest
           </button>
           <button className="p-3 text-primary border border-solid border-primary rounded-[12px]">
             Latest
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

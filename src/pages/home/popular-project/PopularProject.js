@@ -4,8 +4,9 @@ import ProjectItem from "../../../components/projects/ProjectItem";
 
 const PopularProject = () => {
   const { projectList } = useSelector((state) => state.projectList);
+  
   const data = projectList;
-  const currentItems = data.slice(0, 9);
+  const currentItems = data.slice(0, 8);
   // console.log(projectList);
   return (
     <div className="py-[30px] px-[9%] ">

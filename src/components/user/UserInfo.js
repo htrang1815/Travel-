@@ -2,6 +2,7 @@ import React from "react";
 import UserAvata from "./UserAvata";
 
 const UserInfo = ({ userInfo }) => {
+  // console.log(userInfo);
   return (
     <div className="flex items-center">
       <UserAvata

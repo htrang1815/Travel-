@@ -2,11 +2,13 @@ import axios from "axios";
 import domain from "../../utils/common";
 
 export default function requestGetProjecList(data = {}) {
-  const { query} = data;
+  const { query } = data;
 
   if (query && query.length > 0) {
-    return axios.get(`${domain}/api/v1/projects?name=${query}`);
+    return axios.get(
+      `${domain}/api/v1/projects?name=${query}&sort=-ratingAverage`
+    );
   } else {
-    return axios.get(`${domain}/api/v1/projects?`);
+    return axios.get(`${domain}/api/v1/projects?sort=-ratingAverage`);
   }
 }

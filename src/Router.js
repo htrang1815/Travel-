@@ -7,9 +7,12 @@ import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
 import BlogDetail from "./pages/blogs/BlogDetail";
 import BlogsPage from "./pages/blogs/BlogsPage";
+import UpdateBlogPage from "./pages/blogs/updateblog/UpdateBlog";
 import WriteBlog from "./pages/blogs/writeblog/WriteBlog";
 import BookingSuccessful from "./pages/booking/BookingSuccessful";
 import ContactPage from "./pages/contact/ContactPage";
+import ForgotPasswordPage from "./pages/forgotPass/ForgotPassPage";
+import ResetPasswordPage from "./pages/forgotPass/ResetPassPage";
 import GuidePage from "./pages/guides/GuidePage";
 import HomePage from "./pages/home/HomePage";
 import ProjectDetails from "./pages/projects/ProjectDetails";
@@ -22,7 +25,7 @@ import { getIsLogin } from "./store/auth/slice";
 const Router = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogin } = useSelector((state) => state.auth);
+  const { isLogin, user } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(getIsLogin());
     // if (!isLogin) {
@@ -37,6 +40,14 @@ const Router = () => {
         <Route path="/home" element={<HomePage></HomePage>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
+        <Route
+          path="/forgotpass"
+          element={<ForgotPasswordPage></ForgotPasswordPage>}
+        ></Route>
+        <Route
+          path="/resetpass"
+          element={<ResetPasswordPage></ResetPasswordPage>}
+        ></Route>
         {isLogin && (
           <>
             <Route
@@ -66,7 +77,9 @@ const Router = () => {
               path="/project/:projectId"
               element={<ProjectDetails></ProjectDetails>}
             ></Route>
-            <Route path="/admin/*" element={<AdminPage></AdminPage>}></Route>
+            {user.role === "admin" && (
+              <Route path="/admin/*" element={<AdminPage></AdminPage>}></Route>
+            )}
             <Route
               path="/userprofile/:userId"
               element={<UserProfilePage></UserProfilePage>}
@@ -74,6 +87,10 @@ const Router = () => {
             <Route
               path="/success"
               element={<BookingSuccessful></BookingSuccessful>}
+            ></Route>
+            <Route
+              path="/updateblog/:blogId"
+              element={<UpdateBlogPage></UpdateBlogPage>}
             ></Route>
           </>
         )}

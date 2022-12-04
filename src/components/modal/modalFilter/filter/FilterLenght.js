@@ -13,6 +13,9 @@ const minDistance = 2;
 
 export default function FilterLenght() {
   const [value1, setValue1] = React.useState([2, 10]);
+  // useEffect(() => {
+  //   dispatch(getLenght());
+  // }, [dispatch]);
   const dispatch = useDispatch();
   const { lenght, price, date } = useSelector((state) => state.filterSearch);
   const handleChange1 = (event, newValue, activeThumb) => {

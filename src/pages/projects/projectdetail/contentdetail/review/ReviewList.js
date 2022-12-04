@@ -9,7 +9,7 @@ const ReviewList = () => {
   const { projectId } = useParams();
 
   const { reviewInATour } = useSelector((state) => state.review);
-  console.log(reviewInATour);
+  // console.log(reviewInATour);
 
   useEffect(() => {
     dispatch(getReviewInTour(projectId));

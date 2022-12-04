@@ -15,6 +15,8 @@ import {
   setReviewUpdateUser,
 } from "../../../../store/review/reviewSlice";
 import useAuthStateChanged from "../../../../hooks/useAuthStateChange";
+import axios from "axios";
+import domain from "../../../../utils/common";
 
 const MyReviewItem = ({ data, index }) => {
   const dispatch = useDispatch();
@@ -22,7 +24,8 @@ const MyReviewItem = ({ data, index }) => {
   const { rating } = useSelector((state) => state.review);
   const { getMyReview } = useSelector((state) => state.myreview);
   const handleDeleteMyReview = async () => {
-    // const myreview = await axios.delete(`${domain}/api/v1/reviews/${data._id}`);
+    console.log("click");
+    const myreview = await axios.delete(`${domain}/api/v1/reviews/${data._id}`);
     removeMyReview({ userId: data.user._id, reviewId: data._id });
   };
   const { user } = useAuthStateChanged();
