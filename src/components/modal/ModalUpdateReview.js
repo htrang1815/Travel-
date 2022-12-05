@@ -133,7 +133,12 @@ const ModalUpdateReview = () => {
               {errors.review?.message}
             </p>
             <img
-              src={imageCover || reviewUpdateUser?.image || imgdefault || imageCover}
+              src={
+                imageCover ||
+                reviewUpdateUser?.image ||
+                imgdefault ||
+                imageCover
+              }
               alt=""
               className="absolute w-[20%] h-[50%] object-cover right-[25px] top-[30%]"
             />

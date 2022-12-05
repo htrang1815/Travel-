@@ -24,7 +24,7 @@ const ModalFilter = () => {
   );
   // const { projectList } = useSelector((state) => state.projectList);
   const dispatch = useDispatch();
-  // console.log(lenght, price, date);
+  console.log(lenght, price, date);
 
   // useEffect(() => {
   //   dispatch(getLenght());
@@ -48,7 +48,7 @@ const ModalFilter = () => {
         date: date,
       });
 
-      // console.log(res.data.data.projects);
+      console.log(res.data.data.projects);
       // console.log(price, name, lenght, date);
 
       setShowFilter(false);

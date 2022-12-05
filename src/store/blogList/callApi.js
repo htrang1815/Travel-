@@ -6,6 +6,6 @@ export default function requestGetBlogList() {
   //   return axios.get(`${domain}/api/v1/blogs?page=${page}`);
   // }
   // else {
-    return axios.get(`${domain}/api/v1/blogs`);
+  return axios.get(`${domain}/api/v1/blogs?sort=-publishedAt`);
   // }
 }
