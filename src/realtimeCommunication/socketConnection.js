@@ -21,6 +21,7 @@ export const connectWithSocketServer = (user, dispatch) => {
   socket = io(`${domain}`, {
     // Truyền dữ liệu ng dùng sang backend
     auth: { user },
+    withCredentials: true,
   });
 
   socket.on("connect", () => {
