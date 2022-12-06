@@ -22,7 +22,7 @@ import {
 } from "react-share";
 
 const ModalShare = ({ currentURL = "" }) => {
-  currentURL = "https://www.youtube.com/?hl=vi";
+  currentURL = window.location.href;
   const { showShare } = useSelector((state) => state.show);
 
   const dispatch = useDispatch();
