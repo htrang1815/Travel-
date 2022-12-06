@@ -10,7 +10,7 @@ const ReviewItem = ({ data }) => {
         <img src={data.user.avatarUrl} alt="" className="h-[50px] w-[50px] rounded-[50%]" />
         <div className="">
           <h3 className="text-[17px] text-[#fff] font-[700]">{data.user.name}</h3>
-          <span className="text-[15px] text-[#aaa]">Volunteer</span>
+          {/* <span className="text-[15px] text-[#aaa]">Volunteer</span> */}
         </div>
       </div>
     </div>
