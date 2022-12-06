@@ -60,7 +60,7 @@ const ProjectItem = ({ projectData, className }) => {
               </span>
             </div>
             <span className="text-[14px]">
-              {projectData?.maxGroupSize}+Guides
+              {projectData?.maxGroupSize}+Participants
             </span>
           </div>
           <h3 className="text-[16px] font-[600] mb-4 text-wrap-title">
