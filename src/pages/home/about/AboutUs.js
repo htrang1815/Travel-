@@ -18,23 +18,23 @@ const AboutUs = () => {
     {
       id: 0,
       video: videoblog,
-      title: "Nature's Majesty Awaits You",
+      title: "Travel to meet different cultures",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem culpa quo in cumque saepe quaerat earum ducimus exercitationem iusto reiciendis quas velit, dolorum soluta sunt repudiandae voluptatibus, perspiciatis officiis nulla?",
+        "Travel exposes us to different cultures and ancient traditions and through these authentic encounters, we learn to embrace and celebrate both our similarities and our differences. Travel teaches us about humanity and gives us an appreciation, understanding and respect for different points of view and ways of life.",
     },
     {
       id: 1,
       video: videoblog1,
-      title: "Nature's Majesty Awaits ",
+      title: "Travel to learn",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem culpa quo in cumque saepe quaerat earum ducimus exercitationem iusto reiciendis quas velit, dolorum soluta sunt repudiandae voluptatibus, perspiciatis officiis nulla?",
+        "Not all classrooms have four walls and travel is the best way to immerse yourself in geography, history, culture, gastronomy, languages, biology … you name it. Travel enriches the mind and educates us far beyond any textbook or travel guide. Not only do curious travellers learn about different landscapes, languages and lifestyles;",
     },
     {
       id: 2,
       video: videoblog2,
-      title: "Nature's Majesty",
+      title: "Travel to relax",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem culpa quo in cumque saepe quaerat earum ducimus exercitationem iusto reiciendis quas velit, dolorum soluta sunt repudiandae voluptatibus, perspiciatis officiis nulla?",
+        "Our lives are time-starved and technology-driven and, let’s be honest, it’s not often that we actually take the necessary time to de-stress and truly switch off. Travel allows us to escape life’s daily demands, dramas and deadlines and enables us to clear our minds.",
     },
   ];
   return (
