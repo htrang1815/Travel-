@@ -35,7 +35,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">thailand</h3>
         </div>
         <div className="gallery-item mb-[10px]">
           <img
@@ -44,7 +44,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">vietnam</h3>
         </div>
         <div className="gallery-item mb-[10px]">
           <img
@@ -53,7 +53,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">china</h3>
         </div>
         <div className="gallery-item mb-[10px]">
           <img
@@ -62,7 +62,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">england</h3>
         </div>
         <div className="gallery-item mb-[10px]">
           <img
@@ -71,7 +71,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">korea</h3>
         </div>
         <div className="gallery-item mb-[10px]">
           <img
@@ -80,7 +80,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">japan</h3>
         </div>
         <div className="gallery-item mb-[10px]">
           <img
@@ -89,7 +89,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">maroc</h3>
         </div>
         <div className="gallery-item mb-[10px]">
           <img
@@ -98,7 +98,7 @@ const Gallery = () => {
             alt=""
           />
           <span className="text-[14px] text-[#aaa]">travel spot</span>
-          <h3 className="mt-[5px] text-[20px] text-[#fff]">iceland</h3>
+          <h3 className="mt-[5px] text-[20px] text-[#fff]">italy</h3>
         </div>
       </div>
     </div>
