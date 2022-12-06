@@ -25,9 +25,10 @@ const Review = () => {
           Good News From Our Clients
         </h1>
         <p className="text-[14px] text-[#aaa] py-[10px] px-0 leading-[28px]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam illo,
-          quaerat velit veniam nihil esse rerum qui mollitia ab earum voluptates
-          adipisci distinctio enim neque dolore debitis facilis, quas maxime.
+          Travel takes us out of our comfort zones and inspires us to see, taste
+          and try new things. It constantly challenges us, not only to adapt to
+          and explore new surroundings, to share new and meaningful experiences
+          with friends and loved ones
         </p>
       </div>
       <div className="flex-review-container">
