@@ -16,6 +16,7 @@ const showSlice = createSlice({
       alertType: "success",
     },
     showModalUpdateReview: false,
+    showModalBooking: false,
     savefavourite: false,
     photo: [],
   },
@@ -52,6 +53,10 @@ const showSlice = createSlice({
       ...state,
       showModalReview: action.payload,
     }),
+    setShowModalBooking: (state, action) => ({
+      ...state,
+      showModalBooking: action.payload,
+    }),
     setShowModalUser: (state, action) => ({
       ...state,
       showModalUser: action.payload,
@@ -83,6 +88,7 @@ export const {
   setShowContactGuide,
   setSaveFavourite,
   setShowModalUpdateReview,
+  setShowModalBooking,
 } = showSlice.actions;
 
 export default showSlice.reducer;

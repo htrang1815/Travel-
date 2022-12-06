@@ -122,7 +122,20 @@ const LoginContent = () => {
       const provider = new FacebookAuthProvider();
       const response = await signInWithPopup(auth, provider);
       const user = response.user;
-      // console.log(user);
+
+      const newUser = await axios.post(
+        `${domain}/api/v1/users/signInWithGoogle`,
+        {
+          email: user.email,
+          typeAccount: "facebook",
+          avatarUrl: user.photoURL,
+          name: user.displayName,
+        }
+      );
+
+      if (newUser) {
+        navigate("/home");
+      }
     } catch (err) {
       console.log(err);
     }

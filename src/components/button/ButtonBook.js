@@ -7,13 +7,16 @@ import useAuthStateChanged from "../../hooks/useAuthStateChange";
 import domain from "../../utils/common";
 import { useStripe } from "@stripe/react-stripe-js";
 
-const ButtonBook = ({ text, className }) => {
+const ButtonBook = ({ text, className, number }) => {
   const { projectId } = useParams();
   const { isLogin } = useAuthStateChanged();
   const stripe = useStripe();
   const handleCheckout = async () => {
-    const session = await axios.get(
-      `${domain}/api/v1/bookings/checkout-session/${projectId}`
+    const session = await axios.post(
+      `${domain}/api/v1/bookings/checkout-session/${projectId}`,
+      {
+        numberItem: number,
+      }
     );
     const sessionId = session.data.session.id;
 

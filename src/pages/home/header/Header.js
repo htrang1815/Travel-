@@ -88,10 +88,10 @@ const Header = () => {
         {isLogin ? (
           <>
             <div className="flex items-center">
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faBookmark}
                 className="text-primary text-[17px]"
-              ></FontAwesomeIcon>
+              ></FontAwesomeIcon> */}
               <UserAvata
                 className="ml-[10px]"
                 show={show}

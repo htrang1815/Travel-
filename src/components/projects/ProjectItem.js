@@ -6,6 +6,7 @@ import { faStar, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Moment from "react-moment";
 
 const ProjectItem = ({ projectData, className }) => {
   // console.log(projectData?.images);
@@ -77,7 +78,7 @@ const ProjectItem = ({ projectData, className }) => {
               icon={faCalendarDay}
               className="text-primary mr-3"
             ></FontAwesomeIcon>
-            November 28th 2022
+            <Moment format="YYYY/MM/DD">{projectData?.createdAt}</Moment>
           </span>
           <span className="block font-[500] mb-4">
             $ {projectData?.price}.00{" "}

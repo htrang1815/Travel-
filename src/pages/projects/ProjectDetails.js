@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -17,6 +16,10 @@ import ModalReview from "../../components/modal/ModalReview";
 import { joinPlace } from "../../realtimeCommunication/socketConnection";
 import { getGuideList } from "../../store/guideList/slice";
 import ModalAlert from "../../components/modal/ModalAlert";
+import ModalBooking from "../../components/modal/ModalBooking";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { setShowModalBooking } from "../../store/showModal/showSlice";
 // import { getGuide } from "../../store/guide/slice";
 // import { setSaveFavourite } from "../../store/showModal/showSlice";
 // import axios from "axios";
@@ -24,10 +27,9 @@ import ModalAlert from "../../components/modal/ModalAlert";
 
 const ProjectDetails = () => {
   const currentURL = window.location.href;
-
   const { projectId } = useParams();
   const dispatch = useDispatch();
- 
+  const { showModalBooking } = useSelector((state) => state.show);
   useEffect(() => {
     joinPlace(projectId);
   }, [projectId]);
@@ -36,6 +38,8 @@ const ProjectDetails = () => {
     dispatch(getProject(projectId));
     dispatch(getGuideList());
   }, [dispatch, projectId]);
+
+  console.log(showModalBooking);
 
   return (
     <>
@@ -48,10 +52,18 @@ const ProjectDetails = () => {
                 text="back to page"
                 className="rounded-[12px] "
               ></ButtonBack>
-              <ButtonBook
-                text="Book now"
-                className="rounded-[12px]"
-              ></ButtonBook>
+              <button
+                className="rounded-[12px] mt-0 text-[14px] font-[500] text-primary px-[15px] py-[10px] border-[2px] border-solid  border-[#ffbc4b] bg-none m-0 capitalize hover-btnsubmit flex items-center justify-between"
+                onClick={() => {
+                  dispatch(setShowModalBooking(true));
+                }}
+              >
+                Book now
+                <FontAwesomeIcon
+                  className="text-[14px] ml-3"
+                  icon={faChevronRight}
+                ></FontAwesomeIcon>
+              </button>
             </div>
             <ImgDetail></ImgDetail>
             <ContentDetail></ContentDetail>
@@ -65,6 +77,7 @@ const ProjectDetails = () => {
       <ModalBox></ModalBox>
       <ModalReview></ModalReview>
       <ModalAlert></ModalAlert>
+      <ModalBooking></ModalBooking>
     </>
   );
 };

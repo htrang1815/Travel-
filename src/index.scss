@@ -786,6 +786,21 @@ html {
 }
 
 //stripe
-.App-Container{
-  
+.App-Container {
+}
+
+//Modal Booking
+.wrapper span {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  user-select: none;
+  color: #000000;
+}
+.wrapper span.num {
+  font-size: 24px;
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
+  pointer-events: none;
 }
