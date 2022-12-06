@@ -15,7 +15,7 @@ import { setReviewList } from "../store/reviewList/slice";
 import { setUserProfile } from "../store/userProfile/slice";
 import domain from "../utils/common";
 
-let socket = io(`${domain}`);
+let socket = io(`${domain}`, { transports: ["websocket"] });
 
 export const connectWithSocketServer = (user, dispatch) => {
   socket = io(`${domain}`, {
