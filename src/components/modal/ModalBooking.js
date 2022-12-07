@@ -84,7 +84,7 @@ const ModalBooking = () => {
                       </span>
                     </div>
                     <span className="text-[14px] text-[#111]">
-                      {project?.maxGroupSize}+Guides
+                      {project?.maxGroupSize}+Participants
                     </span>
                   </div>
                   <h3 className="text-[16px] text-[#111] font-[600] mb-4 text-wrap-title">
