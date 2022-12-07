@@ -43,7 +43,7 @@ const ProjectDetails = () => {
 
   return (
     <>
-      <div className="bg-[#111] p-0 m-0 overflow-x-hidden ">
+      <div className="bg-[#fff] p-0 m-0 overflow-x-hidden ">
         <Header></Header>
         <div className="py-[30px] px-[9%]">
           <div className="mt-[90px]">

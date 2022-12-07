@@ -94,7 +94,7 @@ const ModalReview = () => {
         dispatch(setShowAlert(true));
         dispatch(setAlertContent("You reviewed"));
         dispatch(setType("fail"));
-        console.log(err);
+        // console.log(err);
       }
     }
   };
